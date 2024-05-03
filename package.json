@@ -1,0 +1,26 @@
+{
+  "name": "jss",
+  "version": "1.1.0",
+  "description": "JSS javaScript style sheets, a javaScript framework for CSS which allow you to controll the DOM in javaScript with a CSS-like syntax.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jss start",
+    "jss": "node index.js",
+    "jss:both": "node index.js --both"
+  },
+  "keywords": [
+    "jss",
+    "javaScript",
+    "style",
+    "sheets",
+    "js",
+    "framework"
+  ],
+  "author": "Otman Kharbouch",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "pegjs": "^0.10.0",
+    "yargs": "^17.7.2"
+  }
+}

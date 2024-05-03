@@ -1,0 +1,114 @@
+start = _ stylesheet
+
+stylesheet = stat:statement* _ { return { stylesheet: stat }; }
+
+statement
+  = stat:( function / tunnel / conditional / selector_block ) { return  {type: stat.type , stat}; }
+
+function
+  = _ "function" _ "event" _ "(" _ "(" _ sel:selector _ "):" _ eventType:word _ ")" _ "{" _ statements:selector_block* _ "}" _ 
+    { return { type: "function", function: "event", selector: sel, eventType: eventType, statements: statements }; }
+
+tunnel
+  = _ selector1:selector _ ":::" _ selector2:selector _ "{" _ relative_proprety:relative_proprety* _ "}" _ {return { type: "tunnel", selector1: selector1, selector2: selector2, relative_proprety: relative_proprety }; }
+
+conditional
+  = _ "if" _ "(" _ condition:condition _ ")" _ "{" _ then:statement* _ "}" _ { return { type: "conditional", if: condition, then: then }; }
+
+selector_block
+  = _ sel:selector _ "{" _ propdec:property_declaration* _ "}" _ { return {  type: "selector_block", selector: sel, propreties: propdec }; }
+
+comment
+  = "/*" [^*]* "*" / [^/]* "/" { return {type : "comment" , value : text()}; }
+
+selector
+  = _ s:selector_type* str:string "["* idx:([0-9]+)* "]"* atts:attribute_selector* pseu:pseudo_class* { return { type: s, name: str, indices: idx, attributes: atts, pseudoClasses: pseu }; }
+
+attribute_selector
+  = "[" _ [a-zA-Z0-9]* _ "=" _  [a-zA-Z0-9"']* _ "]" { return { attribute: text() }; }
+
+property_declaration
+  = relative_proprety / _ prop:property _ "=" _ val:value _ ";" { return { property: prop, value: val }; } / _ selector_block _  { return text(); }
+
+property
+  = string { return text(); }
+
+///////////////////////////////////////////////
+
+value
+  = _ val:( calculation / arrow_function / style_function / function_declaration / color / number_unit / number / word / string / general ) _ { return { type: val.type, value : val}; }
+
+calculation
+  = term1:term _  operator:operator _ term2:term { return {  type: "calculation", term1 : term1, operator : operator, term2: term2 }; } 
+
+term
+  = arrow_function / number_unit / number / word / string
+
+arrow_function
+  = "(" _ selector:selector _ ")->" javaScriptStyleElement:javaScriptStyleElement { return {type:'arrow_function', selector:selector, javaScriptStyleElement:javaScriptStyleElement} ; }
+
+style_function
+  = fn:[a-zA-Z0-9-]+ _ "(" _ str:string* _ ")" _ { return { type: "style_function", function: fn, arguments: str , value: text()}; }
+
+color
+  = ("#" [0-9a-fA-F]*) { return { type: "color", value: text()}; }
+
+number
+  = "-"* [0-9]+ { return { type: "number" , value : text()}; }
+
+word
+  = main:[a-zA-Z-]* { return { type: "word", value: text() }; }
+
+number_unit
+  = num:number str:string { return { type: "number_unit", number: num, unit: str }; }
+
+string
+  = ([a-zA-Z0-9-_#%.,]_)+ { return { type: "string", value: text()}; }
+
+function_declaration
+  = sf:[a-zA-Z0-9]+ "(" _ val:value _ ")" { return { type: "function_declaration", style_function : sf , value : val}; }
+
+general
+  = [^;]* { return { type: "general", value: text()}; }
+
+javaScriptStyleElement
+  = [a-zA-Z]* { return { type: "javaScriptStyleElement", value: text()}; }
+
+selector_type
+  = [#.@:] { return text(); }
+
+multi_comma
+  =  ( _ value _ "," )* { return {type: "multi_coma", value: text().split(',')}; }
+
+index
+  = "[" num:number "]" { return num ; }
+
+_ "whitespace"
+  = [ \t\n\r]*
+
+simple_selector
+  = "(" selector_type string ")" { return { type: selector_type, name: string }; }
+
+pseudo_class
+  = _ (":" / "::") psd:string _ { return {type: "pseudo_class", value: psd}; }
+
+function_type
+ = [a-zA-Z]* { return text(); }
+
+constants
+  = javaScriptStyleElement "(" _ coefficient _ ")" _
+
+coefficient
+  = number { return text(); }
+
+condition 
+  = left:( [a-zA-Z0-9]* / arrow_function ) _ comparison:comparison _ right:( [a-zA-Z0-9]* / arrow_function ) { return { type: "condition", left: left, comparison: comparison, right: right }};
+
+comparison
+  = ">=" / "<=" / "==" / ">" / "<" { return text(); }
+
+operator
+  = "*" / "/" / "+" / "-" / "%" / "^" { return text(); }
+
+relative_proprety
+  = _ rp:[a-zA-Z0-9]+ "(" _ num:[0-9.]* _ ")" _ ";" {return { type: "relative_proprety", relative_proprety : rp , coe : num }}
