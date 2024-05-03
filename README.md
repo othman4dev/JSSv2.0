@@ -1,8 +1,11 @@
 # JSS: JavaScript Styles Framework
 
-![JSS Logo](./images/JSS.png)
+ <div style="display:flex; align-items:center;gap:15px">
+    <img src="./images/JSS.png" alt="JSS Logo" width="100px" height="100px"/>
 
-JSS, short for JavaScript Styles, is a powerful framework that introduces its own syntax known as JSS, a blend of JavaScript and CSS. Let's explore the key differences between these two languages.
+<p>JSS, short for JavaScript Styles, is a powerful frameworkthat  introduces its own syntax known as JSS, a blend ofJavaScript    and CSS. Let's explore the key differencesbetween these two   languages.</p>
+</div>
+
 
 ### In CSS
 ```css
