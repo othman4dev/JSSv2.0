@@ -3,7 +3,7 @@
 <table>
 <tr>
 <td>
-<img src="./images/JSS.png" alt="JSS Logo" width="350px" height="90px"/>
+<img src="./images/JSS.png" alt="JSS Logo" width="250px" height="90px"/>
 </td>
 <td>
 JSS, short for JavaScript Styles, is a powerful framework that introduces its own syntax known as JSS, a blend of JavaScript and CSS. Let's explore the key differences between these two languages.
