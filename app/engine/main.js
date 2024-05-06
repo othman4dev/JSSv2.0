@@ -9,6 +9,21 @@ const chalk = require('chalk');
 const util = require('util');
 const { log } = require('console');
 
+const argv = yargs
+    .option('tree', {
+      alias: 't',
+      description: 'Add the parsed code to ./config/schema/parseTree.t file',
+      type: 'boolean'
+    })
+    .option('js', {
+      alias: 's',
+      description: 'Depend on JavaScript code only (without CSS)',
+      type: 'boolean'
+    })
+    .help()
+    .alias('help', 'h')
+    .argv;
+
 function handleSelector(selector) {
     let js = ``;
     
@@ -181,8 +196,15 @@ fs.readFile('style.jss', 'utf8', (err, data) => {
     
     const parseTree = parser.parse(data);
     const stylesheet = parseTree[1].stylesheet;
-    //console.log(util.inspect(stylesheet, {depth: null}));
-    
+
+    if (argv.tree) {
+        console.log(chalk.redBright.bold(`\n* Adding the parsed code to ./config/schema/parseTree.t file`));
+        const tree = util.inspect(parseTree[1], {depth: null});
+        fs.writeFileSync( 'config/schema/parseTree.t' , tree);
+    } else if (argv.js) {
+        console.log(chalk.gray.bold(`\n* Generating JavaScript code only (without CSS)`));
+    }
+
     stylesheet.forEach((stat) => {
         if (stat.type == 'selector_block') {
             js += handleSelectorBlock(stat);
@@ -192,9 +214,10 @@ fs.readFile('style.jss', 'utf8', (err, data) => {
             } else {
                 js += handleFuntion(stat);
             }
+        } else if (stat.type == 'conditional') {
+            js += handleConditional(stat);
         }
     });
-    // console.log(util.inspect(stylesheet , {depth: null}));
 
     js += `\n/* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */`;
 
@@ -291,10 +314,8 @@ function handlePseudoClasses(stat) {
     if (removeWhiteSpace(stat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
         if (stat.stat.selector.type == '.') {
             js += handleHoverLoop(stat);
-            console.log('Handling Hover Loop...');
         } else {
             js += handleHover(stat);
-            console.log('Handling Hover...');
         }
     } else {
         js += handleDefaultSelector(stat.stat.selector);
@@ -320,7 +341,6 @@ function handlePseudoClassesLoop(stat) {
     return js;
 }
 function handleHover(stat) {
-    console.log('test 1');
     let js = '';
     //store the style value in random variables
     const localID = uniqueid();
@@ -360,4 +380,39 @@ function handleHoverLoop(stat) {
 }
 function uniqueid() {
     return Math.random().toString(36).substr(2, 9);
+}
+function handleConditional(stat) {
+    let js = '';
+    js += `if ( compare(`;
+    if (stat.stat.if.left.type == 'arrow_function') {
+        js += handleArrowFunctionConditional(stat.stat.if.left);
+    } else if (stat.stat.if.left.type == 'string') {
+        js += ' ' + stat.stat.if.left.value + ' ';
+    }
+    js += `, '${stat.stat.if.comparison}', `;
+    if (stat.stat.if.right.type == 'arrow_function') {
+        js += handleArrowFunctionConditional(stat.stat.if.right);
+    } else if (stat.stat.if.right.type == 'string') {
+        js += ' ' + stat.stat.if.right.value + ' ';
+    }
+    js += `)) {\n`;
+    stat.stat.then.forEach(element => {
+        if (element.type == 'selector_block') {
+            js += '\t' + handleSelectorBlock(element);
+        }
+    });
+    js += `}\n`;
+    return js;
+}
+function handleArrowFunctionConditional(arrow) {
+    let js = ``;
+    selector = arrow.selector;
+    if (selector.type == '#') {
+        js += ` getComputedStyle(document.querySelector('${selector.type}${removeWhiteSpace(selector.name.value)}')).getPropertyValue('${toCSSProp(arrow.javaScriptStyleElement.value)}') `;
+    } else if (selector.type == ".") {
+        js += ` getComputedStyle(document.querySelectorAll('${selector.type}${removeWhiteSpace(selector.name.value)}')[${selector.indices.value ? selector.indices.value : 0}]).getPropertyValue('${toCSSProp(arrow.javaScriptStyleElement.value)}') `;
+    } else {
+        js += ` getComputedStyle(document.querySelectorAll('${selector.type}${removeWhiteSpace(selector.name.value)}')[${selector.indices.value ? selector.indices.value : 0}]).getPropertyValue('${toCSSProp(arrow.javaScriptStyleElement.value)}') `;
+    }
+    return js;
 }

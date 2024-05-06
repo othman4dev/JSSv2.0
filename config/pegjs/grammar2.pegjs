@@ -102,7 +102,7 @@ coefficient
   = number { return text(); }
 
 condition 
-  = left:( [a-zA-Z0-9]* / arrow_function ) _ comparison:comparison _ right:( [a-zA-Z0-9]* / arrow_function ) { return { type: "condition", left: left, comparison: comparison, right: right }};
+  = left:( string / arrow_function ) _ comparison:comparison _ right:( string / arrow_function ) { return { type: "condition", left: left, comparison: comparison, right: right }};
 
 comparison
   = ">=" / "<=" / "==" / ">" / "<" { return text(); }

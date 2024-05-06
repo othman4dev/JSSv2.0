@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jss start",
     "jss": "node index.js",
-    "jss:both": "node index.js --both"
+    "jss:tree": "node index.js --tree",
+    "jss:js": "node index.js --js"
   },
   "keywords": [
     "jss",

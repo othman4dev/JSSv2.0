@@ -138,7 +138,7 @@ function event((#btn4):click) {
         display = block;
     }
 }
-if (100 > 50) {
+if ((#div)->width > 50) {
     #div1 {
         backgroundColor = red;
     }
