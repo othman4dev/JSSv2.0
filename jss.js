@@ -95,5 +95,12 @@ document.querySelector('#div2').style.width = '50px';
 if ( compare( getComputedStyle(document.querySelector('#div1')).getPropertyValue('width') , '>=',  '50px ' )) {
 	document.querySelector('#div2').style.width = '150px';
 }
+setTimeout(() => {
+	document.querySelector('#div2').style.width = '15px';
+	document.querySelector('#div2').style.height = '150px';
+	document.querySelectorAll('.modal').forEach((element) => {
+		element.style.display = 'block';
+	});
+}, 5000);
 
 /* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */

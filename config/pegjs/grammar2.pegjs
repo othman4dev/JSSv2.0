@@ -6,8 +6,11 @@ statement
   = stat:( function / tunnel / conditional / selector_block ) { return  {type: stat.type , stat}; }
 
 function
-  = _ "function" _ "event"/"delay" _ "(" _ "(" _ sel:selector/string _ "):" _ eventType:word _ ")" _ "{" _ statements:selector_block* _ "}" _ 
-    { return { type: "function", function: "event", selector: sel, eventType: eventType, statements: statements }; }
+  = _ "function" _ func:word _ "(" _ func_param:( function_param / number_unit ) _ ")" _ "{" _ statements:selector_block* _ "}" _ 
+    { return { type: "function", function: func , function_param: func_param, statements: statements }; }
+
+function_param 
+  = "(" _ sel:selector _ "):" _ eventType:word _ { return { selector: sel, eventType: eventType }; }
 
 tunnel
   = _ selector1:selector _ ":::" _ selector2:selector _ "{" _ relative_proprety:relative_proprety* _ "}" _ {return { type: "tunnel", selector1: selector1, selector2: selector2, relative_proprety: relative_proprety }; }

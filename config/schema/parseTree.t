@@ -189,6 +189,73 @@
           }
         ]
       }
+    },
+    {
+      type: 'function',
+      stat: {
+        type: 'function',
+        function: { type: 'word', value: 'delay' },
+        function_param: {
+          type: 'number_unit',
+          number: { type: 'number', value: '5000' },
+          unit: { type: 'string', value: 'ms' }
+        },
+        statements: [
+          {
+            type: 'selector_block',
+            selector: {
+              type: [ '#' ],
+              name: { type: 'string', value: 'div2 ' },
+              indices: [],
+              attributes: [],
+              pseudoClasses: []
+            },
+            propreties: [
+              {
+                property: 'width ',
+                value: {
+                  type: 'number_unit',
+                  value: {
+                    type: 'number_unit',
+                    number: { type: 'number', value: '15' },
+                    unit: { type: 'string', value: 'px' }
+                  }
+                }
+              },
+              {
+                property: 'height ',
+                value: {
+                  type: 'number_unit',
+                  value: {
+                    type: 'number_unit',
+                    number: { type: 'number', value: '150' },
+                    unit: { type: 'string', value: 'px' }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            type: 'selector_block',
+            selector: {
+              type: [ '.' ],
+              name: { type: 'string', value: 'modal ' },
+              indices: [],
+              attributes: [],
+              pseudoClasses: []
+            },
+            propreties: [
+              {
+                property: 'display ',
+                value: {
+                  type: 'word',
+                  value: { type: 'word', value: 'block' }
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   ]
 }

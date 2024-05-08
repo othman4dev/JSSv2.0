@@ -23,7 +23,7 @@ if ( (#div1)->width >= 50px ) {
         width = 150px;
     }
 }
-function delay(2s) {
+function delay(5000ms) {
     #div2 {
         width = 15px;
         height = 150px;

@@ -209,10 +209,14 @@ fs.readFile('style.jss', 'utf8', (err, data) => {
         if (stat.type == 'selector_block') {
             js += handleSelectorBlock(stat);
         } else if (stat.type == 'function') {
-            if (stat.stat.selector.type == '.') {
-                js += handleLoopFuntion(stat);
-            } else {
-                js += handleFuntion(stat);
+            if (stat.stat.function.value == 'delay') {
+                js += handleDelay(stat);
+            } else if (stat.stat.function.value == 'event') {
+                if (stat.stat.function_param.selector.type == '.') {
+                    js += handleLoopFuntion(stat);
+                } else {
+                    js += handleFuntion(stat);
+                }
             }
         } else if (stat.type == 'conditional') {
             js += handleConditional(stat);
@@ -417,4 +421,22 @@ function handleArrowFunctionConditional(arrow) {
         js += ` getComputedStyle(document.querySelectorAll('${selector.type}${removeWhiteSpace(selector.name.value)}')[${selector.indices.value ? selector.indices.value : 0}]).getPropertyValue('${toCSSProp(arrow.javaScriptStyleElement.value)}') `;
     }
     return js;
+}
+function handleDelay(stat) {
+    let js = '';
+    js += `setTimeout(() => {\n`;
+    stat.stat.statements.forEach(element => {
+        if (element.type == 'selector_block') {
+            js += addTabulations(handleSelectorBlockFunction(element), 1);
+        }
+    });
+    if (stat.stat.function_param.unit.value == 's') {
+        js += `}, ${stat.stat.function_param.number.value* 1000} );\n`;
+    } else if (stat.stat.function_param.unit.value == 'ms') {
+        js += `}, ${stat.stat.function_param.number.value});\n`;
+    }
+    return js;
+}
+function addTabulations(text, count) {
+    return text.split('\n').map(line => '\t'.repeat(count) + line).join('\n');
 }
