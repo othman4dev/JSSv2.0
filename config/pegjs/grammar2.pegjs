@@ -6,7 +6,7 @@ statement
   = stat:( function / tunnel / conditional / selector_block ) { return  {type: stat.type , stat}; }
 
 function
-  = _ "function" _ "event" _ "(" _ "(" _ sel:selector _ "):" _ eventType:word _ ")" _ "{" _ statements:selector_block* _ "}" _ 
+  = _ "function" _ "event"/"delay" _ "(" _ "(" _ sel:selector/string _ "):" _ eventType:word _ ")" _ "{" _ statements:selector_block* _ "}" _ 
     { return { type: "function", function: "event", selector: sel, eventType: eventType, statements: statements }; }
 
 tunnel

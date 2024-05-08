@@ -263,6 +263,8 @@ function handleFuntion(func) {
             }
         });
         js += `});\n`;
+    } else if(func.stat.function == 'deley') {
+        console.log('test');
     }
     return js;
 }
@@ -387,13 +389,13 @@ function handleConditional(stat) {
     if (stat.stat.if.left.type == 'arrow_function') {
         js += handleArrowFunctionConditional(stat.stat.if.left);
     } else if (stat.stat.if.left.type == 'string') {
-        js += ' ' + stat.stat.if.left.value + ' ';
+        js += ' ' + `'${stat.stat.if.left.value}'` + ' ';
     }
     js += `, '${stat.stat.if.comparison}', `;
     if (stat.stat.if.right.type == 'arrow_function') {
         js += handleArrowFunctionConditional(stat.stat.if.right);
     } else if (stat.stat.if.right.type == 'string') {
-        js += ' ' + stat.stat.if.right.value + ' ';
+        js += ' ' + `'${stat.stat.if.right.value}'` + ' ';
     }
     js += `)) {\n`;
     stat.stat.then.forEach(element => {
