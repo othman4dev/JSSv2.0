@@ -20,9 +20,86 @@ const argv = yargs
       description: 'Depend on JavaScript code only (without CSS)',
       type: 'boolean'
     })
+    .option('css', {
+        alias: 'c',
+        description: 'Depend on CSS code only (without JavaScript, !! No special features !!)',
+        type: 'boolean'
+    })
+    .option('both', {
+        alias: 'b',
+        description: 'Depend on both JavaScript and CSS code',
+        type: 'boolean'
+    })
     .help()
     .alias('help', 'h')
     .argv;
+
+function main() {
+    console.log(chalk.yellow.bgBlue('JSS framework running ... '));
+    
+    let base = '';
+    fs.readFile('app/ready/base.js', 'utf8' , (err2, baseCode) => {
+        if (err2) {
+            console.error('Error reading base file:', err2);
+            return;
+        }
+        base = baseCode;
+    });
+    
+    fs.readFile('style.jss', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return;
+        }
+        let js = '';
+        js += base;
+        js += `\n`;
+        
+        const parseTree = parser.parse(data);
+        const stylesheet = parseTree[1].stylesheet;
+    
+        if (argv.tree) {
+            console.log(chalk.redBright.bold(`\n* Adding the parsed code to ./config/schema/parseTree.t file`));
+            const tree = util.inspect(parseTree[1], {depth: null});
+            fs.writeFileSync( 'config/schema/parseTree.t' , tree);
+        } else if (argv.js) {
+            console.log(chalk.gray.bold(`\n* Generating JavaScript code only (without CSS)`));
+        }
+    
+        stylesheet.forEach((stat) => {
+            if (stat.type == 'selector_block') {
+                js += handleSelectorBlock(stat);
+            } else if (stat.type == 'function') {
+                if (stat.stat.function.value == 'delay') {
+                    js += handleDelay(stat);
+                } else if (stat.stat.function.value == 'event') {
+                    if (stat.stat.function_param.selector.type == '.') {
+                        js += handleLoopFunction(stat);
+                    } else {
+                        js += handleFunction(stat);
+                    }
+                }
+            } else if (stat.type == 'conditional') {
+                js += handleConditional(stat);
+            } else if (stat.type == 'tunnel') {
+                js += handleTunnel(stat);
+            }
+        });
+    
+        js += `\n/* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */`;
+    
+        fs.writeFileSync('jss.js', js);
+    
+        const lineCount = js.split('\n').length;
+        console.log(chalk.yellow.bold(`\n* Wrote ${lineCount} lines to jss.js`));
+    
+        console.log(chalk.greenBright.bold(`\n* Adding base script to jss.js`));
+    
+        console.log(chalk.underline.magenta('\nMade By Otman Kharbouch : ') , chalk.blueBright.bold('Othman4dev'), chalk.underline.magenta(' (GitHub)\n'));
+    
+    });
+    }
+    main();
 
 function handleSelector(selector) {
     let js = ``;
@@ -111,7 +188,7 @@ function handleArrowFunction(arrow) {
 }
 
 function toCSSProp(javaScriptStyleProp) {
-    let cssProp = javaScriptStyleProp.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);;
+    let cssProp = javaScriptStyleProp.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
     return cssProp;
 }
 
@@ -171,72 +248,6 @@ function handleLoop(stat) {
     js += `});\n`;
     return js;
 }
-
-function main() {
-
-console.log(chalk.yellow.bgBlue('JSS framework running ... '));
-
-let base = '';
-fs.readFile('app/ready/base.js', 'utf8' , (err2, baseCode) => {
-    if (err2) {
-        console.error('Error reading base file:', err2);
-        return;
-    }
-    base = baseCode;
-});
-
-fs.readFile('style.jss', 'utf8', (err, data) => {
-    if (err) {
-        console.error('Error reading file:', err);
-        return;
-    }
-    let js = '';
-    js += base;
-    js += `\n`;
-    
-    const parseTree = parser.parse(data);
-    const stylesheet = parseTree[1].stylesheet;
-
-    if (argv.tree) {
-        console.log(chalk.redBright.bold(`\n* Adding the parsed code to ./config/schema/parseTree.t file`));
-        const tree = util.inspect(parseTree[1], {depth: null});
-        fs.writeFileSync( 'config/schema/parseTree.t' , tree);
-    } else if (argv.js) {
-        console.log(chalk.gray.bold(`\n* Generating JavaScript code only (without CSS)`));
-    }
-
-    stylesheet.forEach((stat) => {
-        if (stat.type == 'selector_block') {
-            js += handleSelectorBlock(stat);
-        } else if (stat.type == 'function') {
-            if (stat.stat.function.value == 'delay') {
-                js += handleDelay(stat);
-            } else if (stat.stat.function.value == 'event') {
-                if (stat.stat.function_param.selector.type == '.') {
-                    js += handleLoopFuntion(stat);
-                } else {
-                    js += handleFuntion(stat);
-                }
-            }
-        } else if (stat.type == 'conditional') {
-            js += handleConditional(stat);
-        }
-    });
-
-    js += `\n/* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */`;
-
-    fs.writeFileSync('jss.js', js);
-
-    const lineCount = js.split('\n').length;
-    console.log(chalk.yellow.bold(`\n* Wrote ${lineCount} lines to jss.js`));
-
-    console.log(chalk.greenBright.bold(`\n* Adding base script to jss.js`));
-
-    console.log(chalk.underline.magenta('\nMade By Otman Kharbouch : ') , chalk.blueBright.bold('Othman4dev'), chalk.underline.magenta(' (GitHub)\n'));
-
-});
-}
-main();
 function removeWhiteSpace(string) {
     return string.split(' ')[0];
 }
@@ -256,9 +267,16 @@ function stringToObject(arrow_function) {
     // console.log(selector_type);
 }
 
-function handleFuntion(func) {
+function handleFunction(func) {
     js = '';
-    if (func.stat.function == 'event') {
+    if (func.stat.statements[0].type == 'conditional') {
+        js += handleDefaultSelector(func.stat.function_param.selector);
+        js += `.addEventListener('${func.stat.function_param.eventType.value}', () => {\n`;
+        func.stat.statements.forEach(element => {
+            js += addTabulations( handleConditional(element), 1);
+        });
+        js += `});\n`;
+    } else if (func.stat.function == 'event') {
         js += handleDefaultSelector(func.stat.selector);
         js += `.addEventListener('${func.stat.eventType.value}', () => {\n`;
         func.stat.statements.forEach(element => {
@@ -267,15 +285,23 @@ function handleFuntion(func) {
             }
         });
         js += `});\n`;
-    } else if(func.stat.function == 'deley') {
-        console.log('test');
+    } else if(func.stat.function == 'delay') {
+        console.warn('Unexpected delay function in handleFunction()');
     }
     return js;
 }
 
-function handleLoopFuntion(func) {
+function handleLoopFunction(func) {
     js = '';
-    if (func.stat.function == 'event') {
+    if (func.stat.statements[0].type == 'conditional') {
+        js += `${handleSelectorSimple(func.stat.function_param.selector)}.forEach((element) => {\n`;
+        js += `\telement.addEventListener('${func.stat.function_param.eventType.value}', () => {\n`;
+        func.stat.statements.forEach(element => {
+            js += addTabulations( handleConditional(element), 2);
+        });
+        js += `});\n`;
+        js += `});\n`;
+    } else if (func.stat.function == 'event') {
         js += `document.querySelectorAll('${func.stat.selector.type}${removeWhiteSpace(func.stat.selector.name.value)}').forEach((element) => {\n`;
         js += `\telement.addEventListener('${func.stat.eventType.value}', () => {\n`;
         func.stat.statements.forEach(element => {
@@ -405,6 +431,16 @@ function handleConditional(stat) {
     stat.stat.then.forEach(element => {
         if (element.type == 'selector_block') {
             js += '\t' + handleSelectorBlock(element);
+        } else if (element.type == 'function') {
+            if (element.stat.function.value == 'delay') {
+                js += handleDelay(element);
+            } else if (element.stat.function.value == 'event') {
+                if (element.stat.function_param.selector.type == '.') {
+                    js += handleLoopFunction(element);
+                } else {
+                    js += handleFunction(element);
+                }
+            }
         }
     });
     js += `}\n`;
@@ -427,7 +463,7 @@ function handleDelay(stat) {
     js += `setTimeout(() => {\n`;
     stat.stat.statements.forEach(element => {
         if (element.type == 'selector_block') {
-            js += addTabulations(handleSelectorBlockFunction(element), 1);
+            js += addTabulations(handleSelectorBlockFunction(element.stat), 1);
         }
     });
     if (stat.stat.function_param.unit.value == 's') {
@@ -439,4 +475,14 @@ function handleDelay(stat) {
 }
 function addTabulations(text, count) {
     return text.split('\n').map(line => '\t'.repeat(count) + line).join('\n');
+}
+function handleTunnel(stat) {
+    let js = "";
+    stat.stat.relative_proprety.forEach(element => {
+        let rand = uniqueid();
+        js += ` var observer${rand} = new MutationObserver(function(mutations) {\n\tmutations.forEach(function(mutation) {\n\t\tif (mutation.attributeName === 'style') {\n`;
+        js += `\t\t\tdocument.querySelector('${stat.stat.selector2.type}${removeWhiteSpace(stat.stat.selector2.name.value)}').style.${element.relative_proprety.value} = calc(getComputedStyle(document.querySelector('${stat.stat.selector1.type}${stat.stat.selector2.name.value}')).getPropertyValue('${toCSSProp(element.relative_proprety.value)}') , '${element.coe.value}' , '*');\n`; 
+        js += `\t\t}\n\t});\n});\nvar config${rand} = { attributes: true, attributeFilter: ['style'] };\nobserver${rand}.observe(document.querySelector('${stat.stat.selector1.type}${stat.stat.selector2.name.value}'), config${rand});\n\n`;
+    });
+    return js;
 }

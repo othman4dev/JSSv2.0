@@ -6,7 +6,7 @@ statement
   = stat:( function / tunnel / conditional / selector_block ) { return  {type: stat.type , stat}; }
 
 function
-  = _ "function" _ func:word _ "(" _ func_param:( function_param / number_unit ) _ ")" _ "{" _ statements:selector_block* _ "}" _ 
+  = _ "function" _ func:word _ "(" _ func_param:( function_param / number_unit ) _ ")" _ "{" _ statements:statement* _ "}" _ 
     { return { type: "function", function: func , function_param: func_param, statements: statements }; }
 
 function_param 
@@ -57,7 +57,7 @@ color
   = ("#" [0-9a-fA-F]*) { return { type: "color", value: text()}; }
 
 number
-  = "-"* [0-9]+ { return { type: "number" , value : text()}; }
+  = "-"* [0-9.]+ { return { type: "number" , value : text()}; }
 
 word
   = main:[a-zA-Z-]* { return { type: "word", value: text() }; }
@@ -114,4 +114,4 @@ operator
   = "*" / "/" / "+" / "-" / "%" / "^" { return text(); }
 
 relative_proprety
-  = _ rp:[a-zA-Z0-9]+ "(" _ num:[0-9.]* _ ")" _ ";" {return { type: "relative_proprety", relative_proprety : rp , coe : num }}
+  = _ rp:word "(" _ num:number _ ")" _ ";" {return { type: "relative_proprety", relative_proprety : rp , coe : num }}

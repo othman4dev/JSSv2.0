@@ -7,7 +7,8 @@
     "test": "jss start",
     "jss": "node index.js",
     "jss:tree": "node index.js --tree",
-    "jss:js": "node index.js --js"
+    "jss:js": "node index.js --js",
+    "jss:js:tree": "node index.js --js --tree"
   },
   "keywords": [
     "jss",
