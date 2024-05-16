@@ -39,7 +39,7 @@ property
 ///////////////////////////////////////////////
 
 value
-  = _ val:( calculation / arrow_function / style_function / function_declaration / color / number_unit / number / word / string / general ) _ { return { type: val.type, value : val}; }
+  = _ val:( calculation / arrow_function / style_function / function_declaration / color / text / number_unit / number / word / string / general ) _ { return { type: val.type, value : val}; }
 
 calculation
   = term1:term _  operator:operator _ term2:term { return {  type: "calculation", term1 : term1, operator : operator, term2: term2 }; } 
@@ -59,11 +59,14 @@ color
 number
   = "-"* [0-9.]+ { return { type: "number" , value : text()}; }
 
-word
-  = main:[a-zA-Z-]* { return { type: "word", value: text() }; }
-
 number_unit
   = num:number str:string { return { type: "number_unit", number: num, unit: str }; }
+
+text
+  = "'" _ chars:([a-zA-Z0-9-_#%.,()><]*) _ "'" { return { type: "string", value: text() }; }
+
+word
+  = main:[a-zA-Z-]* { return { type: "word", value: text() }; }
 
 string
   = ([a-zA-Z0-9-_#%.,]_)+ { return { type: "string", value: text()}; }

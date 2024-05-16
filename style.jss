@@ -30,10 +30,11 @@ function delay(5000ms) {
     }
     .modal {
         display = block;
+        
     }
 }
 html {
-    fontFamily = Montserrat;
+    fontFamily = 'Montserrat' ;
 }
 body {
     backgroundColor= whitesmoke;
@@ -47,7 +48,7 @@ body {
     justifyContent = space-between;
     padding = 10px;
     height = 60px;
-    marginBottom = 10px;
+    marginBottom : 10px;
 }
 .nav__list {
     display = flex;
