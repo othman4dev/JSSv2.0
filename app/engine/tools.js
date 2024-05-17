@@ -80,6 +80,37 @@ async function animate(message) {
     }
 }
 
+function scanForErrors(data, parser) {
+    let errorCount = 0;
+    let errors = [];
+    let localData = data;
+    let lineCount = data.split('\n').length;
+    for (let i = 0; i < lineCount; i++) {
+        try {
+            let output = parser.parse(localData);
+        } catch (e) {
+            errorCount++;
+            let error = {
+                body : localData,
+                message : e.message,
+                line : e.line,
+                column : e.column,
+                location : e.location
+            }
+            errors.push(error);
+            let errorLine = e.location.start.line;
+            let lines = localData.split('\n');
+            lines.splice(errorLine - 1, 1);
+            localData = lines.join('\n');
+        }
+    }
+    let returned = {
+        errorCount: errorCount,
+        errors: errors
+    };
+    return returned;
+}
+
 module.exports = {
     addTabulations,
     toCSSProp,
@@ -89,5 +120,6 @@ module.exports = {
     stringToObject,
     handleValueToText,
     sleep,
-    animate
+    animate,
+    scanForErrors
 };

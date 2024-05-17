@@ -278,8 +278,8 @@
           {
             property: 'fontFamily ',
             value: {
-              type: 'word',
-              value: { type: 'word', value: 'Montserrat' }
+              type: 'string',
+              value: { type: 'string', value: "'Montserrat'" }
             }
           }
         ]
@@ -333,7 +333,7 @@
         type: 'selector_block',
         selector: {
           type: [ '.' ],
-          name: { type: 'string', value: 'header ' },
+          name: { type: 'string', value: 'header ,.body ' },
           indices: [],
           attributes: [],
           pseudoClasses: []

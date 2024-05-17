@@ -200,43 +200,53 @@ function main() {
             try {
                 parseTree = parser.parse(data);
                 stylesheet = parseTree[1].stylesheet;
-                return;
             } catch (e) {
-                let errorNear = data.split('\n')[e.location.start.line - 1];
-                console.log(chalk.redBright.bold(`\n----------------------------- ERROR -----------------------------\n\n`));
-                console.log(chalk.redBright.bold(`JSS : ${e.message}\n`));
-                console.log(chalk.redBright.bold(`Near : ${errorNear}`));
-                console.log(chalk.redBright.bold(`        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n`));
-                console.log(chalk.redBright.bold(`At Line ${e.location.start.line}, Column ${e.location.start.column}\n`));
-                console.log(chalk.redBright.bold(`Please check your JSS syntax to fix the problem.\n`));
-                console.log(chalk.redBright(`ERROR Time : ` + new Date().toLocaleTimeString()));
-                console.log(chalk.redBright.bold(`-----------------------------------------------------------------`));
-                errorCount++;
+                let scanResult = scanForErrors(data, parser);
+                let allErrors = scanResult.errors;
+                errorCount = scanResult.errorCount;
+                allErrors.forEach(element => {
+                    let errorNearLocal = element.body.split('\n')[element.location.start.line - 1];;
+                    console.log(chalk.redBright.bold(`\n----------------------------- ERROR -----------------------------\n\n`));
+                    console.log(chalk.redBright.bold(`JSS : ${element.message}\n`));
+                    console.log(chalk.redBright.bold(`Near : ${errorNearLocal}`));
+                    console.log(chalk.redBright.bold(`        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n`));
+                    console.log(chalk.redBright.bold(`At Line ${element.location.start.line}, Column ${element.location.start.column}\n`));
+                    console.log(chalk.redBright.bold(`Please check your JSS syntax to fix the problem.\n`));
+                    console.log(chalk.redBright(`ERROR Time : ` + new Date().toLocaleTimeString()));
+                    console.log(chalk.redBright.bold(`-----------------------------------------------------------------`));
+                });
             }
             if (errorCount == 0) {
-                stylesheet.forEach((stat) => {
-                    if (stat.type == 'selector_block') {
-                        js += handleStatement(stat, handleSelectorBlock, 'selector block');
-                    } else if (stat.type == 'function') {
-                        if (stat.stat.function.value == 'delay') {
-                            js += handleStatement(stat, handleDelay, 'delay function');
-                        } else if (stat.stat.function.value == 'event') {
-                            if (stat.stat.function_param.selector.type == '.') {
-                                js += handleStatement(stat, handleLoopFunction, 'loop function');
-                            } else {
-                                js += handleStatement(stat, handleFunction, 'function');
+                try {
+                    stylesheet.forEach((stat) => {
+                        if (stat.type == 'selector_block') {
+                            handleStatement(stat, handleSelectorBlock, 'selector block');
+                        } else if (stat.type == 'function') {
+                            if (stat.stat.function.value == 'delay') {
+                                handleStatement(stat, handleDelay, 'delay function');
+                            } else if (stat.stat.function.value == 'event') {
+                                if (stat.stat.function_param.selector.type == '.') {
+                                    handleStatement(stat, handleLoopFunction, 'loop function');
+                                } else {
+                                    handleStatement(stat, handleFunction, 'function');
+                                }
                             }
+                        } else if (stat.type == 'conditional') {
+                            handleStatement(stat, handleConditional, 'conditional');
+                        } else if (stat.type == 'tunnel') {
+                            handleStatement(stat, handleTunnel, 'tunnel');
                         }
-                    } else if (stat.type == 'conditional') {
-                        js += handleStatement(stat, handleConditional, 'conditional');
-                    } else if (stat.type == 'tunnel') {
-                        js += handleStatement(stat, handleTunnel, 'tunnel');
-                    }
-                });
+                    });
+                } catch (e) {
+                    console.log(chalk.white.bgRedBright(`\n* ERROR /!\\ :`),chalk.redBright.bold(`\t JSS Core error`));
+                    console.log(chalk.redBright.bold(`\n* Error : ${e.message}`));
+                    console.log(chalk.red.bgYellowBright.bold(`\n* Please undo changes or reinstall the framework.\n`));
+                    return;
+                }
             }
             console.log(chalk.redBright.bold(`\n* Scanned the JSS code for errors`));
             if (errorCount == 0) {
-                console.log(chalk.greenBright.bold(`\n* No errors found in the JSS code\n`));
+                console.log(chalk.greenBright.bold(`\n* 0 errors found in the JSS code\n`));
             } else {
                 console.log(chalk.redBright.bold(`\n* Found ${errorCount} errors in the JSS code\n`));
             }

@@ -19,13 +19,16 @@ conditional
   = _ "if" _ "(" _ condition:condition _ ")" _ "{" _ then:statement* _ "}" _ { return { type: "conditional", if: condition, then: then }; }
 
 selector_block
-  = _ sel:selector _ "{" _ propdec:property_declaration* _ "}" _ { return {  type: "selector_block", selector: sel, propreties: propdec }; }
+  = _ sel:( selector / multi_selector ) _ "{" _ propdec:property_declaration* _ "}" _ { return {  type: "selector_block", selector: sel, propreties: propdec }; }
 
 comment
   = "/*" [^*]* "*" / [^/]* "/" { return {type : "comment" , value : text()}; }
 
 selector
   = _ s:selector_type* str:string "["* idx:([0-9]+)* "]"* atts:attribute_selector* pseu:pseudo_class* { return { type: s, name: str, indices: idx, attributes: atts, pseudoClasses: pseu }; }
+
+multi_selector
+  = selectors:(selector _ ("," _)?)* { return {type: "multi_selector", value: selectors.map(s => s[0])}; }
 
 attribute_selector
   = "[" _ [a-zA-Z0-9]* _ "=" _  [a-zA-Z0-9"']* _ "]" { return { attribute: text() }; }

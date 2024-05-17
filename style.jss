@@ -40,7 +40,7 @@ body {
     backgroundColor= whitesmoke;
     color = (#div15)->backgroundColor;
 }
-.header {
+.header ,.body {
     backgroundColor = black;
     color = white;
     display = flex;
@@ -48,7 +48,7 @@ body {
     justifyContent = space-between;
     padding = 10px;
     height = 60px;
-    marginBottom : 10px;
+    marginBottom = 10px;
 }
 .nav__list {
     display = flex;
