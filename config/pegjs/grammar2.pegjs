@@ -19,16 +19,18 @@ conditional
   = _ "if" _ "(" _ condition:condition _ ")" _ "{" _ then:statement* _ "}" _ { return { type: "conditional", if: condition, then: then }; }
 
 selector_block
-  = _ sel:( selector / multi_selector ) _ "{" _ propdec:property_declaration* _ "}" _ { return {  type: "selector_block", selector: sel, propreties: propdec }; }
+  = _ sel:( multi_selector / selector ) _ "{" _ propdec:property_declaration* _ "}" _ { return {  type: "selector_block", selector: sel, propreties: propdec }; }
 
 comment
   = "/*" [^*]* "*" / [^/]* "/" { return {type : "comment" , value : text()}; }
 
 selector
-  = _ s:selector_type* str:string "["* idx:([0-9]+)* "]"* atts:attribute_selector* pseu:pseudo_class* { return { type: s, name: str, indices: idx, attributes: atts, pseudoClasses: pseu }; }
+  = _ s:selector_type* str:selector_text* "["* idx:([0-9]+)* "]"* atts:attribute_selector* pseu:pseudo_class* { return { type: s, name: str, indices: idx, attributes: atts, pseudoClasses: pseu }; }
 
 multi_selector
-  = selectors:(selector _ ("," _)?)* { return {type: "multi_selector", value: selectors.map(s => s[0])}; }
+  = head:selector tail:(_ "," _ selector)+ {
+      return { type: "multi_selector", value: [head, ...tail.map(([,, ,sel]) => sel)] };
+    }
 
 attribute_selector
   = "[" _ [a-zA-Z0-9]* _ "=" _  [a-zA-Z0-9"']* _ "]" { return { attribute: text() }; }
@@ -66,13 +68,16 @@ number_unit
   = num:number str:string { return { type: "number_unit", number: num, unit: str }; }
 
 text
-  = "'" _ chars:([a-zA-Z0-9-_#%.,()><]*) _ "'" { return { type: "string", value: text() }; }
+  = "'" _ chars:([a-zA-Z0-9-_#%.,()><]*) _ "'" { return { type: "string", value: chars }; }
 
 word
   = main:[a-zA-Z-]* { return { type: "word", value: text() }; }
 
+selector_text
+  = ( [a-zA-Z0-9-_#%&<>.]_ )+ { return text(); }
+
 string
-  = ([a-zA-Z0-9-_#%.,]_)+ { return { type: "string", value: text()}; }
+  = ([a-zA-Z0-9-_#%&.,]_)+ { return { type: "string", value: text()}; }
 
 function_declaration
   = sf:[a-zA-Z0-9]+ "(" _ val:value _ ")" { return { type: "function_declaration", style_function : sf , value : val}; }

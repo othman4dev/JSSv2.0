@@ -40,16 +40,6 @@ body {
     backgroundColor= whitesmoke;
     color = (#div15)->backgroundColor;
 }
-.header ,.body {
-    backgroundColor = black;
-    color = white;
-    display = flex;
-    alignItems = center;
-    justifyContent = space-between;
-    padding = 10px;
-    height = 60px;
-    marginBottom = 10px;
-}
 .nav__list {
     display = flex;
     listStyle = none;
@@ -119,11 +109,9 @@ button[1] {
 }
 #btnStart:hover {
     transform = translateY(-2px);
-    test = 15;
 }
 .btnStart:hover {
     transform = translateY(-2px);
-    test = 15;
 }
 
 function event((.modals):click) {
@@ -183,7 +171,6 @@ if ((#div)->width > 50) {
     height(1.5);
 }
 body {
-    backgroundColor = whitesmoke;
     width = 100px + (#div15)->height;
     height = 100 + (#div15)->fontWeight;
 }
@@ -202,4 +189,16 @@ if ((#modal)->color == white) {
             height = 100 + (#div15)->fontWeight;
         }
     }
+}
+#header,
+.body,
+html {
+    backgroundColor = black;
+    color = white;
+    display = flex;
+    alignItems = center;
+    justifyContent = space-between;
+    padding = 10px;
+    height = 60px;
+    marginBottom = 10px;
 }

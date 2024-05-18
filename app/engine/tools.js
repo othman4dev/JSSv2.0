@@ -22,7 +22,16 @@ function ToString(input) {
 }
 // Removes whitespaces from a word.
 function removeWhiteSpace(string) {
-    return string.split(' ')[0];
+    try {
+        return string.replace(/\s/g, '');
+    } catch (error) {
+        try {
+            //Tuen array to string
+            return string.join('').replace(/\s/g, '');
+        } catch (error2) {
+            return string;
+        }
+    }
 }
 // Generates a random unique id.
 function uniqueid() {
@@ -62,7 +71,7 @@ function handleValueToText(value) {
     } else if (value.type == 'general') {
         text = value.value.value;
     }
-    return text;
+    return removeWhiteSpace(text);
 }
 
 function sleep(ms) {
@@ -81,7 +90,7 @@ async function animate(message) {
 }
 
 function scanForErrors(data, parser) {
-    let errorCount = 0;
+    var errorCount2 = 0;
     let errors = [];
     let localData = data;
     let lineCount = data.split('\n').length;
@@ -89,7 +98,7 @@ function scanForErrors(data, parser) {
         try {
             let output = parser.parse(localData);
         } catch (e) {
-            errorCount++;
+            errorCount2++;
             let error = {
                 body : localData,
                 message : e.message,
@@ -105,7 +114,7 @@ function scanForErrors(data, parser) {
         }
     }
     let returned = {
-        errorCount: errorCount,
+        errorCount: errorCount2,
         errors: errors
     };
     return returned;

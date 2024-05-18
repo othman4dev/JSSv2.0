@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "jss": "node index.js --both",
+    "jss:js:css" : "node index.js --both",
+    "jss:js:css:tree": "node index.js --both --tree",
     "jss:tree": "node index.js --tree",
     "jss:js": "node index.js --js",
     "jss:js:tree": "node index.js --js --tree",
@@ -26,6 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^3.0.0",
+    "clear": "^0.1.0",
     "pegjs": "^0.10.0",
     "postcss": "^8.4.38",
     "yargs": "^17.7.2"

@@ -6,7 +6,7 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'header ' },
+          name: [ 'header ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -55,7 +55,7 @@
         type: 'selector_block',
         selector: {
           type: [ '#' ],
-          name: { type: 'string', value: 'div1 ' },
+          name: [ 'div1 ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -99,7 +99,7 @@
         type: 'selector_block',
         selector: {
           type: [ '#' ],
-          name: { type: 'string', value: 'div2 ' },
+          name: [ 'div2 ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -117,7 +117,7 @@
                 type: 'arrow_function',
                 selector: {
                   type: [ '#' ],
-                  name: { type: 'string', value: 'div1' },
+                  name: [ 'div1' ],
                   indices: [],
                   attributes: [],
                   pseudoClasses: []
@@ -150,7 +150,7 @@
             type: 'arrow_function',
             selector: {
               type: [ '#' ],
-              name: { type: 'string', value: 'div1' },
+              name: [ 'div1' ],
               indices: [],
               attributes: [],
               pseudoClasses: []
@@ -167,7 +167,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '#' ],
-                name: { type: 'string', value: 'div2 ' },
+                name: [ 'div2 ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -207,7 +207,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '#' ],
-                name: { type: 'string', value: 'div2 ' },
+                name: [ 'div2 ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -244,7 +244,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal ' },
+                name: [ 'modal ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -269,7 +269,7 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'html ' },
+          name: [ 'html ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -279,7 +279,14 @@
             property: 'fontFamily ',
             value: {
               type: 'string',
-              value: { type: 'string', value: "'Montserrat'" }
+              value: {
+                type: 'string',
+                value: [
+                  'M', 'o', 'n', 't',
+                  's', 'e', 'r', 'r',
+                  'a', 't'
+                ]
+              }
             }
           }
         ]
@@ -291,7 +298,7 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'body ' },
+          name: [ 'body ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -312,7 +319,7 @@
                 type: 'arrow_function',
                 selector: {
                   type: [ '#' ],
-                  name: { type: 'string', value: 'div15' },
+                  name: [ 'div15' ],
                   indices: [],
                   attributes: [],
                   pseudoClasses: []
@@ -333,78 +340,7 @@
         type: 'selector_block',
         selector: {
           type: [ '.' ],
-          name: { type: 'string', value: 'header ,.body ' },
-          indices: [],
-          attributes: [],
-          pseudoClasses: []
-        },
-        propreties: [
-          {
-            property: 'backgroundColor ',
-            value: { type: 'word', value: { type: 'word', value: 'black' } }
-          },
-          {
-            property: 'color ',
-            value: { type: 'word', value: { type: 'word', value: 'white' } }
-          },
-          {
-            property: 'display ',
-            value: { type: 'word', value: { type: 'word', value: 'flex' } }
-          },
-          {
-            property: 'alignItems ',
-            value: { type: 'word', value: { type: 'word', value: 'center' } }
-          },
-          {
-            property: 'justifyContent ',
-            value: {
-              type: 'word',
-              value: { type: 'word', value: 'space-between' }
-            }
-          },
-          {
-            property: 'padding ',
-            value: {
-              type: 'number_unit',
-              value: {
-                type: 'number_unit',
-                number: { type: 'number', value: '10' },
-                unit: { type: 'string', value: 'px' }
-              }
-            }
-          },
-          {
-            property: 'height ',
-            value: {
-              type: 'number_unit',
-              value: {
-                type: 'number_unit',
-                number: { type: 'number', value: '60' },
-                unit: { type: 'string', value: 'px' }
-              }
-            }
-          },
-          {
-            property: 'marginBottom ',
-            value: {
-              type: 'number_unit',
-              value: {
-                type: 'number_unit',
-                number: { type: 'number', value: '10' },
-                unit: { type: 'string', value: 'px' }
-              }
-            }
-          }
-        ]
-      }
-    },
-    {
-      type: 'selector_block',
-      stat: {
-        type: 'selector_block',
-        selector: {
-          type: [ '.' ],
-          name: { type: 'string', value: 'nav__list ' },
+          name: [ 'nav__list ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -453,7 +389,7 @@
         type: 'selector_block',
         selector: {
           type: [ '.' ],
-          name: { type: 'string', value: 'h11 ' },
+          name: [ 'h11 ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -487,7 +423,7 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'main ' },
+          name: [ 'main ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -529,7 +465,7 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'a  ' },
+          name: [ 'a  ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -552,7 +488,7 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'modal ' },
+          name: [ 'modal ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -590,7 +526,7 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'div' },
+          name: [ 'div' ],
           indices: [ [ '2' ] ],
           attributes: [],
           pseudoClasses: []
@@ -653,7 +589,7 @@
         type: 'selector_block',
         selector: {
           type: [ '.' ],
-          name: { type: 'string', value: 'id' },
+          name: [ 'id' ],
           indices: [ [ '1' ] ],
           attributes: [],
           pseudoClasses: []
@@ -712,7 +648,7 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'h2 ' },
+          name: [ 'h2 ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -749,7 +685,7 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'p ' },
+          name: [ 'p ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -775,7 +711,7 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'button' },
+          name: [ 'button' ],
           indices: [ [ '1' ] ],
           attributes: [],
           pseudoClasses: []
@@ -825,7 +761,7 @@
         type: 'selector_block',
         selector: {
           type: [ '#' ],
-          name: { type: 'string', value: 'btnStart ' },
+          name: [ 'btnStart ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -885,7 +821,7 @@
         type: 'selector_block',
         selector: {
           type: [ '#' ],
-          name: { type: 'string', value: 'btnStart' },
+          name: [ 'btnStart' ],
           indices: [],
           attributes: [],
           pseudoClasses: [
@@ -911,10 +847,6 @@
                 value: 'translateY(-2px)'
               }
             }
-          },
-          {
-            property: 'test ',
-            value: { type: 'number', value: { type: 'number', value: '15' } }
           }
         ]
       }
@@ -925,7 +857,7 @@
         type: 'selector_block',
         selector: {
           type: [ '.' ],
-          name: { type: 'string', value: 'btnStart' },
+          name: [ 'btnStart' ],
           indices: [],
           attributes: [],
           pseudoClasses: [
@@ -951,10 +883,6 @@
                 value: 'translateY(-2px)'
               }
             }
-          },
-          {
-            property: 'test ',
-            value: { type: 'number', value: { type: 'number', value: '15' } }
           }
         ]
       }
@@ -967,7 +895,7 @@
         function_param: {
           selector: {
             type: [ '.' ],
-            name: { type: 'string', value: 'modals' },
+            name: [ 'modals' ],
             indices: [],
             attributes: [],
             pseudoClasses: []
@@ -981,7 +909,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal ' },
+                name: [ 'modal ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1015,7 +943,7 @@
         function_param: {
           selector: {
             type: [ '#' ],
-            name: { type: 'string', value: 'btnStart' },
+            name: [ 'btnStart' ],
             indices: [],
             attributes: [],
             pseudoClasses: []
@@ -1029,7 +957,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal ' },
+                name: [ 'modal ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1051,7 +979,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '#' ],
-                name: { type: 'string', value: 'btnStart ' },
+                name: [ 'btnStart ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1078,7 +1006,7 @@
         function_param: {
           selector: {
             type: [ '#' ],
-            name: { type: 'string', value: 'btn1' },
+            name: [ 'btn1' ],
             indices: [],
             attributes: [],
             pseudoClasses: []
@@ -1092,7 +1020,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal ' },
+                name: [ 'modal ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1114,7 +1042,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal2 ' },
+                name: [ 'modal2 ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1141,7 +1069,7 @@
         function_param: {
           selector: {
             type: [ '#' ],
-            name: { type: 'string', value: 'btn2' },
+            name: [ 'btn2' ],
             indices: [],
             attributes: [],
             pseudoClasses: []
@@ -1155,7 +1083,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal2 ' },
+                name: [ 'modal2 ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1177,7 +1105,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal3 ' },
+                name: [ 'modal3 ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1204,7 +1132,7 @@
         function_param: {
           selector: {
             type: [ '#' ],
-            name: { type: 'string', value: 'btn3' },
+            name: [ 'btn3' ],
             indices: [],
             attributes: [],
             pseudoClasses: []
@@ -1218,7 +1146,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal3 ' },
+                name: [ 'modal3 ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1240,7 +1168,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal4 ' },
+                name: [ 'modal4 ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1267,7 +1195,7 @@
         function_param: {
           selector: {
             type: [ '#' ],
-            name: { type: 'string', value: 'btn4' },
+            name: [ 'btn4' ],
             indices: [],
             attributes: [],
             pseudoClasses: []
@@ -1281,7 +1209,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal4 ' },
+                name: [ 'modal4 ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1303,7 +1231,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '.' ],
-                name: { type: 'string', value: 'modal5 ' },
+                name: [ 'modal5 ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1332,7 +1260,7 @@
             type: 'arrow_function',
             selector: {
               type: [ '#' ],
-              name: { type: 'string', value: 'div' },
+              name: [ 'div' ],
               indices: [],
               attributes: [],
               pseudoClasses: []
@@ -1349,7 +1277,7 @@
               type: 'selector_block',
               selector: {
                 type: [ '#' ],
-                name: { type: 'string', value: 'div1 ' },
+                name: [ 'div1 ' ],
                 indices: [],
                 attributes: [],
                 pseudoClasses: []
@@ -1374,14 +1302,14 @@
         type: 'tunnel',
         selector1: {
           type: [ '#' ],
-          name: { type: 'string', value: 'div1' },
+          name: [ 'div1' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
         },
         selector2: {
           type: [ '#' ],
-          name: { type: 'string', value: 'div2 ' },
+          name: [ 'div2 ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
@@ -1406,19 +1334,12 @@
         type: 'selector_block',
         selector: {
           type: [],
-          name: { type: 'string', value: 'body ' },
+          name: [ 'body ' ],
           indices: [],
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
-          {
-            property: 'backgroundColor ',
-            value: {
-              type: 'word',
-              value: { type: 'word', value: 'whitesmoke' }
-            }
-          },
           {
             property: 'width ',
             value: {
@@ -1435,7 +1356,7 @@
                   type: 'arrow_function',
                   selector: {
                     type: [ '#' ],
-                    name: { type: 'string', value: 'div15' },
+                    name: [ 'div15' ],
                     indices: [],
                     attributes: [],
                     pseudoClasses: []
@@ -1457,7 +1378,7 @@
                   type: 'arrow_function',
                   selector: {
                     type: [ '#' ],
-                    name: { type: 'string', value: 'div15' },
+                    name: [ 'div15' ],
                     indices: [],
                     attributes: [],
                     pseudoClasses: []
@@ -1481,7 +1402,7 @@
         function_param: {
           selector: {
             type: [ '.' ],
-            name: { type: 'string', value: 'btn' },
+            name: [ 'btn' ],
             indices: [],
             attributes: [],
             pseudoClasses: []
@@ -1499,7 +1420,7 @@
                   type: 'arrow_function',
                   selector: {
                     type: [ '#' ],
-                    name: { type: 'string', value: 'modal' },
+                    name: [ 'modal' ],
                     indices: [],
                     attributes: [],
                     pseudoClasses: []
@@ -1516,7 +1437,7 @@
                     type: 'selector_block',
                     selector: {
                       type: [ '#' ],
-                      name: { type: 'string', value: 'modal ' },
+                      name: [ 'modal ' ],
                       indices: [],
                       attributes: [],
                       pseudoClasses: []
@@ -1548,7 +1469,7 @@
             type: 'arrow_function',
             selector: {
               type: [ '#' ],
-              name: { type: 'string', value: 'modal' },
+              name: [ 'modal' ],
               indices: [],
               attributes: [],
               pseudoClasses: []
@@ -1567,7 +1488,7 @@
               function_param: {
                 selector: {
                   type: [ '#' ],
-                  name: { type: 'string', value: 'btn' },
+                  name: [ 'btn' ],
                   indices: [],
                   attributes: [],
                   pseudoClasses: []
@@ -1581,7 +1502,7 @@
                     type: 'selector_block',
                     selector: {
                       type: [ '#' ],
-                      name: { type: 'string', value: 'body ' },
+                      name: [ 'body ' ],
                       indices: [],
                       attributes: [],
                       pseudoClasses: []
@@ -1610,7 +1531,7 @@
                               type: 'arrow_function',
                               selector: {
                                 type: [ '#' ],
-                                name: { type: 'string', value: 'div15' },
+                                name: [ 'div15' ],
                                 indices: [],
                                 attributes: [],
                                 pseudoClasses: []
@@ -1635,7 +1556,7 @@
                               type: 'arrow_function',
                               selector: {
                                 type: [ '#' ],
-                                name: { type: 'string', value: 'div15' },
+                                name: [ 'div15' ],
                                 indices: [],
                                 attributes: [],
                                 pseudoClasses: []
@@ -1652,6 +1573,96 @@
                   }
                 }
               ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: 'multi_selector',
+          value: [
+            {
+              type: [ '#' ],
+              name: [ 'header' ],
+              indices: [],
+              attributes: [],
+              pseudoClasses: []
+            },
+            {
+              type: [ '.' ],
+              name: [ 'body' ],
+              indices: [],
+              attributes: [],
+              pseudoClasses: []
+            },
+            {
+              type: [],
+              name: [ 'html ' ],
+              indices: [],
+              attributes: [],
+              pseudoClasses: []
+            }
+          ]
+        },
+        propreties: [
+          {
+            property: 'backgroundColor ',
+            value: { type: 'word', value: { type: 'word', value: 'black' } }
+          },
+          {
+            property: 'color ',
+            value: { type: 'word', value: { type: 'word', value: 'white' } }
+          },
+          {
+            property: 'display ',
+            value: { type: 'word', value: { type: 'word', value: 'flex' } }
+          },
+          {
+            property: 'alignItems ',
+            value: { type: 'word', value: { type: 'word', value: 'center' } }
+          },
+          {
+            property: 'justifyContent ',
+            value: {
+              type: 'word',
+              value: { type: 'word', value: 'space-between' }
+            }
+          },
+          {
+            property: 'padding ',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '10' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          },
+          {
+            property: 'height ',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '60' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          },
+          {
+            property: 'marginBottom ',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '10' },
+                unit: { type: 'string', value: 'px' }
+              }
             }
           }
         ]

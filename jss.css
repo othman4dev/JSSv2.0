@@ -16,13 +16,7 @@ header {
 	background-color : red;
 }
 html {
-	font-family : 'Montserrat';
-}
-body {
-	background-color: whitesmoke;
-	background-color : whitesmoke;
-}
-.header {
+	font-family : Montserrat;
 	margin-bottom : 10px;
 	height : 60px;
 	padding : 10px;
@@ -31,6 +25,9 @@ body {
 	display : flex;
 	color : white;
 	background-color : black;
+}
+body {
+	background-color: whitesmoke;
 }
 .nav__list {
 	padding-inline : 15px;
@@ -85,7 +82,7 @@ p {
 }
 button {
 	cursor : pointer;
-	padding : 5px 10px;
+	padding : 5px10px;
 	color : white;
 	background-color : black;
 }
@@ -96,10 +93,28 @@ button {
 	padding : 10px;
 	color : white;
 	background-color : black;
-	test : 15;
 	transform : translateY(-2px);
 }
 .btnStart {
-	test : 15;
 	transform : translateY(-2px);
+}
+#header {
+	margin-bottom : 10px;
+	height : 60px;
+	padding : 10px;
+	justify-content : space-between;
+	align-items : center;
+	display : flex;
+	color : white;
+	background-color : black;
+}
+.body {
+	margin-bottom : 10px;
+	height : 60px;
+	padding : 10px;
+	justify-content : space-between;
+	align-items : center;
+	display : flex;
+	color : white;
+	background-color : black;
 }

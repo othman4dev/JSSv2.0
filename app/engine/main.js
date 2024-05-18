@@ -7,8 +7,10 @@ const parser = require('../../config/grammar/grammar2.js');
 const yargs = require('yargs');
 const chalk = require('chalk');
 const util = require('util');
-const { animate } = require('./tools.js');
 Object.assign(global, require('./handlers.js'));
+const clear = require('clear');
+const { handleStatement, handleSelectorBlock, handleSelectorBlockWithCSS } = require('./handlers.js');
+clear();
 
 
 const argv = yargs
@@ -91,7 +93,12 @@ function main() {
             codeType = 'js';
             console.log(chalk.gray.bold(`\n* Generating JavaScript code only (without CSS)`));
             stylesheet.forEach((stat) => {
-                if (stat.type == 'selector_block') {
+                if (stat.stat.selector.type == 'multi_selector') {
+                    let array2 = handleStatement(stat, handleMultiSelector, 'multi selector error');
+                    array2.forEach(block => {
+                        js += handleStatement( block, handleSelectorBlock, 'multi selector error');
+                    });
+                } else if (stat.type == 'selector_block') {
                     js += handleStatement(stat, handleSelectorBlock, 'selector block');
                 } else if (stat.type == 'function') {
                     if (stat.stat.function.value == 'delay') {
@@ -129,7 +136,13 @@ function main() {
             codeType = 'both';
             console.log(chalk.gray.bold(`\n* Generating both JavaScript and CSS code`));
             stylesheet.forEach((stat) => {
-                if (stat.type == 'selector_block') {
+                if (stat.stat.selector && stat.stat.selector.type == 'multi_selector') {
+                    let array2 = JSON.parse(handleStatement(stat, handleMultiSelectorWithCSS, 'Multi selector with css error'));
+                    for (let i = 0; i < array2.length; i++) {
+                        css += handleStatement(array2[i], handleSelectorBlockWithCSS, 'multi selector with css error')[0];
+                        js += handleStatement(array2[i], handleSelectorBlockWithCSS, 'multi selector with css error')[1];
+                    }
+                } else if (stat.type == 'selector_block') {
                     css += handleStatement(stat, handleSelectorBlockWithCSS, 'selector block with css')[0];
                     js += handleStatement(stat, handleSelectorBlockWithCSS, 'selector block with css')[1];
                 } else if (stat.type == 'function') {
@@ -205,7 +218,7 @@ function main() {
                 let allErrors = scanResult.errors;
                 errorCount = scanResult.errorCount;
                 allErrors.forEach(element => {
-                    let errorNearLocal = element.body.split('\n')[element.location.start.line - 1];;
+                    let errorNearLocal = element.body.split('\n')[element.location.start.line - 1];
                     console.log(chalk.redBright.bold(`\n----------------------------- ERROR -----------------------------\n\n`));
                     console.log(chalk.redBright.bold(`JSS : ${element.message}\n`));
                     console.log(chalk.redBright.bold(`Near : ${errorNearLocal}`));
@@ -220,21 +233,33 @@ function main() {
                 try {
                     stylesheet.forEach((stat) => {
                         if (stat.type == 'selector_block') {
-                            handleStatement(stat, handleSelectorBlock, 'selector block');
+                            if (handleStatementScan(stat, handleSelectorBlock, 'selector block')) {
+                                errorCount++;
+                            }
                         } else if (stat.type == 'function') {
                             if (stat.stat.function.value == 'delay') {
-                                handleStatement(stat, handleDelay, 'delay function');
+                                if (handleStatementScan(stat, handleDelay, 'delay function')) {
+                                    errorCount++;
+                                }
                             } else if (stat.stat.function.value == 'event') {
                                 if (stat.stat.function_param.selector.type == '.') {
-                                    handleStatement(stat, handleLoopFunction, 'loop function');
+                                    if (handleStatementScan(stat, handleLoopFunction, 'loop function')) {
+                                        errorCount++;
+                                    }
                                 } else {
-                                    handleStatement(stat, handleFunction, 'function');
+                                    if (handleStatementScan(stat, handleFunction, 'function')) {
+                                        errorCount++;
+                                    }
                                 }
                             }
                         } else if (stat.type == 'conditional') {
-                            handleStatement(stat, handleConditional, 'conditional');
+                            if (handleStatementScan(stat, handleConditional, 'conditional')) {
+                                errorCount++;
+                            }
                         } else if (stat.type == 'tunnel') {
-                            handleStatement(stat, handleTunnel, 'tunnel');
+                            if (handleStatementScan(stat, handleTunnel, 'tunnel')) {
+                                errorCount++;
+                            }
                         }
                     });
                 } catch (e) {
@@ -248,7 +273,7 @@ function main() {
             if (errorCount == 0) {
                 console.log(chalk.greenBright.bold(`\n* 0 errors found in the JSS code\n`));
             } else {
-                console.log(chalk.redBright.bold(`\n* Found ${errorCount} errors in the JSS code\n`));
+                console.log(chalk.redBright.bold(`\n* Found ${errorCount} possible errors in the JSS code\n`));
             }
         }
     });
