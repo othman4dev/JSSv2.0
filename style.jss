@@ -202,3 +202,6 @@ html {
     height = 60px;
     marginBottom = 10px;
 }
+#div:click {
+    backgroundColor = #f00;
+}

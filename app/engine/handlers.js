@@ -267,8 +267,14 @@ function handleSelectorBlockWithCSS(stat) {
     for (let index = localStat.stat.propreties.length - 1; index >= 0; index--) {
         let element = localStat.stat.propreties[index];
         if (element.value.type !== 'arrow_function' && element.value.type !== 'calculation') {
-            css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {\t    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
+            if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) !== 'hover') {
+                js += handleSelectorBlock(localStat);
+            } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
+                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {\t    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
+            } else {
+                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {\t    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
             localStat.stat.propreties.splice(index, 1);
+            }
         } else {
             count++;
         }
@@ -321,7 +327,6 @@ function handleMultiSelector(stat) {
         };
         array.push(newTree);
     });
-    console.log(util.inspect(array, {depth: null}));
     return array;
 }
 

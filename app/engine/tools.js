@@ -37,22 +37,6 @@ function removeWhiteSpace(string) {
 function uniqueid() {
     return Math.random().toString(36).substr(2, 9);
 }
-// Converts a string to an object.
-function stringToObject(arrow_function) {
-    let selector = arrow_function.split('->')[0];
-    let selector_type = selector.split(')')[0];
-    selector_type = selector_type.split('(')[1];
-    if (selector_type[0] == '#') {
-        selector = selector.replace(selector_type, '');
-        selector_type = '#';
-    } else if (selector_type[0] == '.') {
-        selector = selector.replace(selector_type, '');
-        selector_type = '.';
-    } else {
-        selector
-    }
-    // console.log(selector_type);
-}
 
 function handleValueToText(value) {
     let text;
@@ -67,11 +51,11 @@ function handleValueToText(value) {
     } else if (value.type == 'color') {
         text = value.value.value;
     } else if (value.type == 'string') {
-        text = value.value.value;
+        text = "'" + removeWhiteSpace(value.value.value) + "'";
     } else if (value.type == 'general') {
         text = value.value.value;
     }
-    return removeWhiteSpace(text);
+    return text;
 }
 
 function sleep(ms) {
@@ -126,7 +110,6 @@ module.exports = {
     ToString,
     removeWhiteSpace,
     uniqueid,
-    stringToObject,
     handleValueToText,
     sleep,
     animate,

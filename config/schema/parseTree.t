@@ -1667,6 +1667,30 @@
           }
         ]
       }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '#' ],
+          name: [ 'div' ],
+          indices: [],
+          attributes: [],
+          pseudoClasses: [
+            {
+              type: 'pseudo_class',
+              value: { type: 'string', value: 'click ' }
+            }
+          ]
+        },
+        propreties: [
+          {
+            property: 'backgroundColor ',
+            value: { type: 'color', value: { type: 'color', value: '#f00' } }
+          }
+        ]
+      }
     }
   ]
 }

@@ -92,25 +92,25 @@ document.querySelectorAll('.modal5').forEach((element) => {
 if ( compare( getComputedStyle(document.querySelector('#div')).getPropertyValue('width') , '>',  '50' )) {
 	document.querySelector('#div1').style.backgroundColor = 'red';
 }
- var observerbftu9ula0 = new MutationObserver(function(mutations) {
+ var observer0b0lmp3bz = new MutationObserver(function(mutations) {
 	mutations.forEach(function(mutation) {
 		if (mutation.attributeName === 'style') {
 			document.querySelector('#div2').style.width = calc(getComputedStyle(document.querySelector('#div2 ')).getPropertyValue('width') , '1' , '*');
 		}
 	});
 });
-var configbftu9ula0 = { attributes: true, attributeFilter: ['style'] };
-observerbftu9ula0.observe(document.querySelector('#div2 '), configbftu9ula0);
+var config0b0lmp3bz = { attributes: true, attributeFilter: ['style'] };
+observer0b0lmp3bz.observe(document.querySelector('#div2 '), config0b0lmp3bz);
 
- var observer47mac4hgq = new MutationObserver(function(mutations) {
+ var observerdnhyjm1pz = new MutationObserver(function(mutations) {
 	mutations.forEach(function(mutation) {
 		if (mutation.attributeName === 'style') {
 			document.querySelector('#div2').style.height = calc(getComputedStyle(document.querySelector('#div2 ')).getPropertyValue('height') , '1.5' , '*');
 		}
 	});
 });
-var config47mac4hgq = { attributes: true, attributeFilter: ['style'] };
-observer47mac4hgq.observe(document.querySelector('#div2 '), config47mac4hgq);
+var configdnhyjm1pz = { attributes: true, attributeFilter: ['style'] };
+observerdnhyjm1pz.observe(document.querySelector('#div2 '), configdnhyjm1pz);
 
 document.querySelectorAll('body').forEach((element) => {
 	element.style.width =  calc( `100px` , getComputedStyle(document.querySelector('#div15')).getPropertyValue('height') , '+' );
@@ -121,7 +121,7 @@ document.querySelectorAll('.btn').forEach((element) => {
 		if ( compare( getComputedStyle(document.querySelector('#modal')).getPropertyValue('display') , '==',  'block' )) {
 			document.querySelector('#modal').style.display = 'none';
 		}
-		});
+	});
 });
 if ( compare( getComputedStyle(document.querySelector('#modal')).getPropertyValue('color') , '==',  'white' )) {
 	document.querySelector('#btn').addEventListener('click', () => {
@@ -129,6 +129,9 @@ if ( compare( getComputedStyle(document.querySelector('#modal')).getPropertyValu
 	document.querySelector('#body').style.width =  calc( `100px` , getComputedStyle(document.querySelector('#div15')).getPropertyValue('height') , '+' );
 	document.querySelector('#body').style.height =  calc( `100` , getComputedStyle(document.querySelector('#div15')).getPropertyValue('font-weight') , '+' );
 	});
-	}
+}
+document.querySelector('#div').addEventListener('click ', (event) => {
+	event.target.style.backgroundColor = '#f00';
+});
 
 /* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */
