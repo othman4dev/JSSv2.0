@@ -3,7 +3,13 @@ start = _ stylesheet
 stylesheet = stat:statement* _ { return { stylesheet: stat }; }
 
 statement
-  = stat:( function / tunnel / conditional / selector_block ) { return  {type: stat.type , stat}; }
+  = stat:( block_variable / variable / function / tunnel / conditional / selector_block ) { return  {type: stat.type , stat}; }
+
+block_variable
+  = _ "--" name:word _ "{" _ propdec:property_declaration* _ "}" { return { type: "block_variable", name: name, propreties: propdec }; }
+
+variable
+  = _ "--" _ name:word _ "=" _ value:value _ ";" { return { type: "variable", name: name, value: value }; }
 
 function
   = _ "function" _ func:word _ "(" _ func_param:( function_param / number_unit ) _ ")" _ "{" _ statements:statement* _ "}" _ 
@@ -68,7 +74,7 @@ number_unit
   = num:number str:string { return { type: "number_unit", number: num, unit: str }; }
 
 text
-  = "'" _ chars:([a-zA-Z0-9-_#%.,()><]*) _ "'" { return { type: "string", value: chars }; }
+  = "'" _ chars:([^;']*) _ "'" { return { type: "text", value: chars.join('') }; }
 
 word
   = main:[a-zA-Z-]* { return { type: "word", value: text() }; }

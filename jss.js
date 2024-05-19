@@ -36,7 +36,20 @@ const compare = (a, comparison, b) => {
     if (!comparisons[comparison]) throw new Error(`Invalid comparison operator: ${comparison}`);
     return comparisons[comparison](valueA, valueB);
 };
+document.querySelectorAll('header').forEach((element) => {
+	element.style.backgroundColor = '#000';
+	element.style.color = '#fff';
+	element.style.display = 'flex';
+	element.style.alignItems = 'center';
+	element.style.justifyContent = 'space-between';
+	element.style.paddingInline = '15px';
+});
+document.querySelector('#div1').style.height = '100px';
+document.querySelector('#div1').style.width = '50px';
+document.querySelector('#div1').style.backgroundColor = '#0091dc';
+document.querySelector('#div2').style.backgroundColor = 'red';
 document.querySelector('#div2').style.height = getComputedStyle(document.querySelector('#div1')).getPropertyValue('height');
+document.querySelector('#div2').style.width = '50px';
 if ( compare( getComputedStyle(document.querySelector('#div1')).getPropertyValue('width') , '>=',  '50px ' )) {
 	document.querySelector('#div2').style.width = '150px';
 }
@@ -47,10 +60,89 @@ setTimeout(() => {
 		element.style.display = 'block';
 	});
 	}, 5000);
+document.querySelectorAll('html').forEach((element) => {
+	element.style.fontFamily = 'Montserrat';
+});
 document.querySelectorAll('body').forEach((element) => {
+	element.style.backgroundColor = 'whitesmoke';
 	element.style.color = getComputedStyle(document.querySelector('#div15')).getPropertyValue('background-color');
 });
+document.querySelectorAll('.nav__list').forEach((element) => {
+	element.style.display = 'flex';
+	element.style.listStyle = 'none';
+	element.style.padding = '0';
+	element.style.gap = '15px';
+	element.style.paddingInline = '15px';
+});
+document.querySelectorAll('.h11').forEach((element) => {
+	element.style.margin = '0';
+	element.style.fontWeight = '800';
+	element.style.marginLeft = '30px';
+});
+document.querySelectorAll('main').forEach((element) => {
+	element.style.display = 'flex';
+	element.style.alignItems = 'center';
+	element.style.justifyContent = 'center';
+	element.style.flexDirection = 'column';
+	element.style.minHeight = '87vh';
+});
+document.querySelectorAll('a').forEach((element) => {
+	element.style.textDecoration = 'none';
+	element.style.color = '#fff';
+});
+document.querySelectorAll('modal').forEach((element) => {
+	element.style.width = '350px';
+	element.style.display = 'flex';
+	element.style.alignItems = 'center';
+	element.style.justifyContent = 'center';
+});
+document.querySelectorAll('div')[2].style.position = 'relative';
+document.querySelectorAll('div')[2].style.height = '100%';
+document.querySelectorAll('div')[2].style.width = '450px';
+document.querySelectorAll('div')[2].style.display = 'none';
+document.querySelectorAll('div')[2].style.padding = '15px';
+document.querySelectorAll('div')[2].style.backgroundColor = 'white';
+document.querySelectorAll('.id')[1].style.color = '#555';
+document.querySelectorAll('.id')[1].style.fontSize = '12px';
+document.querySelectorAll('.id')[1].style.position = 'absolute';
+document.querySelectorAll('.id')[1].style.top = '10px';
+document.querySelectorAll('.id')[1].style.right = '10px';
+document.querySelectorAll('h2').forEach((element) => {
+	element.style.paddingTop = '10px';
+	element.style.paddingBottom = '10px';
+});
+document.querySelectorAll('p').forEach((element) => {
+	element.style.padding = '15px';
+});
+document.querySelectorAll('button')[1].style.backgroundColor = 'black';
+document.querySelectorAll('button')[1].style.color = 'white';
+document.querySelectorAll('button')[1].style.padding = '5px 10px';
+document.querySelectorAll('button')[1].style.cursor = 'pointer';
 document.querySelectorAll('button')[1].style.fontSize =  calc( `17` , ` 20` , '-' );
+document.querySelector('#btnStart').style.backgroundColor = 'black';
+document.querySelector('#btnStart').style.color = 'white';
+document.querySelector('#btnStart').style.padding = '10px';
+document.querySelector('#btnStart').style.cursor = 'pointer';
+document.querySelector('#btnStart').style.fontSize = '17px';
+document.querySelector('#btnStart').style.transition = '0.3s';
+var styleStoremischitlx = null;
+document.querySelector('#btnStart').addEventListener('mouseover', (event) => {
+	styleStoremischitlx = window.getComputedStyle(document.querySelector('#undefined'));
+	event.target.style.transform = 'translateY(-2px)';
+});
+document.querySelector('#btnStart').addEventListener('mouseout', (event) => {
+	applyStyles(event.target, styleStoremischitlx);
+});
+var styleStoregqpaog9b4 = null;
+document.querySelectorAll('.btnStart').forEach((element) => {
+	element.addEventListener('mouseover', (event) => {
+		styleStoregqpaog9b4 = window.getComputedStyle(document.querySelector('.undefined'));
+		event.target.style.transform = 'translateY(-2px)';
+	});
+	element.addEventListener('mouseout', (event) => {
+		applyStyles(event.target, styleStoregqpaog9b4);
+	});
+});
 document.querySelector('#btnStart').addEventListener('click', () => {
 document.querySelectorAll('.modal').forEach((element) => {
 	element.style.display = 'block';
@@ -92,25 +184,25 @@ document.querySelectorAll('.modal5').forEach((element) => {
 if ( compare( getComputedStyle(document.querySelector('#div')).getPropertyValue('width') , '>',  '50' )) {
 	document.querySelector('#div1').style.backgroundColor = 'red';
 }
- var observer0b0lmp3bz = new MutationObserver(function(mutations) {
+ var observer0bqaposh5 = new MutationObserver(function(mutations) {
 	mutations.forEach(function(mutation) {
 		if (mutation.attributeName === 'style') {
 			document.querySelector('#div2').style.width = calc(getComputedStyle(document.querySelector('#div2 ')).getPropertyValue('width') , '1' , '*');
 		}
 	});
 });
-var config0b0lmp3bz = { attributes: true, attributeFilter: ['style'] };
-observer0b0lmp3bz.observe(document.querySelector('#div2 '), config0b0lmp3bz);
+var config0bqaposh5 = { attributes: true, attributeFilter: ['style'] };
+observer0bqaposh5.observe(document.querySelector('#div2 '), config0bqaposh5);
 
- var observerdnhyjm1pz = new MutationObserver(function(mutations) {
+ var observerb9qlibyk6 = new MutationObserver(function(mutations) {
 	mutations.forEach(function(mutation) {
 		if (mutation.attributeName === 'style') {
 			document.querySelector('#div2').style.height = calc(getComputedStyle(document.querySelector('#div2 ')).getPropertyValue('height') , '1.5' , '*');
 		}
 	});
 });
-var configdnhyjm1pz = { attributes: true, attributeFilter: ['style'] };
-observerdnhyjm1pz.observe(document.querySelector('#div2 '), configdnhyjm1pz);
+var configb9qlibyk6 = { attributes: true, attributeFilter: ['style'] };
+observerb9qlibyk6.observe(document.querySelector('#div2 '), configb9qlibyk6);
 
 document.querySelectorAll('body').forEach((element) => {
 	element.style.width =  calc( `100px` , getComputedStyle(document.querySelector('#div15')).getPropertyValue('height') , '+' );
@@ -121,17 +213,60 @@ document.querySelectorAll('.btn').forEach((element) => {
 		if ( compare( getComputedStyle(document.querySelector('#modal')).getPropertyValue('display') , '==',  'block' )) {
 			document.querySelector('#modal').style.display = 'none';
 		}
-	});
+		});
 });
 if ( compare( getComputedStyle(document.querySelector('#modal')).getPropertyValue('color') , '==',  'white' )) {
 	document.querySelector('#btn').addEventListener('click', () => {
 	document.querySelector('#body').style.backgroundColor = 'whitesmoke';
 	document.querySelector('#body').style.width =  calc( `100px` , getComputedStyle(document.querySelector('#div15')).getPropertyValue('height') , '+' );
 	document.querySelector('#body').style.height =  calc( `100` , getComputedStyle(document.querySelector('#div15')).getPropertyValue('font-weight') , '+' );
+	document.querySelectorAll('.body').forEach((element) => {
 	});
-}
+	});
+	}
+document.querySelector('#header').style.backgroundColor = 'black';
+document.querySelector('#header').style.color = 'white';
+document.querySelector('#header').style.display = 'flex';
+document.querySelector('#header').style.alignItems = 'center';
+document.querySelector('#header').style.justifyContent = 'space-between';
+document.querySelector('#header').style.padding = '10px';
+document.querySelector('#header').style.height = '60px';
+document.querySelector('#header').style.marginBottom = '10px';
+document.querySelectorAll('.body').forEach((element) => {
+	element.style.backgroundColor = 'black';
+	element.style.color = 'white';
+	element.style.display = 'flex';
+	element.style.alignItems = 'center';
+	element.style.justifyContent = 'space-between';
+	element.style.padding = '10px';
+	element.style.height = '60px';
+	element.style.marginBottom = '10px';
+});
+document.querySelectorAll('html').forEach((element) => {
+	element.style.backgroundColor = 'black';
+	element.style.color = 'white';
+	element.style.display = 'flex';
+	element.style.alignItems = 'center';
+	element.style.justifyContent = 'space-between';
+	element.style.padding = '10px';
+	element.style.height = '60px';
+	element.style.marginBottom = '10px';
+});
 document.querySelector('#div').addEventListener('click ', (event) => {
 	event.target.style.backgroundColor = '#f00';
 });
+let color = [
+  {
+    property: 'backgroundColor ',
+    value: { type: 'word', value: { type: 'word', value: 'red' } }
+  },
+  {
+    property: 'content ',
+    value: {
+      type: 'text',
+      value: { type: 'text', value: 'this is a button' }
+    }
+  }
+];
 
 /* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */

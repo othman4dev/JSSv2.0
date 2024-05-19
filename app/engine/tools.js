@@ -1,5 +1,8 @@
 
 const chalk = require('chalk');
+const { ESLint } = require("eslint");
+const stylelint = require('stylelint');
+const fs = require('fs');
 
 // Adds tabulations to a text.
 function addTabulations(text, count) {
@@ -52,6 +55,8 @@ function handleValueToText(value) {
         text = value.value.value;
     } else if (value.type == 'string') {
         text = "'" + removeWhiteSpace(value.value.value) + "'";
+    } else if (value.type == 'text') {
+        text = "'" + value.value.value + "'";
     } else if (value.type == 'general') {
         text = value.value.value;
     }
@@ -104,6 +109,54 @@ function scanForErrors(data, parser) {
     return returned;
 }
 
+async function lintCSSFile(filePath) {
+    const text = fs.readFileSync(filePath, 'utf8');
+    try {
+        const results = await stylelint.lint({
+            code: text,
+            config: {
+                // Your stylelint configuration
+                "rules": {
+                    "block-no-empty": true,
+                    "color-no-invalid-hex": true,
+                    // Add more rules as needed
+                }
+            }
+        });
+
+        const hasErrors = results.errored;
+
+        if (hasErrors) {
+            console.log(chalk.redBright.bgWhite('Possible errors found in the CSS file \n'));
+            return 'false';
+        } else {
+            console.log(chalk.white.bgGreen('No errors found in the CSS file \n'));
+            return 'true';
+        }
+    } catch (error) {
+        console.error('Error while linting CSS file:', error);
+        return 'false';
+    }
+}
+
+async function lintFile(filePath) {
+    const eslint = new ESLint();
+    const text = fs.readFileSync(filePath, 'utf8');
+  
+    const results = await eslint.lintText(text, { filePath });
+    const formatter = await eslint.loadFormatter("stylish");
+    const hasErrors = results.some(result => result.errorCount > 0);
+  
+    if (hasErrors) {
+        console.log( chalk.redBright.bgWhite('Possible errors found in the jss.js file \n'));
+        return 'false';
+    } else {
+        console.log( chalk.white.bgGreen('No errors found in the jss.js file \n'));
+        return 'true';
+    
+    }
+}
+
 module.exports = {
     addTabulations,
     toCSSProp,
@@ -113,5 +166,7 @@ module.exports = {
     handleValueToText,
     sleep,
     animate,
-    scanForErrors
+    scanForErrors,
+    lintCSSFile,
+    lintFile
 };

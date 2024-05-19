@@ -278,15 +278,8 @@
           {
             property: 'fontFamily ',
             value: {
-              type: 'string',
-              value: {
-                type: 'string',
-                value: [
-                  'M', 'o', 'n', 't',
-                  's', 'e', 'r', 'r',
-                  'a', 't'
-                ]
-              }
+              type: 'text',
+              value: { type: 'text', value: 'Montserrat' }
             }
           }
         ]
@@ -1688,6 +1681,34 @@
           {
             property: 'backgroundColor ',
             value: { type: 'color', value: { type: 'color', value: '#f00' } }
+          }
+        ]
+      }
+    },
+    {
+      type: 'variable',
+      stat: {
+        type: 'variable',
+        name: { type: 'word', value: 'color' },
+        value: { type: 'word', value: { type: 'word', value: 'test' } }
+      }
+    },
+    {
+      type: 'block_variable',
+      stat: {
+        type: 'block_variable',
+        name: { type: 'word', value: 'color' },
+        propreties: [
+          {
+            property: 'backgroundColor ',
+            value: { type: 'word', value: { type: 'word', value: 'red' } }
+          },
+          {
+            property: 'content ',
+            value: {
+              type: 'text',
+              value: { type: 'text', value: 'this is a button' }
+            }
           }
         ]
       }

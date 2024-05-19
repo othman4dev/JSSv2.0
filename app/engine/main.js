@@ -2,14 +2,20 @@
 // This code is made by othman Kharbouch github : othman4dev
 // Comments are written by othman Kharbouch
 
+// Importing the required modules
+
 const fs = require('fs');
+const { ESLint } = require("eslint");
+const { lint } = require('stylelint');
 const parser = require('../../config/grammar/grammar2.js');
 const yargs = require('yargs');
 const chalk = require('chalk');
 const util = require('util');
 Object.assign(global, require('./handlers.js'));
 const clear = require('clear');
-const { handleStatement, handleSelectorBlock, handleSelectorBlockWithCSS } = require('./handlers.js');
+const { exec } = require('child_process');
+
+// Clear the console.
 clear();
 
 
@@ -93,12 +99,12 @@ function main() {
             codeType = 'js';
             console.log(chalk.gray.bold(`\n* Generating JavaScript code only (without CSS)`));
             stylesheet.forEach((stat) => {
-                if (stat.stat.selector.type == 'multi_selector') {
-                    let array2 = handleStatement(stat, handleMultiSelector, 'multi selector error');
-                    array2.forEach(block => {
-                        js += handleStatement( block, handleSelectorBlock, 'multi selector error');
-                    });
-                } else if (stat.type == 'selector_block') {
+                if (stat.stat.selector && stat.stat.selector.type == 'multi_selector') {
+                    let array2 = JSON.parse(handleStatement(stat, handleMultiSelector, 'Multi selector with css error'));
+                    for (let i = 0; i < array2.length; i++) {
+                        js += handleStatement(array2[i], handleSelectorBlock, 'multi selector with css error');
+                    }
+                } else  if (stat.type == 'selector_block') {
                     js += handleStatement(stat, handleSelectorBlock, 'selector block');
                 } else if (stat.type == 'function') {
                     if (stat.stat.function.value == 'delay') {
@@ -114,6 +120,8 @@ function main() {
                     js += handleStatement(stat, handleConditional, 'conditional');
                 } else if (stat.type == 'tunnel') {
                     js += handleStatement(stat, handleTunnel, 'tunnel');
+                } else if (stat.type == 'block_variable') {
+                    js += handleStatement(stat, handleVariableBlock, 'variable');
                 }
                 fs.writeFileSync('jss.js', js);
             });
@@ -159,6 +167,8 @@ function main() {
                     js += handleStatement(stat, handleConditional, 'conditional');
                 } else if (stat.type == 'tunnel') {
                     js += handleStatement(stat, handleTunnel, 'tunnel');
+                } else if (stat.type == 'block_variable') {
+                    js += handleStatement(stat, handleVariableBlock, 'variable');
                 }
                 fs.writeFileSync('jss.js', js);
             });
@@ -233,33 +243,21 @@ function main() {
                 try {
                     stylesheet.forEach((stat) => {
                         if (stat.type == 'selector_block') {
-                            if (handleStatementScan(stat, handleSelectorBlock, 'selector block')) {
-                                errorCount++;
-                            }
+                            handleStatementScan(stat, handleSelectorBlock, 'selector block');
                         } else if (stat.type == 'function') {
                             if (stat.stat.function.value == 'delay') {
-                                if (handleStatementScan(stat, handleDelay, 'delay function')) {
-                                    errorCount++;
-                                }
+                                handleStatementScan(stat, handleDelay, 'delay function');
                             } else if (stat.stat.function.value == 'event') {
                                 if (stat.stat.function_param.selector.type == '.') {
-                                    if (handleStatementScan(stat, handleLoopFunction, 'loop function')) {
-                                        errorCount++;
-                                    }
+                                    handleStatementScan(stat, handleLoopFunction, 'loop function');
                                 } else {
-                                    if (handleStatementScan(stat, handleFunction, 'function')) {
-                                        errorCount++;
-                                    }
+                                    handleStatementScan(stat, handleFunction, 'function');
                                 }
                             }
                         } else if (stat.type == 'conditional') {
-                            if (handleStatementScan(stat, handleConditional, 'conditional')) {
-                                errorCount++;
-                            }
+                            handleStatementScan(stat, handleConditional, 'conditional');
                         } else if (stat.type == 'tunnel') {
-                            if (handleStatementScan(stat, handleTunnel, 'tunnel')) {
-                                errorCount++;
-                            }
+                           handleStatementScan(stat, handleTunnel, 'tunnel');
                         }
                     });
                 } catch (e) {
@@ -277,5 +275,46 @@ function main() {
             }
         }
     });
+    setTimeout(() => {
+        checkFiles('both');
+    }, 500);
     }
     main();
+
+    //Check output files for errors.
+
+    var retries = 0;
+
+    async function checkFiles() {
+        try {
+            let CSSStatus = await lintCSSFile('jss.css');
+            let JSStatus = await lintFile('jss.js');
+    
+            if (CSSStatus == 'false') {
+                console.log(chalk.yellow.bgMagenta('Retrying CSS Parsing...\n'));
+                retries++;
+                if (retries > 1) {
+                    console.log(chalk.red.bgYellowBright('Too many retries, exiting...\n\n'));
+                    process.exit(1);
+                } else {
+                    // main();
+                    checkFiles();
+                }
+            }
+    
+            if (JSStatus == 'false') {
+                console.log(chalk.yellow.bgMagenta('Retrying JS Parsing...\n'));
+                retries++;
+                if (retries > 1) {
+                    console.log(chalk.red.bgYellowBright('Too many retries, exiting...\n\n'));
+                    process.exit(1);
+                } else if (retries < 2 && JSStatus == 'false') {
+                    // main();
+                    checkFiles();
+                }
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    

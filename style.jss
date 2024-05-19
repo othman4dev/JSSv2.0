@@ -188,6 +188,9 @@ if ((#modal)->color == white) {
             width = 100px + (#div15)->height;
             height = 100 + (#div15)->fontWeight;
         }
+        .body:hover {
+            
+        }
     }
 }
 #header,
@@ -204,4 +207,10 @@ html {
 }
 #div:click {
     backgroundColor = #f00;
+}
+--color = test;
+
+--color {
+    backgroundColor = red;
+    content = 'this is a button';
 }

@@ -327,7 +327,7 @@ function handleMultiSelector(stat) {
         };
         array.push(newTree);
     });
-    return array;
+    return JSON.stringify(array);
 }
 
 function handleMultiSelectorWithCSS(stat) {
@@ -462,6 +462,14 @@ function handleStatementScan(stat, handler, errorMessage) {
     }
 }
 
+function handleVariableBlock(stat) {
+    let js = ``;
+    js += `let ${stat.stat.name.value} = `;
+    js += util.inspect(stat.stat.propreties , {depth: null});
+    js += `;\n`;
+    return js;
+}
+
 module.exports = {
     handleArrowFunction,
     handleCalcArrow,
@@ -478,6 +486,7 @@ module.exports = {
     handleSelectorBlock,
     handleSelectorBlockFunction,
     handleSelectorSimple,
+    handleMultiSelectorWithCSS,
     handleStatement,
     handleTunnel,
     handleHover,
@@ -485,5 +494,5 @@ module.exports = {
     handleSelectorBlockWithCSS,
     handleStatementScan,
     handleMultiSelector,
-    handleMultiSelectorWithCSS
+    handleVariableBlock
 };
