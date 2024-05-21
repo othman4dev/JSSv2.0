@@ -31,7 +31,7 @@ comment
   = "/*" [^*]* "*" / [^/]* "/" { return {type : "comment" , value : text()}; }
 
 selector
-  = _ s:selector_type* str:selector_text* "["* idx:([0-9]+)* "]"* atts:attribute_selector* pseu:pseudo_class* { return { type: s, name: str, indices: idx, attributes: atts, pseudoClasses: pseu }; }
+  = _ s:selector_type* str:selector_text* "["? idx:([0-9]+)? "]"? atts:attribute_selector* pseu:pseudo_class* { return { type: s, name: str, indices: idx, attributes: atts, pseudoClasses: pseu }; }
 
 multi_selector
   = head:selector tail:(_ "," _ selector)+ {
@@ -45,12 +45,12 @@ property_declaration
   = relative_proprety / _ prop:property _ "=" _ val:value _ ";" { return { property: prop, value: val }; } / _ selector_block _  { return text(); }
 
 property
-  = string { return text(); }
+  = string { return text().trimEnd(); }
 
 ///////////////////////////////////////////////
 
 value
-  = _ val:( calculation / arrow_function / style_function / function_declaration / color / text / number_unit / number / word / string / general ) _ { return { type: val.type, value : val}; }
+  = _ val:( calculation / arrow_function / style_function / function_declaration / color / HTML / text / number_unit / number / word / string / general ) _ { return { type: val.type, value : val}; }
 
 calculation
   = term1:term _  operator:operator _ term2:term { return {  type: "calculation", term1 : term1, operator : operator, term2: term2 }; } 
@@ -75,6 +75,9 @@ number_unit
 
 text
   = "'" _ chars:([^;']*) _ "'" { return { type: "text", value: chars.join('') }; }
+
+HTML
+  = "`" _ chars:([^`]*) _ "`" { return { type: "HTML", value: chars.join('').replace(/[\r\n\t]/g, '') }; }
 
 word
   = main:[a-zA-Z-]* { return { type: "word", value: text() }; }

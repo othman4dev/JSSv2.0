@@ -14,6 +14,8 @@ const util = require('util');
 Object.assign(global, require('./handlers.js'));
 const clear = require('clear');
 const { exec } = require('child_process');
+const prettier = require('prettier');
+const { chalkLoger } = require('./tools.js');
 
 // Clear the console.
 clear();
@@ -40,43 +42,44 @@ const argv = yargs
         description: 'Depend on both JavaScript and CSS code',
         type: 'boolean'
     })
-    .help()
-    .alias('help', 'h')
+    .option('helpme',{
+        alias: 'h',
+        description: 'Show help about JSS framework',
+        type: 'boolean'
+    })
     .argv;
 
 var codeType = 'both';
 var errorCount = 0;
 
+if (argv.helpme) {
+    showHelp();
+}
+
 function main() {
-    console.log(chalk.bgBlue('JSS framework running ... '));
+    chalkLoger('text', 'JSS framework is starting...');
 
     let base = '';
-    fs.readFile('app/ready/base.js', 'utf8' , (err2, baseCode) => {
-        if (err2) {
-            console.error('Error reading base file:', err2);
-            return;
-        } else{
-            base = baseCode;
-        }
-    });
+    try {
+        base = fs.readFileSync('app/ready/base.js', 'utf8');
+        chalkLoger('text', 'Reading base.js file...');
+    } catch (err) {
+        chalkLoger('error', 'Error reading base.js file');
+    }
     
     fs.readFile('style.jss', 'utf8', (err, data) => {
         if (err) {
-            console.error('Error reading file:', err);
+            chalkLoger('error', 'Error reading style.jss file');
             return;
         }
         let jssLength = data.split('\n').length;
         let js = '';
         let css = '';
+
         js += base;
-        //This code verify that the base code is added to the js variable, If not it will call the same main function till the fs read the base code.
-        if (js == '') {
-            main();
-        }
-        //
         js += `\n`;
 
-        console.log(chalk.red.bgWhite.bold(`\n* Reading ${jssLength} lines from style.jss...`));
+        chalkLoger('text', `Reading ${jssLength} lines from style.jss...`); 
 
         let parseTree;
         let stylesheet;
@@ -85,19 +88,19 @@ function main() {
                 parseTree = parser.parse(data);
                 stylesheet = parseTree[1].stylesheet;
             } catch (e) {
-                console.log(chalk.redBright.bold(`\n* Error parsing the JSS code: ${e.message}`));
+                chalkLoger('error', `Error parsing the JSS code: \n\n ==> ${e.message} \n at line ${e.location.start.line}, column ${e.location.start.column}.\n`); 
                 return;
             }
         }
         
         if (argv.tree) {
-            console.log(chalk.redBright.bold(`\n* Added the parsed code tree to ./config/schema/parseTree.t file`));
+            chalkLoger('note', 'Adding the parsed code tree to ./config/schema/parseTree.t file');
             const tree = util.inspect(parseTree[1], {depth: null});
             fs.writeFileSync( 'config/schema/parseTree.t' , tree);
         }
         if (argv.js) {
             codeType = 'js';
-            console.log(chalk.gray.bold(`\n* Generating JavaScript code only (without CSS)`));
+            chalkLoger('comment', 'Generating JavaScript code only (without CSS)');
             stylesheet.forEach((stat) => {
                 if (stat.stat.selector && stat.stat.selector.type == 'multi_selector') {
                     let array2 = JSON.parse(handleStatement(stat, handleMultiSelector, 'Multi selector with css error'));
@@ -121,28 +124,33 @@ function main() {
                 } else if (stat.type == 'tunnel') {
                     js += handleStatement(stat, handleTunnel, 'tunnel');
                 } else if (stat.type == 'block_variable') {
-                    js += handleStatement(stat, handleVariableBlock, 'variable');
+                    js += handleStatement(stat, handleVariableBlock, 'block variable error');
+                } else if (stat.type == 'variable') {
+                    js += handleStatement(stat, handleVariable, 'variable');
                 }
                 fs.writeFileSync('jss.js', js);
             });
             js += `\n/* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */`;
-        
+            
             fs.writeFileSync('jss.js', js);
-        
+
+            formatFile('jss.js').catch(console.error);
+            
+            js = fs.readFileSync('jss.js', 'utf8');
+
             const lineCount = js.split('\n').length;
-            console.log(chalk.yellow.bold(`\n* Wrote ${lineCount} lines to jss.js`));
-        
-            console.log(chalk.greenBright.bold(`\n* Adding base script to jss.js`));
-        
-            console.log(chalk.underline.magenta('\nMade By Otman Kharbouch : ') , chalk.blueBright.bold('Othman4dev'), chalk.underline.magenta(' (GitHub)\n'));
+
+            chalkLoger('success', `Adding base script to jss.js`);
+
+            chalkLoger('success', `Wrote ${lineCount} lines to jss.js`);
         }
         if (argv.css) {
             codeType = 'css';
-            console.log(chalk.gray.bold(`\n* Generating CSS code only (without JavaScript)`));
+            chalkLoger('comment', 'Generating CSS code only (without JavaScript)');
         }
         if (argv.both) {
             codeType = 'both';
-            console.log(chalk.gray.bold(`\n* Generating both JavaScript and CSS code`));
+            chalkLoger('comment', 'Generating both JavaScript and CSS code');
             stylesheet.forEach((stat) => {
                 if (stat.stat.selector && stat.stat.selector.type == 'multi_selector') {
                     let array2 = JSON.parse(handleStatement(stat, handleMultiSelectorWithCSS, 'Multi selector with css error'));
@@ -168,13 +176,19 @@ function main() {
                 } else if (stat.type == 'tunnel') {
                     js += handleStatement(stat, handleTunnel, 'tunnel');
                 } else if (stat.type == 'block_variable') {
-                    js += handleStatement(stat, handleVariableBlock, 'variable');
+                    js += handleStatement(stat, handleVariableBlock, 'block variable error');
+                } else if (stat.type == 'variable') {
+                    js += handleStatement(stat, handleVariable, 'variable');
                 }
                 fs.writeFileSync('jss.js', js);
             });
             js += `\n/* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */`;
         
             fs.writeFileSync('jss.js', js);
+
+            js = fs.readFileSync('jss.js', 'utf8');
+
+            formatFile('jss.js').catch(console.error);
 
             fs.writeFileSync('jss.css', css);
 
@@ -205,19 +219,21 @@ function main() {
             
                 fs.writeFile('jss.css', newCss, err => {
                     if (err) throw err;
+                    formatFile('jss.css').catch(console.error);
                 });
+
+                
             });
-        
+
+            css = fs.readFileSync('jss.css', 'utf8');
+
+            chalkLoger('success', `Adding base script to jss.js`);
+
             const lineCount = js.split('\n').length;
-            console.log(chalk.yellow.bold(`\n* Wrote ${lineCount} lines to jss.js`));
+            chalkLoger('success', `Wrote ${lineCount} lines to jss.js`);
 
             const cssLineCount = css.split('\n').length;
-            console.log(chalk.yellow.bold(`\n* Wrote ${cssLineCount} lines to jss.css`));
-        
-            console.log(chalk.greenBright.bold(`\n* Adding base script to jss.js`));
-        
-            console.log(chalk.underline.magenta('\nMade By Otman Kharbouch : ') , chalk.blueBright.bold('Othman4dev'), chalk.underline.magenta(' (GitHub)\n'));
-            console.log(chalk.blueBright.underline('https://github.com/othman4dev \n'));
+            chalkLoger('success', `Wrote ${cssLineCount} lines to jss.css`);
         }
         if (argv.scan) {
             try {
@@ -267,17 +283,22 @@ function main() {
                     return;
                 }
             }
-            console.log(chalk.redBright.bold(`\n* Scanned the JSS code for errors`));
+
+            chalkLoger('text', 'Scanning the JSS code for errors');
+
             if (errorCount == 0) {
-                console.log(chalk.greenBright.bold(`\n* 0 errors found in the JSS code\n`));
+                chalkLoger('success', 'No errors found in the JSS code');
             } else {
-                console.log(chalk.redBright.bold(`\n* Found ${errorCount} possible errors in the JSS code\n`));
+                chalkLoger('error', `Found ${errorCount} possible errors in the JSS code`);
             }
         }
     });
-    setTimeout(() => {
-        checkFiles('both');
-    }, 500);
+    if (errorCount == 0) {
+        setTimeout(() => {
+            checkFiles('both');
+        }, 500);
+    }
+
     }
     main();
 
@@ -290,31 +311,15 @@ function main() {
             let CSSStatus = await lintCSSFile('jss.css');
             let JSStatus = await lintFile('jss.js');
     
-            if (CSSStatus == 'false') {
-                console.log(chalk.yellow.bgMagenta('Retrying CSS Parsing...\n'));
-                retries++;
-                if (retries > 1) {
-                    console.log(chalk.red.bgYellowBright('Too many retries, exiting...\n\n'));
-                    process.exit(1);
-                } else {
-                    // main();
-                    checkFiles();
-                }
+            if (CSSStatus == 'false' && (codeType == 'both' || codeType == 'css')) {
+                chalkLoger('warning', 'JSS failed to compile the CSS file. Please check the jss.css file for errors.');
             }
     
-            if (JSStatus == 'false') {
-                console.log(chalk.yellow.bgMagenta('Retrying JS Parsing...\n'));
-                retries++;
-                if (retries > 1) {
-                    console.log(chalk.red.bgYellowBright('Too many retries, exiting...\n\n'));
-                    process.exit(1);
-                } else if (retries < 2 && JSStatus == 'false') {
-                    // main();
-                    checkFiles();
-                }
+            if (JSStatus == 'false' && (codeType == 'both' || codeType == 'js')) {
+                chalkLoger('warning', 'JSS failed to compile the JS file. Please check the jss.js file for errors.');
             }
         } catch (error) {
-            console.error(error);
+            chalkLoger('error', 'Error checking the output files for errors');
         }
+        chalkLoger('credit', 'JSS Framework');
     }
-    

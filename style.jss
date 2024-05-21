@@ -174,6 +174,7 @@ body {
     width = 100px + (#div15)->height;
     height = 100 + (#div15)->fontWeight;
 }
+
 function event((.btn):click) {
     if ((#modal)->display == block) {
         #modal {
@@ -181,6 +182,7 @@ function event((.btn):click) {
         }
     }
 }
+
 if ((#modal)->color == white) {
     function event((#btn):click) {
         #body {
@@ -189,10 +191,11 @@ if ((#modal)->color == white) {
             height = 100 + (#div15)->fontWeight;
         }
         .body:hover {
-            
+            backgroundColor = #000;
         }
     }
 }
+
 #header,
 .body,
 html {
@@ -204,13 +207,27 @@ html {
     padding = 10px;
     height = 60px;
     marginBottom = 10px;
+    innerHTML = '<div>click me</div>';
 }
+
 #div:click {
     backgroundColor = #f00;
+    innerText = 'done';
+    innerHTML = `#div:click {
+    backgroundColor = #f00
+    innerText = 'done'
+    innerHTML = 'sdfasdfasdfasdfa';
+}`;
 }
---color = test;
+
+--colorf = test;
+
+--primary = test;
+
+--initial = (#modal1)->backgroundColor;
 
 --color {
     backgroundColor = red;
     content = 'this is a button';
+    width = (.test[0])->width;
 }

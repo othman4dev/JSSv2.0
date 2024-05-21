@@ -7,36 +7,36 @@
         selector: {
           type: [],
           name: [ 'header ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'backgroundColor ',
+            property: 'backgroundColor',
             value: { type: 'color', value: { type: 'color', value: '#000' } }
           },
           {
-            property: 'color ',
+            property: 'color',
             value: { type: 'color', value: { type: 'color', value: '#fff' } }
           },
           {
-            property: 'display ',
+            property: 'display',
             value: { type: 'word', value: { type: 'word', value: 'flex' } }
           },
           {
-            property: 'alignItems ',
+            property: 'alignItems',
             value: { type: 'word', value: { type: 'word', value: 'center' } }
           },
           {
-            property: 'justifyContent ',
+            property: 'justifyContent',
             value: {
               type: 'word',
               value: { type: 'word', value: 'space-between' }
             }
           },
           {
-            property: 'paddingInline ',
+            property: 'paddingInline',
             value: {
               type: 'number_unit',
               value: {
@@ -56,13 +56,13 @@
         selector: {
           type: [ '#' ],
           name: [ 'div1 ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'height ',
+            property: 'height',
             value: {
               type: 'number_unit',
               value: {
@@ -73,7 +73,7 @@
             }
           },
           {
-            property: 'width ',
+            property: 'width',
             value: {
               type: 'number_unit',
               value: {
@@ -84,7 +84,7 @@
             }
           },
           {
-            property: 'backgroundColor ',
+            property: 'backgroundColor',
             value: {
               type: 'color',
               value: { type: 'color', value: '#0091dc' }
@@ -100,17 +100,17 @@
         selector: {
           type: [ '#' ],
           name: [ 'div2 ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'backgroundColor ',
+            property: 'backgroundColor',
             value: { type: 'word', value: { type: 'word', value: 'red' } }
           },
           {
-            property: 'height ',
+            property: 'height',
             value: {
               type: 'arrow_function',
               value: {
@@ -118,7 +118,7 @@
                 selector: {
                   type: [ '#' ],
                   name: [ 'div1' ],
-                  indices: [],
+                  indices: null,
                   attributes: [],
                   pseudoClasses: []
                 },
@@ -127,7 +127,7 @@
             }
           },
           {
-            property: 'width ',
+            property: 'width',
             value: {
               type: 'number_unit',
               value: {
@@ -151,7 +151,7 @@
             selector: {
               type: [ '#' ],
               name: [ 'div1' ],
-              indices: [],
+              indices: null,
               attributes: [],
               pseudoClasses: []
             },
@@ -168,13 +168,13 @@
               selector: {
                 type: [ '#' ],
                 name: [ 'div2 ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'width ',
+                  property: 'width',
                   value: {
                     type: 'number_unit',
                     value: {
@@ -208,13 +208,13 @@
               selector: {
                 type: [ '#' ],
                 name: [ 'div2 ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'width ',
+                  property: 'width',
                   value: {
                     type: 'number_unit',
                     value: {
@@ -225,7 +225,7 @@
                   }
                 },
                 {
-                  property: 'height ',
+                  property: 'height',
                   value: {
                     type: 'number_unit',
                     value: {
@@ -245,13 +245,13 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'block' }
@@ -270,13 +270,13 @@
         selector: {
           type: [],
           name: [ 'html ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'fontFamily ',
+            property: 'fontFamily',
             value: {
               type: 'text',
               value: { type: 'text', value: 'Montserrat' }
@@ -292,7 +292,7 @@
         selector: {
           type: [],
           name: [ 'body ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
@@ -305,7 +305,7 @@
             }
           },
           {
-            property: 'color ',
+            property: 'color',
             value: {
               type: 'arrow_function',
               value: {
@@ -313,7 +313,7 @@
                 selector: {
                   type: [ '#' ],
                   name: [ 'div15' ],
-                  indices: [],
+                  indices: null,
                   attributes: [],
                   pseudoClasses: []
                 },
@@ -334,25 +334,25 @@
         selector: {
           type: [ '.' ],
           name: [ 'nav__list ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'display ',
+            property: 'display',
             value: { type: 'word', value: { type: 'word', value: 'flex' } }
           },
           {
-            property: 'listStyle ',
+            property: 'listStyle',
             value: { type: 'word', value: { type: 'word', value: 'none' } }
           },
           {
-            property: 'padding ',
+            property: 'padding',
             value: { type: 'number', value: { type: 'number', value: '0' } }
           },
           {
-            property: 'gap ',
+            property: 'gap',
             value: {
               type: 'number_unit',
               value: {
@@ -363,7 +363,7 @@
             }
           },
           {
-            property: 'paddingInline ',
+            property: 'paddingInline',
             value: {
               type: 'number_unit',
               value: {
@@ -383,21 +383,21 @@
         selector: {
           type: [ '.' ],
           name: [ 'h11 ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'margin ',
+            property: 'margin',
             value: { type: 'number', value: { type: 'number', value: '0' } }
           },
           {
-            property: 'fontWeight ',
+            property: 'fontWeight',
             value: { type: 'number', value: { type: 'number', value: '800' } }
           },
           {
-            property: 'marginLeft ',
+            property: 'marginLeft',
             value: {
               type: 'number_unit',
               value: {
@@ -417,29 +417,29 @@
         selector: {
           type: [],
           name: [ 'main ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'display ',
+            property: 'display',
             value: { type: 'word', value: { type: 'word', value: 'flex' } }
           },
           {
-            property: 'alignItems ',
+            property: 'alignItems',
             value: { type: 'word', value: { type: 'word', value: 'center' } }
           },
           {
-            property: 'justifyContent ',
+            property: 'justifyContent',
             value: { type: 'word', value: { type: 'word', value: 'center' } }
           },
           {
-            property: 'flexDirection ',
+            property: 'flexDirection',
             value: { type: 'word', value: { type: 'word', value: 'column' } }
           },
           {
-            property: 'minHeight ',
+            property: 'minHeight',
             value: {
               type: 'number_unit',
               value: {
@@ -459,17 +459,17 @@
         selector: {
           type: [],
           name: [ 'a  ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'textDecoration ',
+            property: 'textDecoration',
             value: { type: 'word', value: { type: 'word', value: 'none' } }
           },
           {
-            property: 'color ',
+            property: 'color',
             value: { type: 'color', value: { type: 'color', value: '#fff' } }
           }
         ]
@@ -482,13 +482,13 @@
         selector: {
           type: [],
           name: [ 'modal ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'width ',
+            property: 'width',
             value: {
               type: 'number_unit',
               value: {
@@ -499,15 +499,15 @@
             }
           },
           {
-            property: 'display ',
+            property: 'display',
             value: { type: 'word', value: { type: 'word', value: 'flex' } }
           },
           {
-            property: 'alignItems ',
+            property: 'alignItems',
             value: { type: 'word', value: { type: 'word', value: 'center' } }
           },
           {
-            property: 'justifyContent ',
+            property: 'justifyContent',
             value: { type: 'word', value: { type: 'word', value: 'center' } }
           }
         ]
@@ -520,20 +520,20 @@
         selector: {
           type: [],
           name: [ 'div' ],
-          indices: [ [ '2' ] ],
+          indices: [ '2' ],
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'position ',
+            property: 'position',
             value: {
               type: 'word',
               value: { type: 'word', value: 'relative' }
             }
           },
           {
-            property: 'height ',
+            property: 'height',
             value: {
               type: 'number_unit',
               value: {
@@ -544,7 +544,7 @@
             }
           },
           {
-            property: 'width ',
+            property: 'width',
             value: {
               type: 'number_unit',
               value: {
@@ -555,11 +555,11 @@
             }
           },
           {
-            property: 'display ',
+            property: 'display',
             value: { type: 'word', value: { type: 'word', value: 'none' } }
           },
           {
-            property: 'padding ',
+            property: 'padding',
             value: {
               type: 'number_unit',
               value: {
@@ -570,7 +570,7 @@
             }
           },
           {
-            property: 'backgroundColor ',
+            property: 'backgroundColor',
             value: { type: 'word', value: { type: 'word', value: 'white' } }
           }
         ]
@@ -583,17 +583,17 @@
         selector: {
           type: [ '.' ],
           name: [ 'id' ],
-          indices: [ [ '1' ] ],
+          indices: [ '1' ],
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'color ',
+            property: 'color',
             value: { type: 'color', value: { type: 'color', value: '#555' } }
           },
           {
-            property: 'fontSize ',
+            property: 'fontSize',
             value: {
               type: 'number_unit',
               value: {
@@ -604,14 +604,14 @@
             }
           },
           {
-            property: 'position ',
+            property: 'position',
             value: {
               type: 'word',
               value: { type: 'word', value: 'absolute' }
             }
           },
           {
-            property: 'top ',
+            property: 'top',
             value: {
               type: 'number_unit',
               value: {
@@ -622,7 +622,7 @@
             }
           },
           {
-            property: 'right ',
+            property: 'right',
             value: {
               type: 'number_unit',
               value: {
@@ -642,13 +642,13 @@
         selector: {
           type: [],
           name: [ 'h2 ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'paddingTop ',
+            property: 'paddingTop',
             value: {
               type: 'number_unit',
               value: {
@@ -659,7 +659,7 @@
             }
           },
           {
-            property: 'paddingBottom ',
+            property: 'paddingBottom',
             value: {
               type: 'number_unit',
               value: {
@@ -679,13 +679,13 @@
         selector: {
           type: [],
           name: [ 'p ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'padding ',
+            property: 'padding',
             value: {
               type: 'number_unit',
               value: {
@@ -705,21 +705,21 @@
         selector: {
           type: [],
           name: [ 'button' ],
-          indices: [ [ '1' ] ],
+          indices: [ '1' ],
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'backgroundColor ',
+            property: 'backgroundColor',
             value: { type: 'word', value: { type: 'word', value: 'black' } }
           },
           {
-            property: 'color ',
+            property: 'color',
             value: { type: 'word', value: { type: 'word', value: 'white' } }
           },
           {
-            property: 'padding ',
+            property: 'padding',
             value: {
               type: 'number_unit',
               value: {
@@ -730,11 +730,11 @@
             }
           },
           {
-            property: 'cursor ',
+            property: 'cursor',
             value: { type: 'word', value: { type: 'word', value: 'pointer' } }
           },
           {
-            property: 'fontSize ',
+            property: 'fontSize',
             value: {
               type: 'calculation',
               value: {
@@ -755,21 +755,21 @@
         selector: {
           type: [ '#' ],
           name: [ 'btnStart ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'backgroundColor ',
+            property: 'backgroundColor',
             value: { type: 'word', value: { type: 'word', value: 'black' } }
           },
           {
-            property: 'color ',
+            property: 'color',
             value: { type: 'word', value: { type: 'word', value: 'white' } }
           },
           {
-            property: 'padding ',
+            property: 'padding',
             value: {
               type: 'number_unit',
               value: {
@@ -780,11 +780,11 @@
             }
           },
           {
-            property: 'cursor ',
+            property: 'cursor',
             value: { type: 'word', value: { type: 'word', value: 'pointer' } }
           },
           {
-            property: 'fontSize ',
+            property: 'fontSize',
             value: {
               type: 'number_unit',
               value: {
@@ -795,7 +795,7 @@
             }
           },
           {
-            property: 'transition ',
+            property: 'transition',
             value: {
               type: 'number_unit',
               value: {
@@ -815,7 +815,7 @@
         selector: {
           type: [ '#' ],
           name: [ 'btnStart' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: [
             {
@@ -826,7 +826,7 @@
         },
         propreties: [
           {
-            property: 'transform ',
+            property: 'transform',
             value: {
               type: 'style_function',
               value: {
@@ -851,7 +851,7 @@
         selector: {
           type: [ '.' ],
           name: [ 'btnStart' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: [
             {
@@ -862,7 +862,7 @@
         },
         propreties: [
           {
-            property: 'transform ',
+            property: 'transform',
             value: {
               type: 'style_function',
               value: {
@@ -889,7 +889,7 @@
           selector: {
             type: [ '.' ],
             name: [ 'modals' ],
-            indices: [],
+            indices: null,
             attributes: [],
             pseudoClasses: []
           },
@@ -903,20 +903,20 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'block' }
                   }
                 },
                 {
-                  property: 'color ',
+                  property: 'color',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'red' }
@@ -937,7 +937,7 @@
           selector: {
             type: [ '#' ],
             name: [ 'btnStart' ],
-            indices: [],
+            indices: null,
             attributes: [],
             pseudoClasses: []
           },
@@ -951,13 +951,13 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'block' }
@@ -973,13 +973,13 @@
               selector: {
                 type: [ '#' ],
                 name: [ 'btnStart ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'none' }
@@ -1000,7 +1000,7 @@
           selector: {
             type: [ '#' ],
             name: [ 'btn1' ],
-            indices: [],
+            indices: null,
             attributes: [],
             pseudoClasses: []
           },
@@ -1014,13 +1014,13 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'none' }
@@ -1036,13 +1036,13 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal2 ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'block' }
@@ -1063,7 +1063,7 @@
           selector: {
             type: [ '#' ],
             name: [ 'btn2' ],
-            indices: [],
+            indices: null,
             attributes: [],
             pseudoClasses: []
           },
@@ -1077,13 +1077,13 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal2 ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'none' }
@@ -1099,13 +1099,13 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal3 ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'block' }
@@ -1126,7 +1126,7 @@
           selector: {
             type: [ '#' ],
             name: [ 'btn3' ],
-            indices: [],
+            indices: null,
             attributes: [],
             pseudoClasses: []
           },
@@ -1140,13 +1140,13 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal3 ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'none' }
@@ -1162,13 +1162,13 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal4 ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'block' }
@@ -1189,7 +1189,7 @@
           selector: {
             type: [ '#' ],
             name: [ 'btn4' ],
-            indices: [],
+            indices: null,
             attributes: [],
             pseudoClasses: []
           },
@@ -1203,13 +1203,13 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal4 ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'none' }
@@ -1225,13 +1225,13 @@
               selector: {
                 type: [ '.' ],
                 name: [ 'modal5 ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'display ',
+                  property: 'display',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'block' }
@@ -1254,7 +1254,7 @@
             selector: {
               type: [ '#' ],
               name: [ 'div' ],
-              indices: [],
+              indices: null,
               attributes: [],
               pseudoClasses: []
             },
@@ -1271,13 +1271,13 @@
               selector: {
                 type: [ '#' ],
                 name: [ 'div1 ' ],
-                indices: [],
+                indices: null,
                 attributes: [],
                 pseudoClasses: []
               },
               propreties: [
                 {
-                  property: 'backgroundColor ',
+                  property: 'backgroundColor',
                   value: {
                     type: 'word',
                     value: { type: 'word', value: 'red' }
@@ -1296,14 +1296,14 @@
         selector1: {
           type: [ '#' ],
           name: [ 'div1' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         selector2: {
           type: [ '#' ],
           name: [ 'div2 ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
@@ -1328,13 +1328,13 @@
         selector: {
           type: [],
           name: [ 'body ' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: []
         },
         propreties: [
           {
-            property: 'width ',
+            property: 'width',
             value: {
               type: 'calculation',
               value: {
@@ -1350,7 +1350,7 @@
                   selector: {
                     type: [ '#' ],
                     name: [ 'div15' ],
-                    indices: [],
+                    indices: null,
                     attributes: [],
                     pseudoClasses: []
                   },
@@ -1360,7 +1360,7 @@
             }
           },
           {
-            property: 'height ',
+            property: 'height',
             value: {
               type: 'calculation',
               value: {
@@ -1372,7 +1372,7 @@
                   selector: {
                     type: [ '#' ],
                     name: [ 'div15' ],
-                    indices: [],
+                    indices: null,
                     attributes: [],
                     pseudoClasses: []
                   },
@@ -1396,7 +1396,7 @@
           selector: {
             type: [ '.' ],
             name: [ 'btn' ],
-            indices: [],
+            indices: null,
             attributes: [],
             pseudoClasses: []
           },
@@ -1414,7 +1414,7 @@
                   selector: {
                     type: [ '#' ],
                     name: [ 'modal' ],
-                    indices: [],
+                    indices: null,
                     attributes: [],
                     pseudoClasses: []
                   },
@@ -1431,13 +1431,13 @@
                     selector: {
                       type: [ '#' ],
                       name: [ 'modal ' ],
-                      indices: [],
+                      indices: null,
                       attributes: [],
                       pseudoClasses: []
                     },
                     propreties: [
                       {
-                        property: 'display ',
+                        property: 'display',
                         value: {
                           type: 'word',
                           value: { type: 'word', value: 'none' }
@@ -1463,7 +1463,7 @@
             selector: {
               type: [ '#' ],
               name: [ 'modal' ],
-              indices: [],
+              indices: null,
               attributes: [],
               pseudoClasses: []
             },
@@ -1482,7 +1482,7 @@
                 selector: {
                   type: [ '#' ],
                   name: [ 'btn' ],
-                  indices: [],
+                  indices: null,
                   attributes: [],
                   pseudoClasses: []
                 },
@@ -1496,20 +1496,20 @@
                     selector: {
                       type: [ '#' ],
                       name: [ 'body ' ],
-                      indices: [],
+                      indices: null,
                       attributes: [],
                       pseudoClasses: []
                     },
                     propreties: [
                       {
-                        property: 'backgroundColor ',
+                        property: 'backgroundColor',
                         value: {
                           type: 'word',
                           value: { type: 'word', value: 'whitesmoke' }
                         }
                       },
                       {
-                        property: 'width ',
+                        property: 'width',
                         value: {
                           type: 'calculation',
                           value: {
@@ -1525,7 +1525,7 @@
                               selector: {
                                 type: [ '#' ],
                                 name: [ 'div15' ],
-                                indices: [],
+                                indices: null,
                                 attributes: [],
                                 pseudoClasses: []
                               },
@@ -1538,7 +1538,7 @@
                         }
                       },
                       {
-                        property: 'height ',
+                        property: 'height',
                         value: {
                           type: 'calculation',
                           value: {
@@ -1550,7 +1550,7 @@
                               selector: {
                                 type: [ '#' ],
                                 name: [ 'div15' ],
-                                indices: [],
+                                indices: null,
                                 attributes: [],
                                 pseudoClasses: []
                               },
@@ -1560,6 +1560,33 @@
                               }
                             }
                           }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  type: 'selector_block',
+                  stat: {
+                    type: 'selector_block',
+                    selector: {
+                      type: [ '.' ],
+                      name: [ 'body' ],
+                      indices: null,
+                      attributes: [],
+                      pseudoClasses: [
+                        {
+                          type: 'pseudo_class',
+                          value: { type: 'string', value: 'hover ' }
+                        }
+                      ]
+                    },
+                    propreties: [
+                      {
+                        property: 'backgroundColor',
+                        value: {
+                          type: 'color',
+                          value: { type: 'color', value: '#000' }
                         }
                       }
                     ]
@@ -1581,21 +1608,21 @@
             {
               type: [ '#' ],
               name: [ 'header' ],
-              indices: [],
+              indices: null,
               attributes: [],
               pseudoClasses: []
             },
             {
               type: [ '.' ],
               name: [ 'body' ],
-              indices: [],
+              indices: null,
               attributes: [],
               pseudoClasses: []
             },
             {
               type: [],
               name: [ 'html ' ],
-              indices: [],
+              indices: null,
               attributes: [],
               pseudoClasses: []
             }
@@ -1603,30 +1630,30 @@
         },
         propreties: [
           {
-            property: 'backgroundColor ',
+            property: 'backgroundColor',
             value: { type: 'word', value: { type: 'word', value: 'black' } }
           },
           {
-            property: 'color ',
+            property: 'color',
             value: { type: 'word', value: { type: 'word', value: 'white' } }
           },
           {
-            property: 'display ',
+            property: 'display',
             value: { type: 'word', value: { type: 'word', value: 'flex' } }
           },
           {
-            property: 'alignItems ',
+            property: 'alignItems',
             value: { type: 'word', value: { type: 'word', value: 'center' } }
           },
           {
-            property: 'justifyContent ',
+            property: 'justifyContent',
             value: {
               type: 'word',
               value: { type: 'word', value: 'space-between' }
             }
           },
           {
-            property: 'padding ',
+            property: 'padding',
             value: {
               type: 'number_unit',
               value: {
@@ -1637,7 +1664,7 @@
             }
           },
           {
-            property: 'height ',
+            property: 'height',
             value: {
               type: 'number_unit',
               value: {
@@ -1648,7 +1675,7 @@
             }
           },
           {
-            property: 'marginBottom ',
+            property: 'marginBottom',
             value: {
               type: 'number_unit',
               value: {
@@ -1656,6 +1683,13 @@
                 number: { type: 'number', value: '10' },
                 unit: { type: 'string', value: 'px' }
               }
+            }
+          },
+          {
+            property: 'innerHTML',
+            value: {
+              type: 'text',
+              value: { type: 'text', value: '<div>click me</div>' }
             }
           }
         ]
@@ -1668,7 +1702,7 @@
         selector: {
           type: [ '#' ],
           name: [ 'div' ],
-          indices: [],
+          indices: null,
           attributes: [],
           pseudoClasses: [
             {
@@ -1679,8 +1713,22 @@
         },
         propreties: [
           {
-            property: 'backgroundColor ',
+            property: 'backgroundColor',
             value: { type: 'color', value: { type: 'color', value: '#f00' } }
+          },
+          {
+            property: 'innerText',
+            value: { type: 'text', value: { type: 'text', value: 'done' } }
+          },
+          {
+            property: 'innerHTML',
+            value: {
+              type: 'HTML',
+              value: {
+                type: 'HTML',
+                value: "#div:click {    backgroundColor = #f00    innerText = 'done'    innerHTML = 'sdfasdfasdfasdfa';}"
+              }
+            }
           }
         ]
       }
@@ -1689,8 +1737,40 @@
       type: 'variable',
       stat: {
         type: 'variable',
-        name: { type: 'word', value: 'color' },
+        name: { type: 'word', value: 'colorf' },
         value: { type: 'word', value: { type: 'word', value: 'test' } }
+      }
+    },
+    {
+      type: 'variable',
+      stat: {
+        type: 'variable',
+        name: { type: 'word', value: 'primary' },
+        value: { type: 'word', value: { type: 'word', value: 'test' } }
+      }
+    },
+    {
+      type: 'variable',
+      stat: {
+        type: 'variable',
+        name: { type: 'word', value: 'initial' },
+        value: {
+          type: 'arrow_function',
+          value: {
+            type: 'arrow_function',
+            selector: {
+              type: [ '#' ],
+              name: [ 'modal1' ],
+              indices: null,
+              attributes: [],
+              pseudoClasses: []
+            },
+            javaScriptStyleElement: {
+              type: 'javaScriptStyleElement',
+              value: 'backgroundColor'
+            }
+          }
+        }
       }
     },
     {
@@ -1700,14 +1780,31 @@
         name: { type: 'word', value: 'color' },
         propreties: [
           {
-            property: 'backgroundColor ',
+            property: 'backgroundColor',
             value: { type: 'word', value: { type: 'word', value: 'red' } }
           },
           {
-            property: 'content ',
+            property: 'content',
             value: {
               type: 'text',
               value: { type: 'text', value: 'this is a button' }
+            }
+          },
+          {
+            property: 'width',
+            value: {
+              type: 'arrow_function',
+              value: {
+                type: 'arrow_function',
+                selector: {
+                  type: [ '.' ],
+                  name: [ 'test' ],
+                  indices: [ '0' ],
+                  attributes: [],
+                  pseudoClasses: []
+                },
+                javaScriptStyleElement: { type: 'javaScriptStyleElement', value: 'width' }
+              }
             }
           }
         ]

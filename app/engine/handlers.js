@@ -1,6 +1,7 @@
 Object.assign(global, require('./tools.js'));
 const chalk = require('chalk');
 const util = require('util');
+const { handleValueToText, removeWhiteSpace } = require('./tools.js');
 
 function handleFunction(func) {
     js = '';
@@ -9,7 +10,7 @@ function handleFunction(func) {
             js += handleDefaultSelector(func.stat.function_param.selector);
             js += `.addEventListener('${func.stat.function_param.eventType.value}', () => {\n`;
             func.stat.statements.forEach(element => {
-                js += addTabulations( handleConditional(element), 1);
+                js += handleConditional(element);
             });
             js += `});\n`;
         } else {
@@ -32,15 +33,15 @@ function handleLoopFunction(func) {
     js = '';
     if (func.stat.statements[0].type == 'conditional') {
         js += `${handleSelectorSimple(func.stat.function_param.selector)}.forEach((element) => {\n`;
-        js += `\telement.addEventListener('${func.stat.function_param.eventType.value}', () => {\n`;
+        js += `element.addEventListener('${func.stat.function_param.eventType.value}', () => {\n`;
         func.stat.statements.forEach(element => {
-            js += addTabulations( handleConditional(element), 2);
+            js += handleConditional(element);
         });
         js += `});\n`;
         js += `});\n`;
     } else if (func.stat.function == 'event') {
         js += `document.querySelectorAll('${func.stat.selector.type}${removeWhiteSpace(func.stat.selector.name.value)}').forEach((element) => {\n`;
-        js += `\telement.addEventListener('${func.stat.eventType.value}', () => {\n`;
+        js += `element.addEventListener('${func.stat.eventType.value}', () => {\n`;
         func.stat.statements.forEach(element => {
             if (element.type == 'selector_block') {
                 js += handleSelectorBlockFunction(element);
@@ -97,7 +98,7 @@ function handlePseudoClasses(stat) {
         js += handleDefaultSelector(stat.stat.selector);
             js += `.addEventListener('${stat.stat.selector.pseudoClasses[0].value.value}', (event) => {\n`;
         stat.stat.propreties.forEach(element => {
-            js += `\tevent.target` + handlePropValue(element);
+            js += `event.target` + handlePropValue(element);
         });
         js += `});\n`;
     }
@@ -111,7 +112,7 @@ function handlePseudoClassesLoop(stat) {
     } else {
         js += `element.addEventListener('${stat.stat.selector.pseudoClasses[0].value.value}', () => {\n`;
         stat.stat.propreties.forEach(element => {
-            js += `\telement` + handlePropValue(element);
+            js += `element` + handlePropValue(element);
         });
         js += `});\n`;
     }
@@ -125,15 +126,15 @@ function handleHover(stat) {
     js += `var styleStore${localID} = null;\n`;
     js += handleDefaultSelector(stat.stat.selector);
         js += `.addEventListener('mouseover', (event) => {\n`;
-        js += `\tstyleStore${localID} = window.getComputedStyle(document.querySelector('${stat.stat.selector.type}${removeWhiteSpace(stat.stat.selector.name.value)}'));\n`;
+        js += `styleStore${localID} = window.getComputedStyle(document.querySelector('${stat.stat.selector.type}${removeWhiteSpace(stat.stat.selector.name.value)}'));\n`;
     stat.stat.propreties.forEach(element => {
-        js += `\tevent.target` + handlePropValue(element);
+        js += `event.target` + handlePropValue(element);
     });
     js += `});\n`;
     //
     js += handleDefaultSelector(stat.stat.selector);
     js += `.addEventListener('mouseout', (event) => {\n`;
-    js += `\tapplyStyles(event.target, styleStore${localID});\n`;
+    js += `applyStyles(event.target, styleStore${localID});\n`;
     js += `});\n`;
     return js;
 }
@@ -144,16 +145,16 @@ function handleHoverLoop(stat) {
     js += `var styleStore${localID} = null;\n`;
     js += `${handleSelectorSimple(stat.stat.selector)}.forEach((element) => {\n`;
     //store the style value in random variables
-        js += `\telement.addEventListener('mouseover', (event) => {\n`;
-        js += `\t\tstyleStore${localID} = window.getComputedStyle(document.querySelector('${stat.stat.selector.type}${removeWhiteSpace(stat.stat.selector.name.value)}'));\n`;
+        js += `element.addEventListener('mouseover', (event) => {\n`;
+        js += `styleStore${localID} = window.getComputedStyle(document.querySelector('${stat.stat.selector.type}${removeWhiteSpace(stat.stat.selector.name.value)}'));\n`;
     stat.stat.propreties.forEach(element => {
-        js += `\t\tevent.target` + handlePropValue(element);
+        js += `event.target` + handlePropValue(element);
     });
-    js += `\t});\n`;
+    js += `});\n`;
     //
-    js += `\telement.addEventListener('mouseout', (event) => {\n`;
-    js += `\t\tapplyStyles(event.target, styleStore${localID});\n`;
-    js += `\t});\n`;
+    js += `element.addEventListener('mouseout', (event) => {\n`;
+    js += `applyStyles(event.target, styleStore${localID});\n`;
+    js += `});\n`;
     js += `});\n`;
     return js;
 }
@@ -175,15 +176,15 @@ function handleConditional(stat) {
     js += `)) {\n`;
     stat.stat.then.forEach(element => {
         if (element.type == 'selector_block') {
-            js += '\t' + handleSelectorBlock(element);
+            js += '' + handleSelectorBlock(element);
         } else if (element.type == 'function') {
             if (element.stat.function.value == 'delay') {
                 js += handleDelay(element);
             } else if (element.stat.function.value == 'event') {
                 if (element.stat.function_param.selector.type == '.') {
-                    js += addTabulations(handleLoopFunction(element), 1);
+                    js += handleLoopFunction(element);
                 } else {
-                    js += addTabulations(handleFunction(element), 1);
+                    js += handleFunction(element);
                 }
             }
         }
@@ -210,7 +211,7 @@ function handleDelay(stat) {
     js += `setTimeout(() => {\n`;
     stat.stat.statements.forEach(element => {
         if (element.type == 'selector_block') {
-            js += addTabulations(handleSelectorBlockFunction(element.stat), 1);
+            js += handleSelectorBlockFunction(element.stat);
         }
     });
     if (stat.stat.function_param.unit.value == 's') {
@@ -225,9 +226,9 @@ function handleTunnel(stat) {
     let js = "";
     stat.stat.relative_proprety.forEach(element => {
         let rand = uniqueid();
-        js += ` var observer${rand} = new MutationObserver(function(mutations) {\n\tmutations.forEach(function(mutation) {\n\t\tif (mutation.attributeName === 'style') {\n`;
-        js += `\t\t\tdocument.querySelector('${stat.stat.selector2.type}${removeWhiteSpace(stat.stat.selector2.name)}').style.${element.relative_proprety.value} = calc(getComputedStyle(document.querySelector('${stat.stat.selector1.type}${stat.stat.selector2.name}')).getPropertyValue('${toCSSProp(element.relative_proprety.value)}') , '${element.coe.value}' , '*');\n`; 
-        js += `\t\t}\n\t});\n});\nvar config${rand} = { attributes: true, attributeFilter: ['style'] };\nobserver${rand}.observe(document.querySelector('${stat.stat.selector1.type}${stat.stat.selector2.name}'), config${rand});\n\n`;
+        js += ` var observer${rand} = new MutationObserver(function(mutations) {\nmutations.forEach(function(mutation) {\nif (mutation.attributeName === 'style') {\n`;
+        js += `document.querySelector('${stat.stat.selector2.type}${removeWhiteSpace(stat.stat.selector2.name)}').style.${element.relative_proprety.value} = calc(getComputedStyle(document.querySelector('${stat.stat.selector1.type}${stat.stat.selector2.name}')).getPropertyValue('${toCSSProp(element.relative_proprety.value)}') , '${element.coe.value}' , '*');\n`; 
+        js += `}\n});\n});\nvar config${rand} = { attributes: true, attributeFilter: ['style'] };\nobserver${rand}.observe(document.querySelector('${stat.stat.selector1.type}${stat.stat.selector2.name}'), config${rand});\n\n`;
     });
     return js;
 }
@@ -240,14 +241,14 @@ function handleSelector(selector) {
         if (selector.type == '#') {
             js += handleSelectorSimple(selector);
         } else if (selector.type == ".") {
-            if (selector.indices[0] !== undefined) {
+            if ( selector.indices && selector.indices[0] !== undefined) {
                 js += `document.querySelectorAll('${selector.type}${removeWhiteSpace(selector.name)}')[${selector.indices[0]}]`;
             } else {
                 return 'handleLoop';
                 // js += `document.querySelectorAll('${selector.type}${removeWhiteSpace(selector.name)}')[0]`;
             }
         } else if (selector.type == '') {
-            if (selector.indices[0] !== undefined) {
+            if ( selector.indices && selector.indices !== undefined) {
                 js += `document.querySelectorAll('${removeWhiteSpace(selector.name)}')[${selector.indices[0]}]`;
             } else {
                 return 'handleLoop';
@@ -270,10 +271,10 @@ function handleSelectorBlockWithCSS(stat) {
             if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) !== 'hover') {
                 js += handleSelectorBlock(localStat);
             } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
-                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {\t    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
-            } else {
-                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {\t    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
-            localStat.stat.propreties.splice(index, 1);
+                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
+            } else if ( element.property !== 'innerText' && element.property !== 'textContent' && element.property !== 'innerHTML') {
+                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
+                localStat.stat.propreties.splice(index, 1);
             }
         } else {
             count++;
@@ -367,18 +368,28 @@ function handleSelectorBlockFunction(stat) {
 function handlePropValue(prop) {
     let js = ``;
     if (prop.value.type == 'arrow_function') {
-        js += `.style.${removeWhiteSpace(prop.property)} = `;
+        js += `.style.${prop.property} = `;
         js += handleArrowFunction(prop.value);
     } else if (prop.value.type == 'calculation') {
-        js += `.style.${removeWhiteSpace(prop.property)} = `;
+        js += `.style.${prop.property} = `;
         js += handleCalculation(prop);
     } else if (prop.value.type == 'number_unit') {
-        js += `.style.${removeWhiteSpace(prop.property)} = '${prop.value.value.number.value}${prop.value.value.unit.value}';\n`;
+        js += `.style.${prop.property} = '${prop.value.value.number.value}${prop.value.value.unit.value}';\n`;
     } else  if (prop.value.type == 'style_function') {
-        js += `.style.${removeWhiteSpace(prop.property)} = '${prop.value.value.value}';\n`;
-    }
-     else {
-        js += `.style.${removeWhiteSpace(prop.property)} = '${prop.value.value.value}';\n`;
+        js += `.style.${prop.property} = '${prop.value.value.value}';\n`;
+    } else if ( prop.property == 'innerText' || prop.property == 'textContent') {
+        js += `.${prop.property} = ${handleValueToText(prop.value)};\n`;
+    } else if (prop.property == 'innerHTML') {
+        js += `.innerHTML = \`${handleValueToText(prop.value.value)}\`;\n`;
+    } else if (prop.property == 'innerText') {
+        js += `.${prop.property} = ${prop.value.value.value};\n`;
+    } else {
+        if (prop.value.type == 'text') {
+            js += `.style.${prop.property} = ${handleValueToText(prop.value)};\n`;
+        } else {
+            js += `.style.${prop.property} = '${handleValueToText(prop.value)}';\n`;
+        }
+        
     }
     return js;
 }
@@ -389,9 +400,17 @@ function handleArrowFunction(arrow) {
     if (selector.type == '#') {
         js += `getComputedStyle(${handleSelectorSimple(selector)}).getPropertyValue('${toCSSProp(arrow.value.javaScriptStyleElement.value)}');\n`;
     } else if (selector.type == ".") {
-        js += `getComputedStyle(${handleSelectorSimple(selector)})[${selector.indices.value ? selector.indices.value : 0}]).getPropertyValue('${toCSSProp(arrow.value.javaScriptStyleElement.value)}');\n`;
+        if ( selector.indices && selector.indices[0] !== undefined) {
+            js += `getComputedStyle(${handleSelectorSimple(selector)}[${selector.indices[0]}]).getPropertyValue('${toCSSProp(arrow.value.javaScriptStyleElement.value)}');\n`;
+        } else {
+            js += `getComputedStyle(${handleSelectorSimple(selector)}[0]).getPropertyValue('${toCSSProp(arrow.value.javaScriptStyleElement.value)}');\n`;
+        }
     } else {
-        js += `getComputedStyle(${handleSelectorSimple(selector)})[${selector.indices.value ? selector.indices.value : 0}]).getPropertyValue('${toCSSProp(arrow.value.javaScriptStyleElement.value)}');\n`;
+        if  ( selector.indices && selector.indices[0] !== undefined) {
+            js += `getComputedStyle(${handleSelectorSimple(selector)}[${selector.indices[0]}]).getPropertyValue('${toCSSProp(arrow.value.javaScriptStyleElement.value)}');\n`;
+        } else {
+            js += `getComputedStyle(${handleSelectorSimple(selector)}[0]).getPropertyValue('${toCSSProp(arrow.value.javaScriptStyleElement.value)}');\n`;
+        }
     }
     return js;
 }
@@ -440,7 +459,7 @@ function handleLoop(stat) {
     } else {
         js += `${handleSelectorSimple(stat.selector)}.forEach((element) => {\n`;
         stat.propreties.forEach(element => {
-            js += `\telement` + handlePropValue(element);
+            js += `element` + handlePropValue(element);
         });
         js += `});\n`;
     }
@@ -451,7 +470,7 @@ function handleStatement(stat, handler, errorMessage) {
     try {
         return handler(stat);
     } catch (error) {
-        console.log(chalk.redBright.bold(`\n* Error in ${errorMessage}: ${error} near code : ${error.stack}`));
+        console.log(chalk.redBright.bold(`\n Error in ${errorMessage}: ${error} near code : ${error.stack}`));
     }
 }
 function handleStatementScan(stat, handler, errorMessage) {
@@ -463,10 +482,54 @@ function handleStatementScan(stat, handler, errorMessage) {
 }
 
 function handleVariableBlock(stat) {
+    let array = [];
+    let js = ``;
+    js += `let ${stat.stat.name.value} = [`;
+    stat.stat.propreties.forEach((element, index) => {
+        let prop_val = {
+            prop : 'css-proprety',
+            value : 0
+        }
+        if (element.value.type == 'arrow_function') {
+            prop_val.prop = removeWhiteSpace(element.property);
+            let str = handleArrowFunction(element.value);
+            str = str.replace(/[\n";]/g, '');
+            prop_val.value =  str.replace(/"/g, '');
+        } else if (element.type == 'calculation') {
+            prop_val.prop = removeWhiteSpace(element.property);
+           prop_val.value = handleCalculation(element.value);
+        } else {
+            if (element.value.type == 'text') {
+                prop_val.prop = removeWhiteSpace(element.property);
+                prop_val.value = handleValueToText(element.value);
+            } else {
+                prop_val.prop = removeWhiteSpace(element.property);
+                prop_val.value =  '"' + handleValueToText(element.value) + '"';
+            }
+            
+        }
+        js += `{ prop: '${prop_val.prop}', value: ${prop_val.value} }`;
+        if (index < stat.stat.propreties.length - 1) {
+            js += ',\n';
+        }
+    });
+    js += `];\n`;
+    return js;
+}
+
+function handleVariable(stat) {
     let js = ``;
     js += `let ${stat.stat.name.value} = `;
-    js += util.inspect(stat.stat.propreties , {depth: null});
-    js += `;\n`;
+    if (stat.stat.value.type == 'arrow_function') {
+        js += handleArrowFunction(stat.stat.value);
+    } else if (stat.stat.value.type == 'calculation') {
+       js += handleCalculation(stat.stat.value.value.value);
+    } else {
+        js += handleAnyToText(stat.stat.value.value);
+    }
+    if (stat.stat.value.type !== 'calculation' && stat.stat.value.type !== 'arrow_function') {
+        js += `;\n`;
+    }
     return js;
 }
 
@@ -494,5 +557,6 @@ module.exports = {
     handleSelectorBlockWithCSS,
     handleStatementScan,
     handleMultiSelector,
+    handleVariable,
     handleVariableBlock
 };

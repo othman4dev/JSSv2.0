@@ -1,32 +1,122 @@
- {
-	margin-bottom : 10px;
+header {
+  padding-inline: 15px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  color: #fff;
+  background-color: #000;
 }
-#header {
-	height : 60px;
-	padding : 10px;
-	justify-content : space-between;
-	align-items : center;
-	display : flex;
-	color : white;
-	background-color : black;
+#div1 {
+  background-color: #0091dc;
+  width: 50px;
+  height: 100px;
 }
-.body {
-	margin-bottom : 10px;
-	height : 60px;
-	padding : 10px;
-	justify-content : space-between;
-	align-items : center;
-	display : flex;
-	color : white;
-	background-color : black;
+#div2 {
+  width: 50px;
+  background-color: red;
 }
 html {
-	margin-bottom : 10px;
-	height : 60px;
-	padding : 10px;
-	justify-content : space-between;
-	align-items : center;
-	display : flex;
-	color : white;
-	background-color : black;
+  font-family: "Montserrat";
+  margin-bottom: 10px;
+  height: 60px;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  color: white;
+  background-color: black;
+}
+body {
+  background-color: whitesmoke;
+}
+.nav__list {
+  padding-inline: 15px;
+  gap: 15px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+.h11 {
+  margin-left: 30px;
+  font-weight: 800;
+  margin: 0;
+}
+main {
+  min-height: 87vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+modal {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 350px;
+}
+div {
+  background-color: white;
+  padding: 15px;
+  display: none;
+  width: 450px;
+  height: 100%;
+  position: relative;
+}
+.id {
+  right: 10px;
+  top: 10px;
+  position: absolute;
+  font-size: 12px;
+  color: #555;
+}
+h2 {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+p {
+  padding: 15px;
+}
+button {
+  cursor: pointer;
+  padding: 5px 10px;
+  color: white;
+  background-color: black;
+}
+#btnStart {
+  transition: 0.3s;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  background-color: black;
+}
+#btnStart:hover {
+  transform: translateY(-2px);
+}
+.btnStart:hover {
+  transform: translateY(-2px);
+}
+#header {
+  margin-bottom: 10px;
+  height: 60px;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  color: white;
+  background-color: black;
+}
+.body {
+  margin-bottom: 10px;
+  height: 60px;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  color: white;
+  background-color: black;
 }

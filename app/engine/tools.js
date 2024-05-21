@@ -3,11 +3,8 @@ const chalk = require('chalk');
 const { ESLint } = require("eslint");
 const stylelint = require('stylelint');
 const fs = require('fs');
+const prettier = require('prettier');
 
-// Adds tabulations to a text.
-function addTabulations(text, count) {
-    return text.split('\n').map(line => '\t'.repeat(count) + line).join('\n');
-}
 // turn a JavaScript style property to a CSS property.
 function toCSSProp(javaScriptStyleProp) {
     let cssProp = javaScriptStyleProp.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
@@ -59,12 +56,15 @@ function handleValueToText(value) {
         text = "'" + value.value.value + "'";
     } else if (value.type == 'general') {
         text = value.value.value;
+    } else {
+        text = "'" + value.value + "'";
     }
     return text;
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+function handleAnyToText(value) {
+    text = "'" + value.value + "'";
+    return text;
 }
 
 async function animate(message) {
@@ -127,14 +127,14 @@ async function lintCSSFile(filePath) {
         const hasErrors = results.errored;
 
         if (hasErrors) {
-            console.log(chalk.redBright.bgWhite('Possible errors found in the CSS file \n'));
+            chalkLoger('error', 'Error(s) has appeared in the jss.css file.');
             return 'false';
         } else {
-            console.log(chalk.white.bgGreen('No errors found in the CSS file \n'));
+            chalkLoger('info', 'No errors found in the jss.css file.');
             return 'true';
         }
     } catch (error) {
-        console.error('Error while linting CSS file:', error);
+        console.log(chalk.yellowBright.bgMagenta('->'), chalk.magenta(error.message));
         return 'false';
     }
 }
@@ -148,25 +148,83 @@ async function lintFile(filePath) {
     const hasErrors = results.some(result => result.errorCount > 0);
   
     if (hasErrors) {
-        console.log( chalk.redBright.bgWhite('Possible errors found in the jss.js file \n'));
+        chalkLoger('error', 'Error(s) has appeared in the jss.js file.');
         return 'false';
     } else {
-        console.log( chalk.white.bgGreen('No errors found in the jss.js file \n'));
+        chalkLoger('info', 'No errors found in the jss.js file.');
         return 'true';
     
     }
 }
 
+async function formatFile(filePath) {
+    const fileText = fs.readFileSync(filePath, 'utf8');
+    const parser = filePath.endsWith('.js') ? 'babel' : 'css';
+    let options = await prettier.resolveConfig(filePath);
+    options = options || {};
+    options.parser = parser;
+    try {
+        await prettier.check(fileText, options);
+        chalkLoger('success', filePath + ' file was formatted successfully.');
+    } catch (error) {
+        chalkLoger('error', 'The ' + filePath + ' file was not formatted correctly.');
+        return;
+    }
+    const formatted = await prettier.format(fileText, options);
+    fs.writeFileSync(filePath, formatted);
+}
+
+function chalkLoger(type, message) {
+    if (type == 'error') {
+        console.log(chalk.red.bold('\n❌ :'), chalk.red.bold(message));
+    } else if (type == 'info') {
+        console.log(chalk.blueBright('\nℹ️ :'), chalk.blueBright(message));
+    } else if (type == 'success') {
+        console.log(chalk.green('\n✅ :'), chalk.greenBright(message));
+    } else if (type == 'warning') {
+        console.log(chalk.magenta('\n⚠️ :'), chalk.magenta(message));
+    } else if (type == 'text') {
+        console.log(chalk.whiteBright('\nℹ️ :'), chalk.whiteBright(message));
+    } else if (type == 'comment') {
+        console.log(chalk.gray('\nℹ️ :'), chalk.gray(message));
+    } else if (type == 'note') {
+        console.log(chalk.cyanBright('\nℹ️ :'), chalk.cyanBright(message));
+    } else if (type == 'credit') {
+        console.log(chalk.underline.magenta('\nMade By Otman Kharbouch : ') , chalk.blueBright.bold('Othman4dev :') , chalk.cyanBright.underline('https://github.com/othman4dev'), chalk.underline.magenta('(GitHub)\n'));
+    }
+}
+
+const packageJson = require('../../package.json');
+function showHelp() {
+    console.log(chalk.greenBright(`
+     ██╗ ███████╗███████╗
+     ██║╗██╔════╝██╔════╝
+     ██║║███████╗███████╗
+██   ███║╚════██║║╚════██║
+╚█████╔╔╝███████║╝███████║
+╚════╝╝ ╚══════╝ ╚══════╝`));
+    console.log(chalk.grey('\nJSS Compiler v' + packageJson.version + '\n'));
+    console.log(chalk.white(packageJson.description));
+    console.log(chalk.blueBright('\nAvailable scripts:\n'));
+    for (const script in packageJson.scripts && packageJson.scriptDescriptions ) {
+        console.log(chalk.greenBright(`- npm run ${script} ->`),chalk.white(`${packageJson.scriptDescriptions[script]}. `));
+    }
+    chalkLoger('credit', 'Thank you for using JSS Compiler.');
+    process.exit(0);
+}
+
 module.exports = {
-    addTabulations,
     toCSSProp,
     ToString,
     removeWhiteSpace,
     uniqueid,
     handleValueToText,
-    sleep,
     animate,
     scanForErrors,
     lintCSSFile,
-    lintFile
+    lintFile,
+    handleAnyToText,
+    formatFile,
+    chalkLoger,
+    showHelp
 };
