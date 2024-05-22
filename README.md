@@ -272,4 +272,4 @@ This README provides a comprehensive overview of JSS, empowering you with a blen
 ## Otman Kharbouch 
 Email : otmankharbouch813@gmail.com
 
-#### Contact me if you care to collaborate on this project.
+Contact me if you care to collaborate on this project.
