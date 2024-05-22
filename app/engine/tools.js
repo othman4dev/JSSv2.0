@@ -196,16 +196,18 @@ function chalkLoger(type, message) {
 
 const packageJson = require('../../package.json');
 function showHelp() {
-    console.log(chalk.greenBright(`
-     ██╗ ███████╗███████╗
-     ██║╗██╔════╝██╔════╝
-     ██║║███████╗███████╗
-██   ███║╚════██║║╚════██║
-╚█████╔╔╝███████║╝███████║
-╚════╝╝ ╚══════╝ ╚══════╝`));
-    console.log(chalk.grey('\nJSS Compiler v' + packageJson.version + '\n'));
-    console.log(chalk.white(packageJson.description));
-    console.log(chalk.blueBright('\nAvailable scripts:\n'));
+    console.log('\n');
+
+    console.log(chalk.magenta(`
+ ▐▄▄▄.▄▄ · .▄▄ · 
+  ·██▐█ ▀. ▐█ ▀. 
+▪▄ ██▄▀▀▀█▄▄▀▀▀█▄  A simple and lightweight framework
+▐▌▐█▌▐█▄▪▐█▐█▄▪▐█  that allows you to style your DOM elements 
+ ▀▀▀• ▀▀▀▀  ▀▀▀▀   using JavaScript with a CSS-like syntax.`));
+
+    console.log(chalk.grey('  JSS Compiler v' + packageJson.version + '\n'));
+    
+    console.log(chalk.blueBright('\n  Available scripts:\n'));
     for (const script in packageJson.scripts && packageJson.scriptDescriptions ) {
         console.log(chalk.greenBright(`- npm run ${script} ->`),chalk.white(`${packageJson.scriptDescriptions[script]}. `));
     }

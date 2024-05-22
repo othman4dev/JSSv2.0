@@ -207,17 +207,13 @@ html {
     padding = 10px;
     height = 60px;
     marginBottom = 10px;
-    innerHTML = '<div>click me</div>';
+    innerHTML = `<div>click me</div>`;
 }
 
 #div:click {
     backgroundColor = #f00;
     innerText = 'done';
-    innerHTML = `#div:click {
-    backgroundColor = #f00
-    innerText = 'done'
-    innerHTML = 'sdfasdfasdfasdfa';
-}`;
+    innerHTML = `<input type="file" class="inerted-input" style="background-color:#fff;"/>`;
 }
 
 --colorf = test;

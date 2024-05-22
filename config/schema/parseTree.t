@@ -158,7 +158,7 @@
             javaScriptStyleElement: { type: 'javaScriptStyleElement', value: 'width' }
           },
           comparison: '>=',
-          right: { type: 'string', value: '50px ' }
+          right: { type: 'string', value: '50px' }
         },
         then: [
           {
@@ -820,7 +820,7 @@
           pseudoClasses: [
             {
               type: 'pseudo_class',
-              value: { type: 'string', value: 'hover ' }
+              value: { type: 'string', value: 'hover' }
             }
           ]
         },
@@ -856,7 +856,7 @@
           pseudoClasses: [
             {
               type: 'pseudo_class',
-              value: { type: 'string', value: 'hover ' }
+              value: { type: 'string', value: 'hover' }
             }
           ]
         },
@@ -1342,7 +1342,7 @@
                 term1: {
                   type: 'number_unit',
                   number: { type: 'number', value: '100' },
-                  unit: { type: 'string', value: 'px ' }
+                  unit: { type: 'string', value: 'px' }
                 },
                 operator: '+',
                 term2: {
@@ -1517,7 +1517,7 @@
                             term1: {
                               type: 'number_unit',
                               number: { type: 'number', value: '100' },
-                              unit: { type: 'string', value: 'px ' }
+                              unit: { type: 'string', value: 'px' }
                             },
                             operator: '+',
                             term2: {
@@ -1577,7 +1577,7 @@
                       pseudoClasses: [
                         {
                           type: 'pseudo_class',
-                          value: { type: 'string', value: 'hover ' }
+                          value: { type: 'string', value: 'hover' }
                         }
                       ]
                     },
@@ -1688,8 +1688,8 @@
           {
             property: 'innerHTML',
             value: {
-              type: 'text',
-              value: { type: 'text', value: '<div>click me</div>' }
+              type: 'HTML',
+              value: { type: 'HTML', value: '<div>click me</div>' }
             }
           }
         ]
@@ -1707,7 +1707,7 @@
           pseudoClasses: [
             {
               type: 'pseudo_class',
-              value: { type: 'string', value: 'click ' }
+              value: { type: 'string', value: 'click' }
             }
           ]
         },
@@ -1726,7 +1726,7 @@
               type: 'HTML',
               value: {
                 type: 'HTML',
-                value: "#div:click {    backgroundColor = #f00    innerText = 'done'    innerHTML = 'sdfasdfasdfasdfa';}"
+                value: '<input type="file" class="inerted-input" style="background-color:#fff;"/>'
               }
             }
           }

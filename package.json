@@ -1,8 +1,11 @@
 {
   "name": "jss",
   "version": "2.0.0",
-  "description": "JSS javaScript style sheets, a javaScript framework for CSS which allow you to controll the DOM in javaScript with a CSS-like syntax.",
+  "description": "A simple and lightweight framework that allows you to style your DOM elements using JavaScript with a CSS-like syntax.",
   "main": "index.js",
+  "bin": {
+    "jss": "./index.js"
+  },
   "scripts": {
     "jss": "node index.js --both",
     "jss:tree": "node index.js --tree",

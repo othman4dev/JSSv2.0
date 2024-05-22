@@ -86,7 +86,7 @@ selector_text
   = ( [a-zA-Z0-9-_#%&<>.]_ )+ { return text(); }
 
 string
-  = ([a-zA-Z0-9-_#%&.,]_)+ { return { type: "string", value: text()}; }
+  = ([a-zA-Z0-9-_#%&.,]_)+ { return { type: "string", value: text().trimEnd()}; }
 
 function_declaration
   = sf:[a-zA-Z0-9]+ "(" _ val:value _ ")" { return { type: "function_declaration", style_function : sf , value : val}; }

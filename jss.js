@@ -70,7 +70,7 @@ if (
   compare(
     getComputedStyle(document.querySelector("#div1")).getPropertyValue("width"),
     ">=",
-    "50px ",
+    "50px",
   )
 ) {
   document.querySelector("#div2").style.width = "150px";
@@ -149,26 +149,26 @@ document.querySelector("#btnStart").style.padding = "10px";
 document.querySelector("#btnStart").style.cursor = "pointer";
 document.querySelector("#btnStart").style.fontSize = "17px";
 document.querySelector("#btnStart").style.transition = "0.3s";
-var styleStore21w8imhhz = null;
+var styleStoremubpzlnf0 = null;
 document.querySelector("#btnStart").addEventListener("mouseover", (event) => {
-  styleStore21w8imhhz = window.getComputedStyle(
-    document.querySelector("#undefined"),
+  styleStoremubpzlnf0 = window.getComputedStyle(
+    document.querySelector("#btnStart"),
   );
   event.target.style.transform = "translateY(-2px)";
 });
 document.querySelector("#btnStart").addEventListener("mouseout", (event) => {
-  applyStyles(event.target, styleStore21w8imhhz);
+  applyStyles(event.target, styleStoremubpzlnf0);
 });
-var styleStorevzd1g5amw = null;
+var styleStorei9710xtnp = null;
 document.querySelectorAll(".btnStart").forEach((element) => {
   element.addEventListener("mouseover", (event) => {
-    styleStorevzd1g5amw = window.getComputedStyle(
-      document.querySelector(".undefined"),
+    styleStorei9710xtnp = window.getComputedStyle(
+      document.querySelector(".btnStart"),
     );
     event.target.style.transform = "translateY(-2px)";
   });
   element.addEventListener("mouseout", (event) => {
-    applyStyles(event.target, styleStorevzd1g5amw);
+    applyStyles(event.target, styleStorei9710xtnp);
   });
 });
 document.querySelector("#btnStart").addEventListener("click", () => {
@@ -218,7 +218,7 @@ if (
 ) {
   document.querySelector("#div1").style.backgroundColor = "red";
 }
-var observer7f39dt42h = new MutationObserver(function (mutations) {
+var observertafha40eh = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
     if (mutation.attributeName === "style") {
       document.querySelector("#div2").style.width = calc(
@@ -231,10 +231,10 @@ var observer7f39dt42h = new MutationObserver(function (mutations) {
     }
   });
 });
-var config7f39dt42h = { attributes: true, attributeFilter: ["style"] };
-observer7f39dt42h.observe(document.querySelector("#div2 "), config7f39dt42h);
+var configtafha40eh = { attributes: true, attributeFilter: ["style"] };
+observertafha40eh.observe(document.querySelector("#div2 "), configtafha40eh);
 
-var observerhq9qb6bdr = new MutationObserver(function (mutations) {
+var observer0a9a9cgjt = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
     if (mutation.attributeName === "style") {
       document.querySelector("#div2").style.height = calc(
@@ -247,8 +247,8 @@ var observerhq9qb6bdr = new MutationObserver(function (mutations) {
     }
   });
 });
-var confighq9qb6bdr = { attributes: true, attributeFilter: ["style"] };
-observerhq9qb6bdr.observe(document.querySelector("#div2 "), confighq9qb6bdr);
+var config0a9a9cgjt = { attributes: true, attributeFilter: ["style"] };
+observer0a9a9cgjt.observe(document.querySelector("#div2 "), config0a9a9cgjt);
 
 document.querySelectorAll("body").forEach((element) => {
   element.style.width = calc(
@@ -319,7 +319,7 @@ document.querySelector("#header").style.justifyContent = "space-between";
 document.querySelector("#header").style.padding = "10px";
 document.querySelector("#header").style.height = "60px";
 document.querySelector("#header").style.marginBottom = "10px";
-document.querySelector("#header").innerHTML = `'undefined'`;
+document.querySelector("#header").innerHTML = `<div>click me</div>`;
 document.querySelectorAll(".body").forEach((element) => {
   element.style.backgroundColor = "black";
   element.style.color = "white";
@@ -329,7 +329,7 @@ document.querySelectorAll(".body").forEach((element) => {
   element.style.padding = "10px";
   element.style.height = "60px";
   element.style.marginBottom = "10px";
-  element.innerHTML = `'undefined'`;
+  element.innerHTML = `<div>click me</div>`;
 });
 document.querySelectorAll("html").forEach((element) => {
   element.style.backgroundColor = "black";
@@ -340,12 +340,12 @@ document.querySelectorAll("html").forEach((element) => {
   element.style.padding = "10px";
   element.style.height = "60px";
   element.style.marginBottom = "10px";
-  element.innerHTML = `'undefined'`;
+  element.innerHTML = `<div>click me</div>`;
 });
-document.querySelector("#div").addEventListener("click ", (event) => {
+document.querySelector("#div").addEventListener("click", (event) => {
   event.target.style.backgroundColor = "#f00";
-  event.target.innerText = "done";
-  event.target.innerHTML = `'#div:click {    backgroundColor = #f00    innerText = 'done'    innerHTML = 'sdfasdfasdfasdfa';}'`;
+  event.target.innerText = done;
+  event.target.innerHTML = `<input type="file" class="inerted-input" style="background-color:#fff;"/>`;
 });
 let colorf = "test";
 let primary = "test";
