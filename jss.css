@@ -356,3 +356,61 @@ i {
   align-items: center;
   display: flex;
 }
+.installation {
+  padding: 40px;
+}
+.chapter {
+  padding: 15px;
+}
+.installation-title {
+  margin-bottom: 20px;
+  padding-inline: 40px;
+  color: #333;
+  font-size: 40px;
+}
+.chapter-title {
+  margin-bottom: 20px;
+  padding-inline: 40px;
+  color: #333;
+  font-size: 30px;
+}
+.code {
+  margin: 15px;
+  align-items: center;
+  display: flex;
+  padding: 15px;
+  padding-top: 34px;
+  padding-left: 30px;
+  height: 65px;
+  border-radius: 7px;
+  position: relative;
+  color: #fff;
+  background-color: #1e1e1e;
+}
+.circles {
+  gap: 7px;
+  align-items: center;
+  display: flex;
+  left: 10px;
+  top: 10px;
+  position: absolute;
+}
+.circle {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+.circle1 {
+  background-color: #ff5f56;
+}
+.circle2 {
+  background-color: #ffbd2e;
+}
+.circle3 {
+  background-color: #27c93f;
+}
+li {
+  margin-left: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

@@ -392,7 +392,7 @@ function event((#closeModal):click) {
 .step {
     flexGrow = 1;
     display = flex;
-    flex-direction = column;
+    flexDirection = column;
     alignItems = center;
 }
 .undertitle {
@@ -425,7 +425,7 @@ function event((#closeModal):click) {
 .step2 {
     flexGrow = 1;
     display = flex;
-    flex-direction = column;
+    flexDirection = column;
     alignItems = center;
     width = 50%;
 }
@@ -445,6 +445,61 @@ function event((#closeModal):click) {
     flexGrow = 1;
     width = 30%;
 }
+.installation {
+    padding = 40px;
+}
 .chapter {
     padding = 15px;
+}
+.installation-title {
+    fontSize = 40px;
+    color = #333;
+    paddingInline = 40px;
+    marginBottom = 20px;
+}
+.chapter-title {
+    fontSize = 30px;
+    color = #333;
+    paddingInline = 40px;
+    marginBottom = 20px;
+}
+.code {
+    backgroundColor = #1e1e1e;
+    color = #fff;
+    position = relative;
+    borderRadius = 7px;
+    height = 65px;
+    paddingLeft = 30px;
+    paddingTop = 34px;
+    padding = 15px;
+    display = flex;
+    alignItems = center;
+    margin = 15px;
+}
+.circles {
+    position = absolute;
+    top = 10px;
+    left = 10px;
+    display = flex;
+    alignItems = center;
+    gap = 7px;
+}
+.circle {
+    height = 15px;
+    width = 15px;
+    borderRadius = 50%;
+}
+.circle1 {
+    backgroundColor = #ff5f56;
+}
+.circle2 {
+    backgroundColor = #ffbd2e;
+}
+.circle3 {
+    backgroundColor = #27c93f;
+}
+li {
+    marginBottom = 15px;
+    marginTop = 15px;
+    marginLeft = 25px;
 }
