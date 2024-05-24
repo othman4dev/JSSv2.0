@@ -271,7 +271,10 @@ function handleSelectorBlockWithCSS(stat) {
                 js += handleSelectorBlock(localStat);
             } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
                 css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
-            } else if ( element.property !== 'innerText' && element.property !== 'textContent' && element.property !== 'innerHTML') {
+            } else if ( element.property == 'boxShadow') {
+                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {    ${toCSSProp(element.property)}: ${element.value.value.value} }\n`;
+                localStat.stat.propreties.splice(index, 1);
+            } else if ( element.property !== 'innerText' && element.property !== 'textContent' && element.property !== 'innerHTML' && element.property !== 'outerHTML') {
                 css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
                 localStat.stat.propreties.splice(index, 1);
             }
@@ -380,6 +383,9 @@ function handlePropValue(prop) {
     } else if (prop.property == 'innerHTML') {
         let text = handleValueToText(prop.value.value).replace(/'/g, '');
         js += `.innerHTML = \`${text}\`;\n`;
+    } else if (prop.property == 'outerHTML') {
+        let text = handleValueToText(prop.value.value).replace(/'/g, '');
+        js += `.outerHTML = \`${text}\`;\n`;
     } else if (prop.property == 'innerText') {
         js += `.${prop.property} = ${prop.value.value.value};\n`;
     } else {

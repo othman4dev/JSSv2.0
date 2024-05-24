@@ -86,13 +86,14 @@ selector_text
   = ( [a-zA-Z0-9-_#%&<>.]_ )+ { return text(); }
 
 string
-  = ([a-zA-Z0-9-_#%&.,]_)+ { return { type: "string", value: text().trimEnd()}; }
+  = ([a-zA-Z0-9-_#%&.,] _? )+ { return { type: "string", value: text().trimEnd()}; }
+
+general
+  = [^;]* { return { type: "general", value: text()}; }
 
 function_declaration
   = sf:[a-zA-Z0-9]+ "(" _ val:value _ ")" { return { type: "function_declaration", style_function : sf , value : val}; }
 
-general
-  = [^;]* { return { type: "general", value: text()}; }
 
 javaScriptStyleElement
   = [a-zA-Z]* { return { type: "javaScriptStyleElement", value: text()}; }

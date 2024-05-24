@@ -1,19 +1,44 @@
+header {
+    backgroundColor = #000;
+    color = #fff;
+    display = flex;
+    alignItems = center;
+    justifyContent = space-between;
+    paddingInline = 15px;
+}
+
+#div1 {
+    height = 100px;
+    width = 50px;
+    backgroundColor = #0091dc;
+}
+
+#div2 {
+    backgroundColor = red;
+    height = (#div1)->height;
+    width = 50px;
+}
+if ( (#div1)->width >= 50px ) {
+    #div2 {
+        width = 150px;
+    }
+}
+function delay(5000ms) {
+    #div2 {
+        width = 15px;
+        height = 150px;
+    }
+    .modal {
+        display = block;
+        
+    }
+}
 html {
-    fontFamily = Montserrat;
+    fontFamily = 'Montserrat' ;
 }
 body {
     backgroundColor= whitesmoke;
     color = (#div15)->backgroundColor;
-}
-.header {
-    backgroundColor = black;
-    color = white;
-    display = flex;
-    alignItems = center;
-    justifyContent = space-between;
-    padding = 10px;
-    height = 60px;
-    marginBottom = 10px;
 }
 .nav__list {
     display = flex;
@@ -84,11 +109,9 @@ button[1] {
 }
 #btnStart:hover {
     transform = translateY(-2px);
-    test = 15;
 }
 .btnStart:hover {
     transform = translateY(-2px);
-    test = 15;
 }
 
 function event((.modals):click) {
@@ -143,13 +166,64 @@ if ((#div)->width > 50) {
         backgroundColor = red;
     }
 }
-
 #div1:::#div2 {
     width(1);
     height(1.5);
 }
 body {
-    backgroundColor = whitesmoke;
     width = 100px + (#div15)->height;
     height = 100 + (#div15)->fontWeight;
+}
+
+function event((.btn):click) {
+    if ((#modal)->display == block) {
+        #modal {
+            display = none;
+        }
+    }
+}
+
+if ((#modal)->color == white) {
+    function event((#btn):click) {
+        #body {
+            backgroundColor = whitesmoke;
+            width = 100px + (#div15)->height;
+            height = 100 + (#div15)->fontWeight;
+        }
+        .body:hover {
+            backgroundColor = #000;
+        }
+    }
+}
+
+#header,
+.body,
+html {
+    backgroundColor = black;
+    color = white;
+    display = flex;
+    alignItems = center;
+    justifyContent = space-between;
+    padding = 10px;
+    height = 60px;
+    marginBottom = 10px;
+    innerHTML = `<div>click me</div>`;
+}
+
+#div:click {
+    backgroundColor = #f00;
+    innerText = 'done';
+    innerHTML = `<input type="file" class="inerted-input" style="background-color:#fff;"/>`;
+}
+
+--colorf = test;
+
+--primary = test;
+
+--initial = (#modal1)->backgroundColor;
+
+--color {
+    backgroundColor = red;
+    content = 'this is a button';
+    width = (.test[0])->width;
 }

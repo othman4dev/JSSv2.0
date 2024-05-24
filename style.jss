@@ -1,229 +1,450 @@
+
+html {
+    backgroundColor = #eee;
+    fontFamily = Montserrat;
+}
 header {
     backgroundColor = #000;
     color = #fff;
     display = flex;
     alignItems = center;
     justifyContent = space-between;
+    height = 60px;
     paddingInline = 15px;
+    boxShadow = '0 0 6px 1px black';
 }
-
-#div1 {
-    height = 100px;
-    width = 50px;
-    backgroundColor = #0091dc;
-}
-
-#div2 {
-    backgroundColor = red;
-    height = (#div1)->height;
-    width = 50px;
-}
-if ( (#div1)->width >= 50px ) {
-    #div2 {
-        width = 150px;
-    }
-}
-function delay(5000ms) {
-    #div2 {
-        width = 15px;
-        height = 150px;
-    }
-    .modal {
-        display = block;
-        
-    }
-}
-html {
-    fontFamily = 'Montserrat' ;
-}
-body {
-    backgroundColor= whitesmoke;
-    color = (#div15)->backgroundColor;
-}
-.nav__list {
+.first-half,
+.second-half {
     display = flex;
-    listStyle = none;
-    padding = 0;
+    alignItems = center;
+    gap = 10px;
+    flexGrow = 0.5;
+}
+.first-half {
+    justifyContent = flex-start;
+}
+.second-half {
+    justifyContent = flex-end;
     gap = 15px;
-    paddingInline = 15px;
 }
-.h11 {
-    margin = 0;
-    fontWeight = 800;
-    marginLeft = 30px;
-}
-main {
-    display = flex;
-    alignItems = center;
-    justifyContent = center;
-    flexDirection = column;
-    minHeight = 87vh;
-}
-a  {
-    textDecoration = none;
-    color = #fff;
-}
-modal {
-    width = 350px;
-    display = flex;
-    alignItems = center;
-    justifyContent = center;
-}
-div[2] {
+.middle-half {
     position = relative;
-    height = 100%;
-    width = 450px;
-    display = none;
-    padding = 15px;
-    backgroundColor = white;
-
+    width = fit-content;
 }
-.id[1] {
-    color = #555;
+.header-logo {
+    height = 40px;
+    maxWidth = 43px;
+    gap = 10px;
+    flexGrow = 0.5;
+}
+.header-items {
+    backgroundColor = transparent;
+    color = #fff;
     fontSize = 12px;
+    border = none;
+    cursor = pointer;
+    display = flex;
+    alignItems = center;
+    gap = 7px;
+}
+i {
+    fontSize = 20px;
+}
+.header-item-text {
+    maxWidth = 0px;
+    overflow = hidden;
+    transition = 0.3s;
+}
+function event((#header-item1):mouseover) {
+    #header-item-text1 {
+        maxWidth = 100px;
+    }
+}
+function event((#header-item1):mouseout) {
+    #header-item-text1 {
+        maxWidth = 0px;
+    }
+}
+function event((#header-item2):mouseover) {
+    #header-item-text2 {
+        maxWidth = 100px;
+    }
+}
+function event((#header-item2):mouseout) {
+    #header-item-text2 {
+        maxWidth = 0px;
+    }
+}
+function event((#header-item3):mouseover) {
+    #header-item-text3 {
+        maxWidth = 100px;
+    }
+}
+function event((#header-item3):mouseout) {
+    #header-item-text3 {
+        maxWidth = 0px;
+    }
+}
+function event((#header-item4):mouseover) {
+    #header-item-text4 {
+        maxWidth = 100px;
+    }
+}
+function event((#header-item4):mouseout) {
+    #header-item-text4 {
+        maxWidth = 0px;
+    }
+}
+.title-desc {
+    display = flex;
+    flexDirection = column;
+    gap = 0px;
+}
+#info {
+    fontSize = 9px;
+    marginTop = -3px;
+}
+.search-inp {
+    height = 35px;
+    fontSize = 11px;
+    width = 35px;
+    paddingLeft = 35px;
+    outline = none;
+    transition = 0.4s;
+    borderRadius = 50%;
+    border = none;
+}
+.search-btn {
+    position = absolute;
+    top = 50%;
+    left = 50%;
+    transform = translate(-50%,-50%);
+    color = #000;
+    backgroundColor = transparent;
+    width = 40px;
+    height = 40px;
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    cursor = pointer;
+}
+function event((#searchContainer):click) {
+    .search-inp {
+        width = 300px;
+        paddingLeft = 15px;
+        borderRadius = 0%;
+    }
+    .search-btn {
+        right = 0%;
+        left = unset;
+        transform = translate(0%,-50%);
+    }
+}
+function event((#searchInput):blur) {
+    .search-inp {
+        width = 35px;
+        paddingLeft = 35px;
+        borderRadius = 50%;
+    }
+    .search-btn {
+        right = unset;
+        left = 50%;
+        transform = translate(-50%,-50%);
+    }
+}
+.hero-page {
+    minHeight = calc( 100vh - 60px );
+    display = flex;
+    alignItems = center;
+    justifyContent = space-evenly;
+    padding = 25px;
+}
+.big-title {
+    display = flex;
+    alignItems = center;
+    justifyContent = flex-start;
+    flexGrow = 1;
+}
+.hidden-word {
+    overflow = hidden;
+    maxWidth = 0px;
+    transition = 0.4s;
+    display = inline-block;
+}
+function event((#big-hero-title):mouseover) {
+    .hidden-word {
+        maxWidth = 200px;
+        marginRight = 5px;
+    }
+}
+function event((#big-hero-title):mouseout) {
+    .hidden-word {
+        maxWidth = 0px;
+        marginRight = 0px;
+    }
+}
+#big-hero-title {
+    fontSize = 30px;
+    cursor = pointer;
+}
+.hero-logos {
+    width = 300px;
+}
+.hero-logo {
+    width = 200px;
+}
+.first-part {
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    gap = 25px;
+}
+.second-part {
+    flexGrow = 1;
+    padding = 10px;
+    color = #333;
+    fontSize = 15px;
+    maxWidth = 650px;
+}
+.intro-title {
+    fontSize = 150px;
+}
+.intro {
+    paddingLeft = 15px;
+    paddingTop = 0;
+    padding = 40px;
+    textIndent = 15px;
+    fontSize = 16px;
+}
+.get-started {
+    backgroundColor = #333;
+    color = #fff;
+    border = none;
+    height = 45px;
+    width = 130px;
+    fontSize = 15px;
+    paddingInline = 10px;
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    borderRadius = 500px;
+    cursor = pointer;
+}
+.btn-wrapper {
+    display = flex;
+    alignItems = center;
+    justifyContent = flex-end;
+    gap = 25px;
+    paddingRight = 90px;
+}
+.learn-more {
+    backgroundColor = #fff;
+    color = #333;
+    border = solid;
+    borderWidth = 1.5px;
+    borderColor = #333;
+    height = 45px;
+    width = 130px;
+    fontSize = 15px;
+    paddingInline = 10px;
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    borderRadius = 500px;
+    cursor = pointer;
+}
+.get-started:hover {
+    backgroundColor = #000;
+    transition = 0.2s;
+}
+.learn-more:hover {
+    backgroundColor = #ddd;
+    transition = 0.2s;
+}
+#modalStart {
+    backgroundColor = #fff;
+    borderRadius = 15px;
+    width = 80%;
+    position = fixed;
+    top = 50%;
+    left = 50%;
+    transform = translate(-50%, -50%);
+    zIndex = 5;
+    paddingBottom = 30px;
+    boxShadow = '0 0 8px 1px #00000020';
+    padding = 15px;
+    display = none;
+    transition = 0.2s;
+}
+.choices {
+    display = flex;
+    alignItems = center;
+    justifyContent = space-evenly;
+    gap = 15px;
+}
+.choice1,
+.choice2 {
+    flexGrow = 1;
+    width = 50%;
+    height = 240px;
+    display = flex;
+    flexDirection = column;
+    alignItems = center;
+    justifyContent = space-between;
+}
+.modal-header {
+    width = 100%;
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    marginBottom = 20px;
+    position = relative;
+}
+.modal-title {
+    textAlign = center;
+}
+.modal-content {
+    height = 240px;
+    display = contents;
+}
+.modal-title {
+    margin = 15px;
+}
+.modal-desc {
+    padding = 15px;
+}
+.modal-btn {
+    backgroundColor = #333;
+    color = #fff;
+    border = none;
+    height = 45px;
+    width = 100%;
+    fontSize = 15px;
+    paddingInline = 10px;
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    borderRadius = 500px;
+    cursor = pointer;
+}
+.modal-btn:hover {
+    backgroundColor = #000;
+    transition = 0.2s;
+}
+function event((#getStarted):click) {
+    main {
+        filter = blur(5px);
+        transition = 0.4s;
+    }
+    #modalStart {
+        display = block;
+    }
+}
+function event((#closeModal):click) {
+    #modalStart {
+        display = none;
+    }
+    main {
+        filter = none;
+        transition = 0.4s;
+    }
+}
+#closeModal {
     position = absolute;
     top = 10px;
     right = 10px;
-}
-h2 {
-    paddingTop = 10px;
-    paddingBottom = 10px;
-}
-p {
-    padding = 15px;
-}
-button[1] {
-    backgroundColor = black;
-    color = white;
-    padding = 5px 10px;
+    fontSize = 30px;
+    color = #000;
     cursor = pointer;
-    fontSize = 17 - 20;
 }
-#btnStart {
-    backgroundColor = black;
-    color = white;
-    padding = 10px;
-    cursor = pointer;
-    fontSize = 17px;
-    transition = 0.3s;
+.hero2-title {
+    fontSize = 40px;
+    color = #333;
+    paddingInline = 40px;
+    padding = 20px;
 }
-#btnStart:hover {
-    transform = translateY(-2px);
+.intro2 {
+    color = #333;
+    paddingInline = 40px;
+    padding = 20px;
+    textIndent = 15px;
+    maxWidth = 70%;
 }
-.btnStart:hover {
-    transform = translateY(-2px);
+.part2-body {
+    display = flex;
+    alignItems = center;
+    justifyContent = space-evenly;
+    gap = 10px;
+    padding = 25px;
 }
-
-function event((.modals):click) {
-    .modal {
-        display = block;
-        color = red;
-    }
+.code-img {
+    minWidth = 350px;
+    height = 240px;
+    borderRadius = 5px;
 }
-
-function event((#btnStart):click) {
-    .modal {
-        display = block;
-    }
-    #btnStart {
-        display = none;
-    }
-}
-function event((#btn1):click) {
-    .modal {
-        display = none;
-    }
-    .modal2 {
-        display = block;
-    }
-}
-function event((#btn2):click) {
-    .modal2 {
-        display = none;
-    }
-    .modal3 {
-        display = block;
-    }
-}
-function event((#btn3):click) {
-    .modal3 {
-        display = none;
-    }
-    .modal4 {
-        display = block;
-    }
-}
-function event((#btn4):click) {
-    .modal4 {
-        display = none;
-    }
-    .modal5 {
-        display = block;
-    }
-}
-if ((#div)->width > 50) {
-    #div1 {
-        backgroundColor = red;
-    }
-}
-#div1:::#div2 {
-    width(1);
-    height(1.5);
-}
-body {
-    width = 100px + (#div15)->height;
-    height = 100 + (#div15)->fontWeight;
+.part2-header {
+    fontSize = 20px;
+    color = #333;
+    width = 100%;
+    textIndent = 15px;
 }
 
-function event((.btn):click) {
-    if ((#modal)->display == block) {
-        #modal {
-            display = none;
-        }
-    }
+.step {
+    flexGrow = 1;
+    display = flex;
+    flex-direction = column;
+    alignItems = center;
 }
-
-if ((#modal)->color == white) {
-    function event((#btn):click) {
-        #body {
-            backgroundColor = whitesmoke;
-            width = 100px + (#div15)->height;
-            height = 100 + (#div15)->fontWeight;
-        }
-        .body:hover {
-            backgroundColor = #000;
-        }
-    }
+.undertitle {
+    fontSize = 12px;
+    color = #333;
+    marginTop = -20px;
+    marginBottom = 15px;
 }
-
-#header,
-.body,
-html {
-    backgroundColor = black;
-    color = white;
+.section- {
+    marginBottom = 50px;
+}
+.img-title {
+    fontSize = 12px;
+    color = #333;
+    textAlign = center;
+    marginTop = 5px;
+    maxWidth = 70%;
+}
+.line {
+    width = 90%;
+    backgroundColor = #eee;
+    boxShadow = '0 0 5px 1px #00000010';
     display = flex;
     alignItems = center;
     justifyContent = space-between;
-    padding = 10px;
-    height = 60px;
-    marginBottom = 10px;
-    innerHTML = `<div>click me</div>`;
+    borderRadius = 10px;
+    padding = 15px;
+    marginBottom = 7px;
 }
-
-#div:click {
-    backgroundColor = #f00;
-    innerText = 'done';
-    innerHTML = `<input type="file" class="inerted-input" style="background-color:#fff;"/>`;
+.step2 {
+    flexGrow = 1;
+    display = flex;
+    flex-direction = column;
+    alignItems = center;
+    width = 50%;
 }
-
---colorf = test;
-
---primary = test;
-
---initial = (#modal1)->backgroundColor;
-
---color {
-    backgroundColor = red;
-    content = 'this is a button';
-    width = (.test[0])->width;
+.flex {
+    display = flex;
+    alignItems = center;
+    justifyContent = space-between;
+    gap = 25px;
+}
+.illu2 {
+    width = 200px;
+}
+.img-wrapper {
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    flexGrow = 1;
+    width = 30%;
+}
+.chapter {
+    padding = 15px;
 }

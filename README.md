@@ -273,3 +273,7 @@ This README provides a comprehensive overview of JSS, empowering you with a blen
 Email : otmankharbouch813@gmail.com
 
 Contact me if you care to collaborate on this project.
+
+We still have to build:
+- A website with a good documentation of this framework using this framework.
+- A Visual Code Studio extention and plugins (language support, syntax highlighter, autocomplete).

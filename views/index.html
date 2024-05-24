@@ -3,26 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSS | JavaScript 4 style</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../jss.css">
+    <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>JSS | JavaScript Style Sheets</title>
 </head>
+<header>
+    <div class="first-half">
+        <img class="header-logo" src="./assets/graphLogo.png" alt="JSS Logo">
+        <div class="title-desc">
+            <h1 class="big-title" id="big-hero-title">
+                J<div class="hidden-word">avaScript </div>S<div class="hidden-word">tyle </div>S<div class="hidden-word">heets </div>
+            </h1>
+            <p id="info">JavaScript Style Sheets</p>
+        </div>
+    </div>
+    <div class="middle-half" id="searchContainer">
+        <label for="searchInput"><div class="search-btn"><i class="bi bi-search"></i></div></label>
+        <input type="text" name="search" placeholder="Search anything related to JSS." class="search-inp" id="searchInput">
+    </div>
+    <div class="second-half">
+        <button class="header-items" id="header-item1"><i class="bi bi-envelope-fill"></i><div class="header-item-text" id="header-item-text1">Contact</div></button>
+        <button class="header-items" id="header-item2"><i class="bi bi-coin"></i> <div class="header-item-text"  id="header-item-text2">Support</div></button>
+        <button class="header-items" id="header-item3"><i class="bi bi-file-text"></i> <div class="header-item-text"  id="header-item-text3">Documentation</div></button>
+        <button class="header-items" id="header-item4"><i class="bi bi-github"></i> <div class="header-item-text"  id="header-item-text4">GitHub</div></button>
+    </div>
+</header>
 <body>
-    <header>
-        <div class="first-half">
-            <h1 class="big-title">JSS</h1>
-            <p id="info">JavaScript 4 style</p>
-        </div>
-        <div class="second-half">
-            <button>GitHub</button>
-        </div>
-    </header>
     <main>
-        <div id="div1">
-
+        <div class="hero-page section-" data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom">
+            <div class="second-part">
+                <h1 class="intro-title">&nbsp;&nbsp;JSS</h1>
+                <p class="intro">
+                    Introducing JSS, an innovative preprocessor that bridges the gap between JavaScript and CSS, offering a unique and powerful syntax to enhance your web development experience. JSS combines the flexibility and dynamic capabilities of JavaScript with the simplicity and elegance of CSS, empowering developers to create more responsive and interactive web applications effortlessly.
+                </p>
+                <div class="btn-wrapper">
+                    <button class="learn-more">Learn More</button>
+                    <button class="get-started" id="getStarted">Get Started</button>
+                </div>
+            </div>
+            <div class="first-part">
+                <img src="./assets/heroillu.svg" class="hero-logos" alt="">
+                <img src="./assets/JSS.png" class="hero-logo" alt="">
+            </div>
         </div>
-        <div id="div2">
-            
+        <div class="hero-page2">
+            <div class="hero2-part1 section-" data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom">
+                <h1 class="hero2-title">How does it work ?</h1>
+                <div class="flex">
+                    <p class="intro2">
+                        Our JavaScript-based preprocessor, JSS, enables writing enhanced JavaScript and CSS with a unique syntax. Using PEGJS, we developed a custom grammar and parser that reads your JSS code via the file system (fs) and converts it into a JSON-like abstract syntax tree (AST).
+                        <br><br>
+                        The parser validates your code with conditional checks and assigns features to handling functions. Simple CSS properties are converted to standard CSS, while complex features are transpiled into JavaScript.
+                        <br><br>
+                        JSS supports advanced features like variable management, event handling, and conditional logic within styles, allowing for dynamic and responsive designs.
+                        <br><br>
+                        Finally, the preprocessor generates jss.css for CSS styles and jss.js for JavaScript functionalities, ready to be linked to your web page. Integrating JSS enhances your ability to create dynamic, interactive web applications.
+                    </p>
+                    <div class="img-wrapper">
+                        <img src="./assets/illuhero2.svg" class="illu2" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="hero2-part2 section-" data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom">
+                <div class="part2-header">
+                    <h1 class="hero2-title">Example</h1>
+                </div>
+                <div class="part2-body">
+                    <div class="step">
+                        <h1 class="hero2-title">
+                            From
+                        </h1>
+                        <p class="undertitle">JSS syntax</p>
+                        <img class="code-img" src="./assets/jsscode.png" alt="">
+                        <p class="img-title">This is a simple event function that listen to the element with the ID #getStarted and apply the styles inside if it was clicked.</p>
+                    </div>
+                    <div class="step">
+                        <h1 class="hero2-title">
+                            To
+                        </h1>
+                        <p class="undertitle">JavaScript Code</p>
+                        <img class="code-img" src="./assets/jscode.png" alt="">
+                        <p class="img-title">This is the code that our framework JSS generates from the previous JSS syntax.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero2-part2 section-" data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom">
+                <div class="part2-header">
+                    <h1 class="hero2-title">Key Differences</h1>
+                </div>
+                <div class="part2-body">
+                    <div class="step2">
+                        <h1 class="hero2-title">JSS</h1>
+                        <p class="undertitle">JavaScript Style Sheets</p>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Assign styles using &nbsp;' = '</p>
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Use JavaScript-style properties (e.g., zIndex, fontSize)</p>
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Utilize JavaScript events as pseudo-classes.</p>
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Introduce new style properties such as innerHTML, textContent, and more.</p>
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Support for functions in events and auto-called delay functions.</p>
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Real-time relative style properties provided by JSS Tunnels.</p>
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Style blocks as variables.</p>
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Clone styles of other elements using arrow-style functions.</p>
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>And Much More...</p>
+                        </div>
+                        <p class="img-title">This is a simple event function that listens to the element with the ID #getStarted and applies the styles inside when it is clicked.</p>
+                    </div>
+                    <div class="step2">
+                        <h1 class="hero2-title">CSS</h1>
+                        <p class="undertitle">Cascading Style Sheets</p>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Assign styles using &nbsp;' : '</p>
+                            <i class="bi bi-emoji-neutral"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>CSS properties with dashes ('-')</p>
+                            <i class="bi bi-emoji-neutral"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Supports only static pseudo-classes like :hover, :active...</p>
+                            <i class="bi bi-emoji-neutral"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>No support for inner content of text or elements.</p>
+                            <i class="bi bi-emoji-neutral"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Not found</p>
+                            <i class="bi bi-emoji-neutral"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Not found</p>
+                            <i class="bi bi-emoji-neutral"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Not found</p>
+                            <i class="bi bi-emoji-neutral"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Not found</p>
+                            <i class="bi bi-emoji-neutral"></i>
+                        </div>
+                        <div class="line" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <p>Not found</p>
+                            <i class="bi bi-emoji-neutral"></i>
+                        </div>
+                        <p class="img-title">No fixed update schedule.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="installation">
+            <div class="chapter">
+                <h1>
+                    Prerequisites
+                </h1>
+                <p>
+                    Before installing JSS, you need to have the following prerequisites installed on your machine:
+                </p>
+                <ul>
+                    <li>Node.js</li>
+                    <li>npm</li>
+                </ul>
+                <p>
+                    To check if you have Node.js installed, run the following command in your terminal:
+                </p>
+                
+            </div>
+            <div class="chapter">
+                <h1>
+                    Installation
+                </h1>
+                <p>
+                    To install JSS, you need to run the following command in your terminal:
+                </p>
+                <div class="code">
+                    <pre>
+                        <code>
+                            git clone https://github.com/othman4dev/JSSv2.0.git
+                        </code>
+                    </pre>
+                </div>
+                <h4>
+                    This will clone the JSS repository to your local machine.
+                    <br>
+                    After cloning the repository, navigate to the JSS directory and run the following command:
+                </h4>
+                <div class="code">
+                    <pre>
+                        <code>
+                            npm install
+                        </code>
+                    </pre>
+                </div>
+                <h4>
+                    This will install all the necessary dependencies for JSS.
+                    <br>
+                    To start using JSS, run the following command:
+                </h4>
+                <div class="code">
+                    <pre>
+                        <code>
+                            npm run jss
+                        </code>
+                    </pre>
+                </div>
+            </div>
         </div>
     </main>
 </body>
+<div class="modal-start" id="modalStart">
+    <div class="modal-header">
+        <h1 class="modal-title">
+            Get Started with JSS
+        </h1>
+        <i class="bi bi-x" id="closeModal"></i>
+    </div>
+    
+    <div class="choices">
+        <div class="choice1">
+            <div class="modal-content">
+                <h1 class="modal-title">Get Started with Our Documentation</h1>
+                <p class="modal-desc">Explore our comprehensive documentation, packed with detailed examples and educational content to help you master JSS quickly and effectively.</p>
+                <button class="modal-btn" id="modal-btn">View Documentation</button>
+            </div>
+        </div>
+        <div class="choice2">
+            <div class="modal-content">
+                <h1 class="modal-title">Already a User?</h1>
+                <p class="modal-desc">Let's help you get started with the installation process.</p>
+                <button class="modal-btn" id="modal-btn2">Begin Installation</button>
+            </div>
+        </div>
+    </div>
+</div>
 </html>
-<script src="jss.js"></script>
+<script src="../jss.js"></script>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Montserrat;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>

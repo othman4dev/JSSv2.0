@@ -31,7 +31,7 @@
     "jss:j": "Alias for jss:js",
     "jss:css": "Ignore javaScript and depend on CSS only to style the DOM",
     "jss:c": "Alias for jss:css",
-    "jss:debug": "Runs both JS and CSS and scans the project and generates the parsed tree, optimal for debuggind and development",
+    "jss:debug": "Runs both JS and CSS and scans the project and generates the parsed tree, optimal for debugging and development",
     "jss:d": "Alias for jss:debug",
     "jss:scan": "Scans the project for any errors or warnings in the JSS file",
     "jss:s": "Alias for jss:scan",

@@ -50,317 +50,79 @@ const compare = (a, comparison, b) => {
     throw new Error(`Invalid comparison operator: ${comparison}`);
   return comparisons[comparison](valueA, valueB);
 };
-document.querySelectorAll("header").forEach((element) => {
-  element.style.backgroundColor = "#000";
-  element.style.color = "#fff";
-  element.style.display = "flex";
-  element.style.alignItems = "center";
-  element.style.justifyContent = "space-between";
-  element.style.paddingInline = "15px";
+document.querySelector("#header-item1").addEventListener("mouseover", () => {
+  document.querySelector("#header-item-text1").style.maxWidth = "100px";
 });
-document.querySelector("#div1").style.height = "100px";
-document.querySelector("#div1").style.width = "50px";
-document.querySelector("#div1").style.backgroundColor = "#0091dc";
-document.querySelector("#div2").style.backgroundColor = "red";
-document.querySelector("#div2").style.height = getComputedStyle(
-  document.querySelector("#div1"),
-).getPropertyValue("height");
-document.querySelector("#div2").style.width = "50px";
-if (
-  compare(
-    getComputedStyle(document.querySelector("#div1")).getPropertyValue("width"),
-    ">=",
-    "50px",
-  )
-) {
-  document.querySelector("#div2").style.width = "150px";
-}
-setTimeout(() => {
-  document.querySelector("#div2").style.width = "15px";
-  document.querySelector("#div2").style.height = "150px";
-  document.querySelectorAll(".modal").forEach((element) => {
-    element.style.display = "block";
+document.querySelector("#header-item1").addEventListener("mouseout", () => {
+  document.querySelector("#header-item-text1").style.maxWidth = "0px";
+});
+document.querySelector("#header-item2").addEventListener("mouseover", () => {
+  document.querySelector("#header-item-text2").style.maxWidth = "100px";
+});
+document.querySelector("#header-item2").addEventListener("mouseout", () => {
+  document.querySelector("#header-item-text2").style.maxWidth = "0px";
+});
+document.querySelector("#header-item3").addEventListener("mouseover", () => {
+  document.querySelector("#header-item-text3").style.maxWidth = "100px";
+});
+document.querySelector("#header-item3").addEventListener("mouseout", () => {
+  document.querySelector("#header-item-text3").style.maxWidth = "0px";
+});
+document.querySelector("#header-item4").addEventListener("mouseover", () => {
+  document.querySelector("#header-item-text4").style.maxWidth = "100px";
+});
+document.querySelector("#header-item4").addEventListener("mouseout", () => {
+  document.querySelector("#header-item-text4").style.maxWidth = "0px";
+});
+document.querySelector("#searchContainer").addEventListener("click", () => {
+  document.querySelectorAll(".search-inp").forEach((element) => {
+    element.style.width = "300px";
+    element.style.paddingLeft = "15px";
+    element.style.borderRadius = "0%";
   });
-}, 5000);
-document.querySelectorAll("html").forEach((element) => {
-  element.style.fontFamily = "Montserrat";
-});
-document.querySelectorAll("body").forEach((element) => {
-  element.style.backgroundColor = "whitesmoke";
-  element.style.color = getComputedStyle(
-    document.querySelector("#div15"),
-  ).getPropertyValue("background-color");
-});
-document.querySelectorAll(".nav__list").forEach((element) => {
-  element.style.display = "flex";
-  element.style.listStyle = "none";
-  element.style.padding = "0";
-  element.style.gap = "15px";
-  element.style.paddingInline = "15px";
-});
-document.querySelectorAll(".h11").forEach((element) => {
-  element.style.margin = "0";
-  element.style.fontWeight = "800";
-  element.style.marginLeft = "30px";
-});
-document.querySelectorAll("main").forEach((element) => {
-  element.style.display = "flex";
-  element.style.alignItems = "center";
-  element.style.justifyContent = "center";
-  element.style.flexDirection = "column";
-  element.style.minHeight = "87vh";
-});
-document.querySelectorAll("a").forEach((element) => {
-  element.style.textDecoration = "none";
-  element.style.color = "#fff";
-});
-document.querySelectorAll("modal").forEach((element) => {
-  element.style.width = "350px";
-  element.style.display = "flex";
-  element.style.alignItems = "center";
-  element.style.justifyContent = "center";
-});
-document.querySelectorAll("div")[2].style.position = "relative";
-document.querySelectorAll("div")[2].style.height = "100%";
-document.querySelectorAll("div")[2].style.width = "450px";
-document.querySelectorAll("div")[2].style.display = "none";
-document.querySelectorAll("div")[2].style.padding = "15px";
-document.querySelectorAll("div")[2].style.backgroundColor = "white";
-document.querySelectorAll(".id")[1].style.color = "#555";
-document.querySelectorAll(".id")[1].style.fontSize = "12px";
-document.querySelectorAll(".id")[1].style.position = "absolute";
-document.querySelectorAll(".id")[1].style.top = "10px";
-document.querySelectorAll(".id")[1].style.right = "10px";
-document.querySelectorAll("h2").forEach((element) => {
-  element.style.paddingTop = "10px";
-  element.style.paddingBottom = "10px";
-});
-document.querySelectorAll("p").forEach((element) => {
-  element.style.padding = "15px";
-});
-document.querySelectorAll("button")[1].style.backgroundColor = "black";
-document.querySelectorAll("button")[1].style.color = "white";
-document.querySelectorAll("button")[1].style.padding = "5px 10px";
-document.querySelectorAll("button")[1].style.cursor = "pointer";
-document.querySelectorAll("button")[1].style.fontSize = calc(`17`, ` 20`, "-");
-document.querySelector("#btnStart").style.backgroundColor = "black";
-document.querySelector("#btnStart").style.color = "white";
-document.querySelector("#btnStart").style.padding = "10px";
-document.querySelector("#btnStart").style.cursor = "pointer";
-document.querySelector("#btnStart").style.fontSize = "17px";
-document.querySelector("#btnStart").style.transition = "0.3s";
-var styleStoremubpzlnf0 = null;
-document.querySelector("#btnStart").addEventListener("mouseover", (event) => {
-  styleStoremubpzlnf0 = window.getComputedStyle(
-    document.querySelector("#btnStart"),
-  );
-  event.target.style.transform = "translateY(-2px)";
-});
-document.querySelector("#btnStart").addEventListener("mouseout", (event) => {
-  applyStyles(event.target, styleStoremubpzlnf0);
-});
-var styleStorei9710xtnp = null;
-document.querySelectorAll(".btnStart").forEach((element) => {
-  element.addEventListener("mouseover", (event) => {
-    styleStorei9710xtnp = window.getComputedStyle(
-      document.querySelector(".btnStart"),
-    );
-    event.target.style.transform = "translateY(-2px)";
-  });
-  element.addEventListener("mouseout", (event) => {
-    applyStyles(event.target, styleStorei9710xtnp);
+  document.querySelectorAll(".search-btn").forEach((element) => {
+    element.style.right = "0%";
+    element.style.left = "unset";
+    element.style.transform = "translate(0%,-50%)";
   });
 });
-document.querySelector("#btnStart").addEventListener("click", () => {
-  document.querySelectorAll(".modal").forEach((element) => {
-    element.style.display = "block";
+document.querySelector("#searchInput").addEventListener("blur", () => {
+  document.querySelectorAll(".search-inp").forEach((element) => {
+    element.style.width = "35px";
+    element.style.paddingLeft = "35px";
+    element.style.borderRadius = "50%";
   });
-  document.querySelector("#btnStart").style.display = "none";
-});
-document.querySelector("#btn1").addEventListener("click", () => {
-  document.querySelectorAll(".modal").forEach((element) => {
-    element.style.display = "none";
-  });
-  document.querySelectorAll(".modal2").forEach((element) => {
-    element.style.display = "block";
+  document.querySelectorAll(".search-btn").forEach((element) => {
+    element.style.right = "unset";
+    element.style.left = "50%";
+    element.style.transform = "translate(-50%,-50%)";
   });
 });
-document.querySelector("#btn2").addEventListener("click", () => {
-  document.querySelectorAll(".modal2").forEach((element) => {
-    element.style.display = "none";
-  });
-  document.querySelectorAll(".modal3").forEach((element) => {
-    element.style.display = "block";
+document.querySelector("#big-hero-title").addEventListener("mouseover", () => {
+  document.querySelectorAll(".hidden-word").forEach((element) => {
+    element.style.maxWidth = "200px";
+    element.style.marginRight = "5px";
   });
 });
-document.querySelector("#btn3").addEventListener("click", () => {
-  document.querySelectorAll(".modal3").forEach((element) => {
-    element.style.display = "none";
-  });
-  document.querySelectorAll(".modal4").forEach((element) => {
-    element.style.display = "block";
+document.querySelector("#big-hero-title").addEventListener("mouseout", () => {
+  document.querySelectorAll(".hidden-word").forEach((element) => {
+    element.style.maxWidth = "0px";
+    element.style.marginRight = "0px";
   });
 });
-document.querySelector("#btn4").addEventListener("click", () => {
-  document.querySelectorAll(".modal4").forEach((element) => {
-    element.style.display = "none";
+document.querySelector("#getStarted").addEventListener("click", () => {
+  document.querySelectorAll("main").forEach((element) => {
+    element.style.filter = "blur(5px)";
+    element.style.transition = "0.4s";
   });
-  document.querySelectorAll(".modal5").forEach((element) => {
-    element.style.display = "block";
-  });
+  document.querySelector("#modalStart").style.display = "block";
 });
-if (
-  compare(
-    getComputedStyle(document.querySelector("#div")).getPropertyValue("width"),
-    ">",
-    "50",
-  )
-) {
-  document.querySelector("#div1").style.backgroundColor = "red";
-}
-var observertafha40eh = new MutationObserver(function (mutations) {
-  mutations.forEach(function (mutation) {
-    if (mutation.attributeName === "style") {
-      document.querySelector("#div2").style.width = calc(
-        getComputedStyle(document.querySelector("#div2 ")).getPropertyValue(
-          "width",
-        ),
-        "1",
-        "*",
-      );
-    }
+document.querySelector("#closeModal").addEventListener("click", () => {
+  document.querySelector("#modalStart").style.display = "none";
+  document.querySelectorAll("main").forEach((element) => {
+    element.style.filter = "none";
+    element.style.transition = "0.4s";
   });
 });
-var configtafha40eh = { attributes: true, attributeFilter: ["style"] };
-observertafha40eh.observe(document.querySelector("#div2 "), configtafha40eh);
-
-var observer0a9a9cgjt = new MutationObserver(function (mutations) {
-  mutations.forEach(function (mutation) {
-    if (mutation.attributeName === "style") {
-      document.querySelector("#div2").style.height = calc(
-        getComputedStyle(document.querySelector("#div2 ")).getPropertyValue(
-          "height",
-        ),
-        "1.5",
-        "*",
-      );
-    }
-  });
-});
-var config0a9a9cgjt = { attributes: true, attributeFilter: ["style"] };
-observer0a9a9cgjt.observe(document.querySelector("#div2 "), config0a9a9cgjt);
-
-document.querySelectorAll("body").forEach((element) => {
-  element.style.width = calc(
-    `100px`,
-    getComputedStyle(document.querySelector("#div15")).getPropertyValue(
-      "height",
-    ),
-    "+",
-  );
-  element.style.height = calc(
-    `100`,
-    getComputedStyle(document.querySelector("#div15")).getPropertyValue(
-      "font-weight",
-    ),
-    "+",
-  );
-});
-document.querySelectorAll(".btn").forEach((element) => {
-  element.addEventListener("click", () => {
-    if (
-      compare(
-        getComputedStyle(document.querySelector("#modal")).getPropertyValue(
-          "display",
-        ),
-        "==",
-        "block",
-      )
-    ) {
-      document.querySelector("#modal").style.display = "none";
-    }
-  });
-});
-if (
-  compare(
-    getComputedStyle(document.querySelector("#modal")).getPropertyValue(
-      "color",
-    ),
-    "==",
-    "white",
-  )
-) {
-  document.querySelector("#btn").addEventListener("click", () => {
-    document.querySelector("#body").style.backgroundColor = "whitesmoke";
-    document.querySelector("#body").style.width = calc(
-      `100px`,
-      getComputedStyle(document.querySelector("#div15")).getPropertyValue(
-        "height",
-      ),
-      "+",
-    );
-    document.querySelector("#body").style.height = calc(
-      `100`,
-      getComputedStyle(document.querySelector("#div15")).getPropertyValue(
-        "font-weight",
-      ),
-      "+",
-    );
-    document.querySelectorAll(".body").forEach((element) => {
-      element.style.backgroundColor = "#000";
-    });
-  });
-}
-document.querySelector("#header").style.backgroundColor = "black";
-document.querySelector("#header").style.color = "white";
-document.querySelector("#header").style.display = "flex";
-document.querySelector("#header").style.alignItems = "center";
-document.querySelector("#header").style.justifyContent = "space-between";
-document.querySelector("#header").style.padding = "10px";
-document.querySelector("#header").style.height = "60px";
-document.querySelector("#header").style.marginBottom = "10px";
-document.querySelector("#header").innerHTML = `<div>click me</div>`;
-document.querySelectorAll(".body").forEach((element) => {
-  element.style.backgroundColor = "black";
-  element.style.color = "white";
-  element.style.display = "flex";
-  element.style.alignItems = "center";
-  element.style.justifyContent = "space-between";
-  element.style.padding = "10px";
-  element.style.height = "60px";
-  element.style.marginBottom = "10px";
-  element.innerHTML = `<div>click me</div>`;
-});
-document.querySelectorAll("html").forEach((element) => {
-  element.style.backgroundColor = "black";
-  element.style.color = "white";
-  element.style.display = "flex";
-  element.style.alignItems = "center";
-  element.style.justifyContent = "space-between";
-  element.style.padding = "10px";
-  element.style.height = "60px";
-  element.style.marginBottom = "10px";
-  element.innerHTML = `<div>click me</div>`;
-});
-document.querySelector("#div").addEventListener("click", (event) => {
-  event.target.style.backgroundColor = "#f00";
-  event.target.innerText = done;
-  event.target.innerHTML = `<input type="file" class="inerted-input" style="background-color:#fff;"/>`;
-});
-let colorf = "test";
-let primary = "test";
-let initial = getComputedStyle(
-  document.querySelector("#modal1"),
-).getPropertyValue("background-color");
-let color = [
-  { prop: "backgroundColor", value: "red" },
-  { prop: "content", value: "this is a button" },
-  {
-    prop: "width",
-    value: getComputedStyle(
-      document.querySelectorAll(".test")[0],
-    ).getPropertyValue("width"),
-  },
-];
 
 /* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */
