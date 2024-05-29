@@ -591,3 +591,6 @@ function delay(1s) {
 .code-jss {
     maxHeight = 400px;
 }
+.chapter-desc {
+    textIndent = 15px;
+}
