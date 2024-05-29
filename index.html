@@ -240,21 +240,45 @@
                     </div>
                     <code>
                         <pre>
-        <p style="color: #0091dc;">#example</p> {
-            <p style="color: #ff5f56;">innerHTML</p> = <p style="color: #27c93f;">`&lt;h1 class="primary-btn"&gt; &lt;/h1&gt;`</p>;
-            <p style="color: #ff5f56;">innerText</p> = <p style="color: #27c93f;">"Hello, World!"</p>;
-            <p style="color: #ff5f56;">textContent</p> = <p style="color: #27c93f;">"Hello, World!"</p>;
-            <p style="color: #ff5f56;">value</p> = <p style="color: #27c93f;">"example@email.com"</p>;
-            <p style="color: #ff5f56;">src</p> = <p style="color: #27c93f;">"https://example.com/image.jpg"</p>;
-            <p style="color: #ff5f56;">href</p> = <p style="color: #27c93f;">"https://example.com"</p>;
+        <span style="color: #0091dc;">#example</span> {
+            <span style="color: #ff5f56;">innerHTML</span> = <span style="color: #27c93f;">`&lt;h1 class="primary-btn"&gt; Hello World ! &lt;/h1&gt;`</span>;
+            <span style="color: #ff5f56;">outerHTML</span> = <span style="color: #27c93f;">`&lt;h1 class="primary-btn"&gt; Hello World ! &lt;/h1&gt;`</span>;
+            <span style="color: #ff5f56;">innerText</span> = <span style="color: #27c93f;">"Hello, World!"</span>;
+            <span style="color: #ff5f56;">textContent</span> = <span style="color: #27c93f;">"Hello, World!"</span>;
+            <span style="color: #ff5f56;">value</span> = <span style="color: #27c93f;">"example@email.com"</span>;
+            <span style="color: #ff5f56;">src</span> = <span style="color: #27c93f;">"https://example.com/image.jpg"</span>;
+            <span style="color: #ff5f56;">href</span> = <span style="color: #27c93f;">"https://example.com"</span>;
         }
-        // <p style="color: #0091dc;">Some for readonly properties</p>
-        <p style="color: #0091dc;">(#example)-&gt;liveWidth;</p>
-        <p style="color: #0091dc;">(#example)-&gt;liveHeight;</p>
+        <span style="color: gray;">//Some for readonly properties</span>
+        <span style="color: #0091dc;">(#example)-&gt;liveWidth;</span>
+        <span style="color: #0091dc;">(#example)-&gt;liveHeight;</span>
+        <span style="color: gray;">//And More</span>
                         </pre>
                         <button class="code-copy" title="copy" onclick="copyToClipBoard(this)"><i class="bi bi-copy"></i></button>
                     </code>
                         
+            </div>
+            <div class="soon-feature">
+                <h1 class="chapter-title">Development Server</h1>
+                <p class="chapter-desc">
+                    This will make debugging and testing your JSS code much easier. The development server will provide a live preview of your JSS styles and JavaScript functionalities, allowing you to see the changes in real-time as you make them. This will help you identify and fix any issues with your code quickly and efficiently, making the development process smoother and more productive. <br>
+                    This server is designed to enhance development speed and performance by transpiling only the newly written JSS code, while leaving the unchanged portions of the code intact.
+                </p>
+                <p>
+                    <strong>By running this :</strong>
+                </p>
+                <div class="code">
+                    <div class="circles">
+                        <div class="circle1 circle"></div>
+                        <div class="circle2 circle"></div>
+                        <div class="circle3 circle"></div>
+                    </div>
+                    <code>
+                        <pre>
+    npm run jss:server
+                        </pre>
+                        <button class="code-copy" title="copy" onclick="copyToClipBoard(this)"><i class="bi bi-copy"></i></button>
+                    </code>
             </div>
         </div>
         <div class="installation">
