@@ -191,7 +191,7 @@ function event((#big-hero-title):mouseout) {
     width = 300px;
 }
 .hero-logo {
-    width = 200px;
+    width = 0px;
 }
 .first-part {
     display = flex;
@@ -475,6 +475,7 @@ function event((#closeModal):click) {
     display = flex;
     alignItems = center;
     margin = 15px;
+    position = relative;
 }
 .circles {
     position = absolute;
@@ -502,4 +503,33 @@ li {
     marginBottom = 15px;
     marginTop = 15px;
     marginLeft = 25px;
+}
+ul {
+    marginLeft = 15px;
+}
+.code-copy {
+    position = absolute;
+    right = 10px;
+    top = 10px;
+    cursor = pointer;
+    backgroundColor = #ffffff09;
+    color = #888;
+    height = 25px;
+    width = 25px;
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    borderRadius = 5px;
+    border = none;
+}
+.code-copy:hover {
+    backgroundColor = #ffffff19;
+    color = #aaa;
+    transition = 0.2s;
+}
+function delay(1s) {
+    #jssLogo {
+        width = 200px;
+        transition = 0.5s;
+    }
 }

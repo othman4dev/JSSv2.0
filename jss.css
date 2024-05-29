@@ -115,7 +115,7 @@ i {
   width: 300px;
 }
 .hero-logo {
-  width: 200px;
+  width: 0px;
 }
 .first-part {
   gap: 25px;
@@ -375,6 +375,7 @@ i {
   font-size: 30px;
 }
 .code {
+  position: relative;
   margin: 15px;
   align-items: center;
   display: flex;
@@ -413,4 +414,27 @@ li {
   margin-left: 25px;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+ul {
+  margin-left: 15px;
+}
+.code-copy {
+  border: none;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 25px;
+  height: 25px;
+  color: #888;
+  background-color: #ffffff09;
+  cursor: pointer;
+  top: 10px;
+  right: 10px;
+  position: absolute;
+}
+.code-copy:hover {
+  transition: 0.2s;
+  color: #aaa;
+  background-color: #ffffff19;
 }

@@ -124,5 +124,9 @@ document.querySelector("#closeModal").addEventListener("click", () => {
     element.style.transition = "0.4s";
   });
 });
+setTimeout(() => {
+  document.querySelector("#jssLogo").style.width = "200px";
+  document.querySelector("#jssLogo").style.transition = "0.5s";
+}, 1000);
 
 /* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */
