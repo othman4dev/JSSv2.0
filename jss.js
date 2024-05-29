@@ -128,5 +128,17 @@ setTimeout(() => {
   document.querySelector("#jssLogo").style.width = "200px";
   document.querySelector("#jssLogo").style.transition = "0.5s";
 }, 1000);
+document.querySelectorAll(".choice-btn").forEach((element) => {
+  element.addEventListener("mouseover", () => {
+    element.style.boxShadow = "0 2.5px 0px 2px #333";
+    element.style.transform = "translateY(-2.5px)";
+  });
+});
+document.querySelectorAll(".choice-btn").forEach((element) => {
+  element.addEventListener("mouseout", () => {
+    element.style.transform = "translateY(0px)";
+    element.style.boxShadow = "0 0 0 3px #fff, 0 0 0 5px #ff0";
+  });
+});
 
 /* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */

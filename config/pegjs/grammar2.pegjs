@@ -50,7 +50,7 @@ property
 ///////////////////////////////////////////////
 
 value
-  = _ val:( calculation / arrow_function / style_function / function_declaration / color / HTML / text / number_unit / number / word / string / general ) _ { return { type: val.type, value : val}; }
+  = _ val:( calculation / arrow_function / style_function / function_declaration / color / HTML / text / escaped /number_unit / number / word / string / general ) _ { return { type: val.type, value : val}; }
 
 calculation
   = term1:term _  operator:operator _ term2:term { return {  type: "calculation", term1 : term1, operator : operator, term2: term2 }; } 
@@ -73,8 +73,11 @@ number
 number_unit
   = num:number str:string { return { type: "number_unit", number: num, unit: str }; }
 
+escaped
+  = "'" _ chars:([^;']*) _ "'" { return { type: "escaped", value: chars.join('') }; }
+
 text
-  = "'" _ chars:([^;']*) _ "'" { return { type: "text", value: chars.join('') }; }
+  = "\"" _ chars:([^"']*) _ "\"" { return { type: "text", value: chars.join('') }; }
 
 HTML
   = "`" _ chars:([^`]*) _ "`" { return { type: "HTML", value: chars.join('').replace(/[\r\n\t]/g, '') }; }

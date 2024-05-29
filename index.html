@@ -41,7 +41,7 @@
                 </p>
                 <div class="btn-wrapper">
                     <button class="learn-more">Learn More</button>
-                    <button class="get-started" id="getStarted">Get Started</button>
+                    <button class="choice-btn" id="getStarted">Get Started</button>
                 </div>
             </div>
             <div class="first-part">
@@ -180,8 +180,81 @@
                         </div>
                         <p class="img-title">No fixed update schedule.</p>
                     </div>
-
                 </div>
+            </div>
+        </div>
+        <div class="soon">
+            <h1 class="installation-title">
+                Comming Soon To JSS
+            </h1>
+            <div class="soon-feature">
+                <h1 class="chapter-title">JSS Animations</h1>
+                <p class="chapter-desc">
+                    JSS Animations is a new feature that will be added to JSS in the upcoming release. This feature will allow developers to create dynamic and interactive animations using JSS syntax. With JSS Animations, you can easily define animations for elements on your web page, such as fading in and out, sliding, rotating, and more. This feature will provide a simple and intuitive way to create animations without the need for complex CSS or JavaScript code.
+                </p>
+                <p>
+                    <strong>We will be looking at something like this :</strong>
+                </p>
+                <div class="code">
+                    <div class="circles">
+                        <div class="circle1 circle"></div>
+                        <div class="circle2 circle"></div>
+                        <div class="circle3 circle"></div>
+                    </div>
+                    <code>
+                        <pre>
+    <font color="#0091dc">@animation</font> <font color="#991599">loading</font> {
+        .options {
+            <font color="#ff5f56">animationDuration</font> = <font color=" #ffbd2e">1</font>s;
+            <font color="#ff5f56">animationIterationCount</font> = infinite;
+            <font color="#ff5f56">animationTimingFunction</font> = linear;
+        }
+        from {
+            <font color="#ff5f56">transform</font> = <font color="#27c93f">rotate(</font><font color=" #ffbd2e">0</font>deg<font color="#27c93f">)</font>;
+        }
+        to {
+            <font color="#ff5f56">transform</font> = <font color="#27c93f">rotate(</font><font color=" #ffbd2e">360</font>deg<font color="#27c93f">)</font>;
+        }
+    }
+    <font color="#0091dc" >#btn</font><font color="#991599">:click</font> {
+        <font color="#f90">@animate(</font><font color="#0f0">(</font>#jssLogo</font><font color="#0f0">)</font>, loading<font color="#f90">)</font>;
+    }
+                        </pre>
+                    </code>
+                    <button class="code-copy" title="copy" onclick="copyToClipBoard(this)"><i class="bi bi-copy"></i></button>
+                </div>
+            </div>
+            <div class="soon-feature">
+                <h1 class="chapter-title">More Propreties</h1>
+                <p class="chapter-desc">
+                    JSS will be adding more properties to its syntax in the upcoming release. These properties will provide developers with additional options for styling elements on their web pages. Some of the new properties that will be added include innerHTML, textContent, and more. These properties will allow developers to manipulate the content of elements directly from their JSS code, making it easier to create dynamic and interactive web applications.
+                </p>
+                <p>
+                    <strong>Here is a list of new propreties that will be included in JSS :</strong>
+                </p>
+                <div class="code">
+                    <div class="circles">
+                        <div class="circle1 circle"></div>
+                        <div class="circle2 circle"></div>
+                        <div class="circle3 circle"></div>
+                    </div>
+                    <code>
+                        <pre>
+        <p style="color: #0091dc;">#example</p> {
+            <p style="color: #ff5f56;">innerHTML</p> = <p style="color: #27c93f;">`&lt;h1 class="primary-btn"&gt; &lt;/h1&gt;`</p>;
+            <p style="color: #ff5f56;">innerText</p> = <p style="color: #27c93f;">"Hello, World!"</p>;
+            <p style="color: #ff5f56;">textContent</p> = <p style="color: #27c93f;">"Hello, World!"</p>;
+            <p style="color: #ff5f56;">value</p> = <p style="color: #27c93f;">"example@email.com"</p>;
+            <p style="color: #ff5f56;">src</p> = <p style="color: #27c93f;">"https://example.com/image.jpg"</p>;
+            <p style="color: #ff5f56;">href</p> = <p style="color: #27c93f;">"https://example.com"</p>;
+        }
+        // <p style="color: #0091dc;">Some for readonly properties</p>
+        <p style="color: #0091dc;">(#example)-&gt;liveWidth;</p>
+        <p style="color: #0091dc;">(#example)-&gt;liveHeight;</p>
+                        </pre>
+                        <button class="code-copy" title="copy" onclick="copyToClipBoard(this)"><i class="bi bi-copy"></i></button>
+                    </code>
+                        
             </div>
         </div>
         <div class="installation">
@@ -315,6 +388,23 @@
                 <p>
                     Now since you have installed JSS, you can start learning about it by reading our documentation or simply watching our tutorial on youtube.
                 </p>
+                <div class="choices-wrapper">
+                    <div class="choice-doc">
+                        <div class="ytvid">
+                            <h1 class="choice-doc-title">Youtube Tutorial</h1>
+                            <p class="choice-doc-desc">Watch our comprehensive tutorial on JSS, this is the best way to get you started quickly</p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/7sDY4m8KNLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="choice-doc">
+                        <h1 class="choice-doc-title">Documentation</h1>
+                        <p class="choice-desc">Explore our comprehensive documentation, packed with detailed examples and educational content to help you master JSS quickly and effectively.</p>
+                        <button class="choice-btn">View Documentation</button>
+                        <h1 class="choice-doc-title">Or</h1>
+                        <p class="choice-doc-desc">Download it in PDF Format.</p>
+                        <button class="choice-btn">Download PDF</button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

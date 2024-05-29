@@ -238,11 +238,9 @@ function event((#big-hero-title):mouseout) {
     paddingRight = 90px;
 }
 .learn-more {
-    backgroundColor = #fff;
-    color = #333;
-    border = solid;
-    borderWidth = 1.5px;
-    borderColor = #333;
+    backgroundColor = #333;
+    color = #fff;
+    border = none;
     height = 45px;
     width = 130px;
     fontSize = 15px;
@@ -258,7 +256,8 @@ function event((#big-hero-title):mouseout) {
     transition = 0.2s;
 }
 .learn-more:hover {
-    backgroundColor = #ddd;
+    boxShadow = '0 2.5px 0px 2px #000';
+    transform = translateY(-2.5px);
     transition = 0.2s;
 }
 #modalStart {
@@ -468,7 +467,7 @@ function event((#closeModal):click) {
     color = #fff;
     position = relative;
     borderRadius = 7px;
-    height = 65px;
+    min-height = 65px;
     paddingLeft = 30px;
     paddingTop = 34px;
     padding = 15px;
@@ -532,4 +531,63 @@ function delay(1s) {
         width = 200px;
         transition = 0.5s;
     }
+}
+.choices-wrapper {
+    display = flex;
+    alignItems = center;
+    justifyContent = space-evenly;
+    gap = 15px;
+    width = 100%;
+    marginTop = 25px;
+}
+.choice-doc {
+    width = 50%;
+    height = 400px;
+    display = flex;
+    flexDirection = column;
+    alignItems = center;
+    textAlign = center;
+    gap = 15px;
+    padding = 15px;
+}
+.choice-doc-desc {
+    marginBottom = 15px;
+}
+.choice-doc-title {
+    fontSize = 20px;
+    color = #333;
+    paddingInline = 40px;
+    marginBottom = 20px;
+}
+.choice-btn {
+    backgroundColor = #000;
+    color = #fff;
+    border = none;
+    borderRadius = 500px;
+    height = 45px;
+    width = 230px;
+    fontSize = 15px;
+    paddingInline = 10px;
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    transition = 0.2s;
+    cursor = pointer;
+}
+.choice-btn:mouseover {
+    boxShadow = '0 2.5px 0px 2px #333';
+    transform = translateY(-2.5px);
+}
+.choice-btn:mouseout {
+    transform = translateY(0px);
+    boxShadow = '0 0 0 3px #fff, 0 0 0 5px #ff0';
+}
+.soon {
+    padding = 50px;
+}
+.soon-feature {
+    padding = 15px;
+}
+.code-jss {
+    maxHeight = 400px;
 }

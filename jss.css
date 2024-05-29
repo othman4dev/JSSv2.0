@@ -3,7 +3,6 @@ html {
   background-color: #eee;
 }
 header {
-  box-shadow: 0 0 6px 1px black;
   padding-inline: 15px;
   height: 60px;
   justify-content: space-between;
@@ -171,11 +170,9 @@ i {
   font-size: 15px;
   width: 130px;
   height: 45px;
-  border-color: #333;
-  border-width: 1.5px;
-  border: solid;
-  color: #333;
-  background-color: #fff;
+  border: none;
+  color: #fff;
+  background-color: #333;
 }
 .get-started:hover {
   transition: 0.2s;
@@ -183,13 +180,13 @@ i {
 }
 .learn-more:hover {
   transition: 0.2s;
-  background-color: #ddd;
+  transform: translateY(-2.5px);
+  box-shadow: 0 2.5px 0px 2px #000;
 }
 #modalStart {
   transition: 0.2s;
   display: none;
   padding: 15px;
-  box-shadow: 0 0 8px 1px #00000020;
   padding-bottom: 30px;
   z-index: 5;
   transform: translate(-50%, -50%);
@@ -329,7 +326,6 @@ i {
   justify-content: space-between;
   align-items: center;
   display: flex;
-  box-shadow: 0 0 5px 1px #00000010;
   background-color: #eee;
   width: 90%;
 }
@@ -382,7 +378,7 @@ i {
   padding: 15px;
   padding-top: 34px;
   padding-left: 30px;
-  height: 65px;
+  min-height: 65px;
   border-radius: 7px;
   position: relative;
   color: #fff;
@@ -437,4 +433,55 @@ ul {
   transition: 0.2s;
   color: #aaa;
   background-color: #ffffff19;
+}
+.choices-wrapper {
+  margin-top: 25px;
+  width: 100%;
+  gap: 15px;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+}
+.choice-doc {
+  padding: 15px;
+  gap: 15px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  height: 400px;
+  width: 50%;
+}
+.choice-doc-desc {
+  margin-bottom: 15px;
+}
+.choice-doc-title {
+  margin-bottom: 20px;
+  padding-inline: 40px;
+  color: #333;
+  font-size: 20px;
+}
+.choice-btn {
+  cursor: pointer;
+  transition: 0.2s;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-inline: 10px;
+  font-size: 15px;
+  width: 230px;
+  height: 45px;
+  border-radius: 500px;
+  border: none;
+  color: #fff;
+  background-color: #000;
+}
+.soon {
+  padding: 50px;
+}
+.soon-feature {
+  padding: 15px;
+}
+.code-jss {
+  max-height: 400px;
 }

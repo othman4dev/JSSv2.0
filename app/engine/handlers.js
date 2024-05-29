@@ -109,10 +109,12 @@ function handlePseudoClassesLoop(stat) {
     if (removeWhiteSpace(stat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
         js += handleHoverLoop(stat);
     } else {
+        js += handleSelectorSimple(stat.stat.selector) + `.forEach((element) => {\n`;
         js += `element.addEventListener('${stat.stat.selector.pseudoClasses[0].value.value}', () => {\n`;
         stat.stat.propreties.forEach(element => {
             js += `element` + handlePropValue(element);
         });
+        js += `});\n`;
         js += `});\n`;
     }
     return js;
@@ -267,13 +269,14 @@ function handleSelectorBlockWithCSS(stat) {
     for (let index = localStat.stat.propreties.length - 1; index >= 0; index--) {
         let element = localStat.stat.propreties[index];
         if (element.value.type !== 'arrow_function' && element.value.type !== 'calculation') {
-            if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) !== 'hover') {
+            if ( element.value.type == 'escaped') {
+                if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
+                    css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${element.value.value.value} }\n`;
+                }
+            } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) !== 'hover') {
                 js += handleSelectorBlock(localStat);
             } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
                 css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
-            } else if ( element.property == 'boxShadow') {
-                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {    ${toCSSProp(element.property)}: ${element.value.value.value} }\n`;
-                localStat.stat.propreties.splice(index, 1);
             } else if ( element.property !== 'innerText' && element.property !== 'textContent' && element.property !== 'innerHTML' && element.property !== 'outerHTML') {
                 css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
                 localStat.stat.propreties.splice(index, 1);
@@ -388,13 +391,14 @@ function handlePropValue(prop) {
         js += `.outerHTML = \`${text}\`;\n`;
     } else if (prop.property == 'innerText') {
         js += `.${prop.property} = ${prop.value.value.value};\n`;
+    } else if (prop.value.type == 'escaped') {
+        js += `.style.${prop.property} = '${prop.value.value.value}';\n`;
     } else {
         if (prop.value.type == 'text') {
             js += `.style.${prop.property} = ${handleValueToText(prop.value)};\n`;
         } else {
             js += `.style.${prop.property} = '${handleValueToText(prop.value)}';\n`;
         }
-        
     }
     return js;
 }
