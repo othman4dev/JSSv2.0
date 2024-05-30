@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Montserrat;
+        }
+        .code * {
+            font-family: monospace;
+            font-size: 17px;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -185,7 +197,7 @@
         </div>
         <div class="soon">
             <h1 class="installation-title" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                Comming Soon To JSS
+                Comming In JSS 2.1
             </h1>
             <div class="soon-feature" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                 <h1 class="chapter-title">JSS Animations</h1>
@@ -203,12 +215,7 @@
                     </div>
                     <code>
                         <pre>
-    <font color="#0091dc">@animation</font> <font color="#991599">loading</font> {
-        .options {
-            <font color="#ff5f56">animationDuration</font> = <font color=" #ffbd2e">1</font>s;
-            <font color="#ff5f56">animationIterationCount</font> = infinite;
-            <font color="#ff5f56">animationTimingFunction</font> = linear;
-        }
+    <font color="#0091dc">@keyframes</font> <font color="#991599">loading</font> {
         from {
             <font color="#ff5f56">transform</font> = <font color="#27c93f">rotate(</font><font color=" #ffbd2e">0</font>deg<font color="#27c93f">)</font>;
         }
@@ -217,7 +224,7 @@
         }
     }
     <font color="#0091dc" >#btn</font><font color="#991599">:click</font> {
-        <font color="#f90">@animate(</font><font color="#0f0">(</font>#jssLogo</font><font color="#0f0">)</font>, loading<font color="#f90">)</font>;
+        <font color="#f90">animationName</font> = <font color="#0f0">loading</font>;
     }
                         </pre>
                     </code>
@@ -248,15 +255,50 @@
             <span style="color: #ff5f56;">value</span> = <span style="color: #27c93f;">"example@email.com"</span>;
             <span style="color: #ff5f56;">src</span> = <span style="color: #27c93f;">"https://example.com/image.jpg"</span>;
             <span style="color: #ff5f56;">href</span> = <span style="color: #27c93f;">"https://example.com"</span>;
+            <span style="color: #ff5f56;">classes</span> = <span style="color: #27c93f;">'bi bi-x-lg'</span>;
+            <span style="color: #ff5f56;">disabled</span> = <span style="color: #27c93f;">true</span>;
+            <span style="color: #ff5f56;">checked</span> = <span style="color: #27c93f;">false</span>;
+            <span style="color: #ff5f56;">+('any HTML attribute')</span> = <span style="color: #27c93f;">'any value'</span>;
         }
         <span style="color: gray;">//Some for readonly properties</span>
-        <span style="color: #0091dc;">(#example)-&gt;liveWidth;</span>
-        <span style="color: #0091dc;">(#example)-&gt;liveHeight;</span>
+        if ( <span style="color: #0091dc;">(#example)-&gt;liveWidth > 100px </span> ) {
+            <span style="color: gray">... code here</span>;
+        }
+        if ( <span style="color: #0091dc;">(#example)-&gt;liveHeight < 5rem </span> ) {
+            <span style="color: gray">... code here</span>;
+        }
         <span style="color: gray;">//And More...</span>
                         </pre>
                         <button class="code-copy" title="copy" onclick="copyToClipBoard(this)"><i class="bi bi-copy"></i></button>
                     </code>
-                        
+                </div>
+                <p>Those propreties can be used in any block like conditionals, events or functions.</p>
+            </div>
+            <div class="soon-feature" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                <h1 class="chapter-title">Media Queries</h1>
+                <p class="chapter-desc">
+                    This feature will allow developers to create responsive designs that adapt to different screen sizes and devices. With JSS Media Queries, you can define styles for specific screen sizes, orientations, and resolutions, ensuring that your web applications look great on any device. This feature will provide a simple and intuitive way to create responsive designs without the need for complex CSS or JavaScript code.
+                </p>
+                <p>
+                    <strong>We will be looking at something like this</strong>
+                </p>
+                <div class="code">
+                    <div class="circles">
+                        <div class="circle1 circle"></div>
+                        <div class="circle2 circle"></div>
+                        <div class="circle3 circle"></div>
+                    </div>
+                    <code>
+                        <pre>
+    <font color="#0091dc">@media</font> <font color="#991599">screen and (max-width: 600px)</font> {
+        <font color="#0091dc">#example</font> {
+            <font color="#ff5f56">color</font> = <font color="#27c93f">(#div15)</font>-><font color="#ff5f56">color</font>;
+        }
+    }
+                        </pre>
+                        <button class="code-copy" title="copy" onclick="copyToClipBoard(this)"><i class="bi bi-copy"></i></button>
+                    </code>
+                </div>
             </div>
             <div class="soon-feature" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                 <h1 class="chapter-title">Development Server</h1>
@@ -279,6 +321,7 @@
                         </pre>
                         <button class="code-copy" title="copy" onclick="copyToClipBoard(this)"><i class="bi bi-copy"></i></button>
                     </code>
+                </div>
             </div>
         </div>
         <div class="installation" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
@@ -460,14 +503,6 @@
 </div>
 </html>
 <script src="jss.js"></script>
-<style>
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        font-family: Montserrat;
-    }
-</style>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="script.js" defer></script>

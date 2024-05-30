@@ -539,6 +539,57 @@ function handleVariable(stat) {
     return js;
 }
 
+function handleKeyframes(stat) {
+    let css = ``;
+    css += `@keyframes ${stat.stat.name.value} {\n`;
+    stat.stat.value.forEach(element => {
+        css += handleSelectorBlockWithCSS(stat.stat);
+    });
+    css += `}\n`;
+    console.log(css);
+    return css;
+}
+
+function handleMedia(stat) {
+    let css = ``;
+    css += `@media ${stat.stat.condition} {\n`;
+    stat.stat.value.forEach(element => {
+        css += handleSelectorBlockWithCSS2(stat.stat);
+    });
+    css += `}\n`;
+    console.log(css);
+    return css;
+}
+
+function handleSelectorBlockWithCSS2(stat) {
+    let localStat = stat;
+    let count = 0;
+    var css = ``;
+    for (let index = localStat.stat.propreties.length - 1; index >= 0; index--) {
+        let element = localStat.stat.propreties[index];
+        if (element.value.type !== 'arrow_function' && element.value.type !== 'calculation') {
+            if ( element.value.type == 'escaped') {
+                if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
+                    css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${element.value.value.value} }\n`;
+                }
+            } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) !== 'hover') {
+                js += handleSelectorBlock(localStat);
+            } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
+                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
+            } else if ( element.property !== 'innerText' && element.property !== 'textContent' && element.property !== 'innerHTML' && element.property !== 'outerHTML') {
+                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
+                localStat.stat.propreties.splice(index, 1);
+            }
+        } else {
+            count++;
+        }
+    }
+    if (count > 0) {
+        js += handleSelectorBlock(localStat);
+    }
+    return [ css , js ];
+}
+
 module.exports = {
     handleArrowFunction,
     handleCalcArrow,
@@ -564,5 +615,7 @@ module.exports = {
     handleStatementScan,
     handleMultiSelector,
     handleVariable,
-    handleVariableBlock
+    handleVariableBlock,
+    handleKeyframes,
+    handleMedia
 };

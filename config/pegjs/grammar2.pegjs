@@ -3,7 +3,13 @@ start = _ stylesheet
 stylesheet = stat:statement* _ { return { stylesheet: stat }; }
 
 statement
-  = stat:( block_variable / variable / function / tunnel / conditional / selector_block ) { return  {type: stat.type , stat}; }
+  = stat:( keyframes / media / block_variable / variable / function / tunnel / conditional / selector_block ) { return  {type: stat.type , stat}; }
+
+keyframes
+  = _ "@keyframes" _ name:word _ "{" _ code:selector_block* _ "}" { return { type: "keyframes", name : name, value: code }; }
+
+media
+  = _ "@media" _ condition:([^{}@;]+) _ "{" _ code:selector_block* _ "}" { return { type: "media", condition : condition.join(''), value: code }; }
 
 block_variable
   = _ "--" name:word _ "{" _ propdec:property_declaration* _ "}" { return { type: "block_variable", name: name, propreties: propdec }; }
@@ -86,7 +92,7 @@ word
   = main:[a-zA-Z-]* { return { type: "word", value: text() }; }
 
 selector_text
-  = ( [a-zA-Z0-9-_#%&<>.]_ )+ { return text(); }
+  = ( [a-zA-Z0-9-_#%&<>._*]_ )+ { return text(); }
 
 string
   = ([a-zA-Z0-9-_#%&.,] _? )+ { return { type: "string", value: text().trimEnd()}; }
@@ -102,7 +108,7 @@ javaScriptStyleElement
   = [a-zA-Z]* { return { type: "javaScriptStyleElement", value: text()}; }
 
 selector_type
-  = [#.@:] { return text(); }
+  = [#.] { return text(); }
 
 multi_comma
   =  ( _ value _ "," )* { return {type: "multi_coma", value: text().split(',')}; }

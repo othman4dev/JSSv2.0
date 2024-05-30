@@ -1947,30 +1947,15 @@
         propreties: [
           {
             property: 'backgroundColor',
-            value: { type: 'color', value: { type: 'color', value: '#fff' } }
+            value: { type: 'color', value: { type: 'color', value: '#333' } }
           },
           {
             property: 'color',
-            value: { type: 'color', value: { type: 'color', value: '#333' } }
+            value: { type: 'color', value: { type: 'color', value: '#fff' } }
           },
           {
             property: 'border',
-            value: { type: 'word', value: { type: 'word', value: 'solid' } }
-          },
-          {
-            property: 'borderWidth',
-            value: {
-              type: 'number_unit',
-              value: {
-                type: 'number_unit',
-                number: { type: 'number', value: '1.5' },
-                unit: { type: 'string', value: 'px' }
-              }
-            }
-          },
-          {
-            property: 'borderColor',
-            value: { type: 'color', value: { type: 'color', value: '#333' } }
+            value: { type: 'word', value: { type: 'word', value: 'none' } }
           },
           {
             property: 'height',
@@ -2099,8 +2084,27 @@
         },
         propreties: [
           {
-            property: 'backgroundColor',
-            value: { type: 'color', value: { type: 'color', value: '#ddd' } }
+            property: 'boxShadow',
+            value: {
+              type: 'escaped',
+              value: { type: 'escaped', value: '0 2.5px 0px 2px #000' }
+            }
+          },
+          {
+            property: 'transform',
+            value: {
+              type: 'style_function',
+              value: {
+                type: 'style_function',
+                function: [
+                  't', 'r', 'a', 'n',
+                  's', 'l', 'a', 't',
+                  'e', 'Y'
+                ],
+                arguments: [ { type: 'string', value: '-2.5px' } ],
+                value: 'translateY(-2.5px)'
+              }
+            }
           },
           {
             property: 'transition',
@@ -3735,7 +3739,7 @@
             }
           },
           {
-            property: 'height',
+            property: 'min-height',
             value: {
               type: 'number_unit',
               value: {
@@ -4382,6 +4386,17 @@
                 unit: { type: 'string', value: 'px' }
               }
             }
+          },
+          {
+            property: 'padding',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '15' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
           }
         ]
       }
@@ -4565,6 +4580,10 @@
                 unit: { type: 'string', value: 's' }
               }
             }
+          },
+          {
+            property: 'cursor',
+            value: { type: 'word', value: { type: 'word', value: 'pointer' } }
           }
         ]
       }
@@ -4581,7 +4600,7 @@
           pseudoClasses: [
             {
               type: 'pseudo_class',
-              value: { type: 'string', value: 'hover' }
+              value: { type: 'string', value: 'mouseover' }
             }
           ]
         },
@@ -4592,6 +4611,251 @@
               type: 'escaped',
               value: { type: 'escaped', value: '0 2.5px 0px 2px #333' }
             }
+          },
+          {
+            property: 'transform',
+            value: {
+              type: 'style_function',
+              value: {
+                type: 'style_function',
+                function: [
+                  't', 'r', 'a', 'n',
+                  's', 'l', 'a', 't',
+                  'e', 'Y'
+                ],
+                arguments: [ { type: 'string', value: '-2.5px' } ],
+                value: 'translateY(-2.5px)'
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '.' ],
+          name: [ 'choice-btn' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: [
+            {
+              type: 'pseudo_class',
+              value: { type: 'string', value: 'mouseout' }
+            }
+          ]
+        },
+        propreties: [
+          {
+            property: 'transform',
+            value: {
+              type: 'style_function',
+              value: {
+                type: 'style_function',
+                function: [
+                  't', 'r', 'a', 'n',
+                  's', 'l', 'a', 't',
+                  'e', 'Y'
+                ],
+                arguments: [ { type: 'string', value: '0px' } ],
+                value: 'translateY(0px)'
+              }
+            }
+          },
+          {
+            property: 'boxShadow',
+            value: {
+              type: 'escaped',
+              value: {
+                type: 'escaped',
+                value: '0 0 0 3px #fff, 0 0 0 5px #ff0'
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '.' ],
+          name: [ 'soon ' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: []
+        },
+        propreties: [
+          {
+            property: 'padding',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '50' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '.' ],
+          name: [ 'soon-feature ' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: []
+        },
+        propreties: [
+          {
+            property: 'padding',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '15' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '.' ],
+          name: [ 'code-jss ' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: []
+        },
+        propreties: [
+          {
+            property: 'maxHeight',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '400' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '.' ],
+          name: [ 'chapter-desc ' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: []
+        },
+        propreties: [
+          {
+            property: 'textIndent',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '15' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'media',
+      stat: {
+        type: 'media',
+        condition: 'screen and (max-width: 768px) ',
+        value: [
+          {
+            type: 'selector_block',
+            selector: {
+              type: [ '#' ],
+              name: [ 'modalStart ' ],
+              indices: null,
+              attributes: [],
+              pseudoClasses: []
+            },
+            propreties: [
+              {
+                property: 'width',
+                value: {
+                  type: 'number_unit',
+                  value: {
+                    type: 'number_unit',
+                    number: { type: 'number', value: '90' },
+                    unit: { type: 'string', value: '%' }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      type: 'keyframes',
+      stat: {
+        type: 'keyframes',
+        name: { type: 'word', value: 'fadeIn' },
+        value: [
+          {
+            type: 'selector_block',
+            selector: {
+              type: [],
+              name: [ 'from ' ],
+              indices: null,
+              attributes: [],
+              pseudoClasses: []
+            },
+            propreties: [
+              {
+                property: 'opacity',
+                value: {
+                  type: 'number',
+                  value: { type: 'number', value: '0' }
+                }
+              }
+            ]
+          },
+          {
+            type: 'selector_block',
+            selector: {
+              type: [],
+              name: [ 'to ' ],
+              indices: null,
+              attributes: [],
+              pseudoClasses: []
+            },
+            propreties: [
+              {
+                property: 'opacity',
+                value: {
+                  type: 'number',
+                  value: { type: 'number', value: '1' }
+                }
+              }
+            ]
           }
         ]
       }

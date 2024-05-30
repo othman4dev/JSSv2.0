@@ -594,3 +594,16 @@ function delay(1s) {
 .chapter-desc {
     textIndent = 15px;
 }
+@media screen and (max-width: 768px) {
+    #modalStart {
+        width = 90%;
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity = 0;
+    }
+    to {
+        opacity = 1;
+    }
+}

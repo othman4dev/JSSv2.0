@@ -16,6 +16,7 @@ const clear = require('clear');
 const { exec } = require('child_process');
 const prettier = require('prettier');
 const { chalkLoger } = require('./tools.js');
+const { handleStatement } = require('./handlers.js');
 
 // Clear the console.
 clear();
@@ -23,14 +24,14 @@ clear();
 
 const argv = yargs
     .option('tree', {
-      alias: 't',
-      description: 'Add the parsed code to ./config/schema/parseTree.t file',
-      type: 'boolean'
+        alias: 't',
+        description: 'Add the parsed code to ./config/schema/parseTree.t file',
+        type: 'boolean'
     })
     .option('js', {
-      alias: 's',
-      description: 'Depend on JavaScript code only (without CSS)',
-      type: 'boolean'
+        alias: 's',
+        description: 'Depend on JavaScript code only (without CSS)',
+        type: 'boolean'
     })
     .option('css', {
         alias: 'c',
@@ -102,7 +103,9 @@ function main() {
             codeType = 'js';
             chalkLoger('comment', 'Generating JavaScript code only (without CSS)');
             stylesheet.forEach((stat) => {
-                if (stat.stat.selector && stat.stat.selector.type == 'multi_selector') {
+                if (localStat.type == 'animation' || localStat.type == 'keyframes' || localStat.type == 'media') {
+                    console.log('animations and media queries and keyframes are not supported in js only mode');
+                } else if (stat.stat.selector && stat.stat.selector.type == 'multi_selector') {
                     let array2 = JSON.parse(handleStatement(stat, handleMultiSelector, 'Multi selector with css error'));
                     for (let i = 0; i < array2.length; i++) {
                         js += handleStatement(array2[i], handleSelectorBlock, 'multi selector with css error');
@@ -152,7 +155,11 @@ function main() {
             codeType = 'both';
             chalkLoger('comment', 'Generating both JavaScript and CSS code');
             stylesheet.forEach((stat) => {
-                if (stat.stat.selector && stat.stat.selector.type == 'multi_selector') {
+                if (stat.type == 'keyframes') {
+                    css += handleStatement(stat, handleKeyframes, 'keyframes block error');
+                } else if (stat.type == 'media') {
+                    css += handleStatement(stat, handleMedia, ' media block error');
+                } else if (stat.stat.selector && stat.stat.selector.type == 'multi_selector') {
                     let array2 = JSON.parse(handleStatement(stat, handleMultiSelectorWithCSS, 'Multi selector with css error'));
                     for (let i = 0; i < array2.length; i++) {
                         css += handleStatement(array2[i], handleSelectorBlockWithCSS, 'multi selector with css error')[0];
@@ -293,7 +300,7 @@ function main() {
             }
         }
     });
-    if (errorCount == 0) {
+    if (errorCount == 0 && !argv.tree) {
         setTimeout(() => {
             checkFiles('both');
         }, 500);
