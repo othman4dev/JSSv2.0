@@ -158,7 +158,10 @@ function main() {
                 if (stat.type == 'keyframes') {
                     css += handleStatement(stat, handleKeyframes, 'keyframes block error');
                 } else if (stat.type == 'media') {
-                    css += handleStatement(stat, handleMedia, ' media block error');
+                    let temp = handleStatement(stat, handleMedia, ' media block error');
+                    css += temp[0];
+                    js += temp[1];
+                    console.log(css);
                 } else if (stat.stat.selector && stat.stat.selector.type == 'multi_selector') {
                     let array2 = JSON.parse(handleStatement(stat, handleMultiSelectorWithCSS, 'Multi selector with css error'));
                     for (let i = 0; i < array2.length; i++) {

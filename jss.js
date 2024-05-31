@@ -135,6 +135,18 @@ document.querySelectorAll(".choice-btn").forEach((element) => {
   });
 });
 document.querySelectorAll(".choice-btn").forEach((element) => {
+  element.addEventListener("mouseover", () => {
+    element.style.boxShadow = "0 2.5px 0px 2px #333";
+    element.style.transform = "translateY(-2.5px)";
+  });
+});
+document.querySelectorAll(".choice-btn").forEach((element) => {
+  element.addEventListener("mouseout", () => {
+    element.style.transform = "translateY(0px)";
+    element.style.boxShadow = "0 0 0 3px #fff, 0 0 0 5px #ff0";
+  });
+});
+document.querySelectorAll(".choice-btn").forEach((element) => {
   element.addEventListener("mouseout", () => {
     element.style.transform = "translateY(0px)";
     element.style.boxShadow = "0 0 0 3px #fff, 0 0 0 5px #ff0";

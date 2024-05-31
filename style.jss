@@ -413,13 +413,13 @@ function event((#closeModal):click) {
 .line {
     width = 90%;
     backgroundColor = #eee;
-    boxShadow = '0 0 5px 1px #00000010';
     display = flex;
     alignItems = center;
     justifyContent = space-between;
     borderRadius = 10px;
     padding = 15px;
     marginBottom = 7px;
+    boxShadow = '0 0 5px 1px #00000010';
 }
 .step2 {
     flexGrow = 1;
@@ -446,9 +446,13 @@ function event((#closeModal):click) {
 }
 .installation {
     padding = 40px;
+    marginTop = 25px;
 }
 .chapter {
     padding = 15px;
+}
+.top-space {
+    marginTop = 50px;
 }
 .installation-title {
     fontSize = 40px;
@@ -593,17 +597,4 @@ function delay(1s) {
 }
 .chapter-desc {
     textIndent = 15px;
-}
-@media screen and (max-width: 768px) {
-    #modalStart {
-        width = 90%;
-    }
-}
-@keyframes fadeIn {
-    from {
-        opacity = 0;
-    }
-    to {
-        opacity = 1;
-    }
 }

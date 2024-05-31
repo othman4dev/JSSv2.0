@@ -4812,53 +4812,6 @@
           }
         ]
       }
-    },
-    {
-      type: 'keyframes',
-      stat: {
-        type: 'keyframes',
-        name: { type: 'word', value: 'fadeIn' },
-        value: [
-          {
-            type: 'selector_block',
-            selector: {
-              type: [],
-              name: [ 'from ' ],
-              indices: null,
-              attributes: [],
-              pseudoClasses: []
-            },
-            propreties: [
-              {
-                property: 'opacity',
-                value: {
-                  type: 'number',
-                  value: { type: 'number', value: '0' }
-                }
-              }
-            ]
-          },
-          {
-            type: 'selector_block',
-            selector: {
-              type: [],
-              name: [ 'to ' ],
-              indices: null,
-              attributes: [],
-              pseudoClasses: []
-            },
-            propreties: [
-              {
-                property: 'opacity',
-                value: {
-                  type: 'number',
-                  value: { type: 'number', value: '1' }
-                }
-              }
-            ]
-          }
-        ]
-      }
     }
   ]
 }

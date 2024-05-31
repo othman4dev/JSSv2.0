@@ -269,16 +269,23 @@ function handleSelectorBlockWithCSS(stat) {
     for (let index = localStat.stat.propreties.length - 1; index >= 0; index--) {
         let element = localStat.stat.propreties[index];
         if (element.value.type !== 'arrow_function' && element.value.type !== 'calculation') {
-            if ( element.value.type == 'escaped') {
-                if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
-                    css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${element.value.value.value} }\n`;
-                }
-            } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) !== 'hover') {
+            if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) !== 'hover') {
                 js += handleSelectorBlock(localStat);
             } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
+                if ( element.value.type == 'escaped') {
+                    css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${element.value.value.value} }\n`;
+                }
                 css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
             } else if ( element.property !== 'innerText' && element.property !== 'textContent' && element.property !== 'innerHTML' && element.property !== 'outerHTML') {
-                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
+                if ( element.value.type == 'escaped') {
+                    if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
+                        css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${element.value.value.value} }\n`;
+                    } else {
+                        css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {    ${toCSSProp(element.property)}: ${element.value.value.value} }\n`;
+                    }
+                } else {
+                    css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
+                }
                 localStat.stat.propreties.splice(index, 1);
             }
         } else {
@@ -543,51 +550,79 @@ function handleKeyframes(stat) {
     let css = ``;
     css += `@keyframes ${stat.stat.name.value} {\n`;
     stat.stat.value.forEach(element => {
-        css += handleSelectorBlockWithCSS(stat.stat);
+        css += handleSelectorBlockWithCSS(stat);
     });
     css += `}\n`;
-    console.log(css);
     return css;
 }
 
 function handleMedia(stat) {
     let css = ``;
+    let js = ``;
     css += `@media ${stat.stat.condition} {\n`;
     stat.stat.value.forEach(element => {
-        css += handleSelectorBlockWithCSS2(stat.stat);
+        let temp = handleMediaSelector(element);
+        css += temp[0];
+        js += temp[1];
     });
     css += `}\n`;
-    console.log(css);
-    return css;
+    return [ css , js ];
 }
 
-function handleSelectorBlockWithCSS2(stat) {
+function handleMediaSelector(stat) {
     let localStat = stat;
+    let js = '';
+    let css = '';
     let count = 0;
-    var css = ``;
-    for (let index = localStat.stat.propreties.length - 1; index >= 0; index--) {
-        let element = localStat.stat.propreties[index];
+    for (let index = localStat.propreties.length - 1; index >= 0; index--) {
+        let element = localStat.propreties[index];
         if (element.value.type !== 'arrow_function' && element.value.type !== 'calculation') {
             if ( element.value.type == 'escaped') {
-                if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
-                    css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${element.value.value.value} }\n`;
+                if (localStat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.selector.pseudoClasses[0].value.value) == 'hover') {
+                    css += `${localStat.selector.type}${removeWhiteSpace(localStat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${element.value.value.value} }\n`;
                 }
-            } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) !== 'hover') {
+            } else if (localStat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.selector.pseudoClasses[0].value.value) !== 'hover') {
                 js += handleSelectorBlock(localStat);
-            } else if (localStat.stat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.stat.selector.pseudoClasses[0].value.value) == 'hover') {
-                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
+            } else if (localStat.selector.pseudoClasses[0] && removeWhiteSpace(localStat.selector.pseudoClasses[0].value.value) == 'hover') {
+                css += `${localStat.selector.type}${removeWhiteSpace(localStat.selector.name)}:hover {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
             } else if ( element.property !== 'innerText' && element.property !== 'textContent' && element.property !== 'innerHTML' && element.property !== 'outerHTML') {
-                css += `${localStat.stat.selector.type}${removeWhiteSpace(localStat.stat.selector.name)} {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
-                localStat.stat.propreties.splice(index, 1);
+                css += `${localStat.selector.type}${removeWhiteSpace(localStat.selector.name)} {    ${toCSSProp(element.property)}: ${handleValueToText(element.value)} }\n`;
+                localStat.propreties.splice(index, 1);
             }
         } else {
             count++;
         }
     }
     if (count > 0) {
-        js += handleSelectorBlock(localStat);
+        js += handleMediaJS(localStat);
     }
     return [ css , js ];
+
+}
+
+function handleMediaJS(stat) {
+    let js = ``;
+    js += `if window.matchMedia("(${stat.condition})").matches {\n`;
+    stat.propreties.forEach(element => {
+        js += handleSelectorBlock(stat);
+    });
+    js += `}\n`;
+    js += `window.matchMedia("(${stat.condition})").addListener(function(e) {\n`;
+    js += `if (e.matches) {\n`;
+    stat.propreties.forEach(element => {
+        js += handleSelectorBlock(stat);
+    });
+    js += `} else {\n`;
+    if (stat.selector.type != '#') {
+        js += `${handleSelectorSimple(stat.selector)}.forEach((element) => {\n`;
+        js += `element.style = '';\n`;
+        js += `});\n`;
+    } else {
+        js += `${handleSelectorSimple(stat.selector)}.style = '';\n`;
+    }
+    js += `}\n`;
+    js += `});\n`;
+    return js;
 }
 
 module.exports = {
@@ -617,5 +652,7 @@ module.exports = {
     handleVariable,
     handleVariableBlock,
     handleKeyframes,
-    handleMedia
+    handleMedia,
+    handleMediaSelector,
+    handleMediaJS
 };
