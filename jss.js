@@ -152,5 +152,55 @@ document.querySelectorAll(".choice-btn").forEach((element) => {
     element.style.boxShadow = "0 0 0 3px #fff, 0 0 0 5px #ff0";
   });
 });
+document.querySelectorAll(".social")[0].addEventListener("mouseover", () => {
+  document.querySelectorAll(".social")[0].style.transform = "translateY(-5px)";
+  document.querySelectorAll(".social-name")[0].style.filter = "blur(0px)";
+  document.querySelectorAll(".social-name")[0].style.opacity = "1";
+});
+document.querySelectorAll(".social")[1].addEventListener("mouseover", () => {
+  document.querySelectorAll(".social")[1].style.transform = "translateY(-5px)";
+  document.querySelectorAll(".social-name")[1].style.filter = "blur(0px)";
+  document.querySelectorAll(".social-name")[1].style.opacity = "1";
+});
+document.querySelectorAll(".social")[2].addEventListener("mouseover", () => {
+  document.querySelectorAll(".social")[2].style.transform = "translateY(-5px)";
+  document.querySelectorAll(".social-name")[2].style.filter = "blur(0px)";
+  document.querySelectorAll(".social-name")[2].style.opacity = "1";
+});
+document.querySelectorAll(".social")[3].addEventListener("mouseover", () => {
+  document.querySelectorAll(".social")[3].style.transform = "translateY(-5px)";
+  document.querySelectorAll(".social-name")[3].style.filter = "blur(0px)";
+  document.querySelectorAll(".social-name")[3].style.opacity = "1";
+});
+document.querySelectorAll(".social")[4].addEventListener("mouseover", () => {
+  document.querySelectorAll(".social")[4].style.transform = "translateY(-5px)";
+  document.querySelectorAll(".social-name")[4].style.filter = "blur(0px)";
+  document.querySelectorAll(".social-name")[4].style.opacity = "1";
+});
+document.querySelectorAll(".social")[0].addEventListener("mouseout", () => {
+  document.querySelectorAll(".social")[0].style.transform = "translateY(0px)";
+  document.querySelectorAll(".social-name")[0].style.filter = "blur(5px)";
+  document.querySelectorAll(".social-name")[0].style.opacity = "0";
+});
+document.querySelectorAll(".social")[1].addEventListener("mouseout", () => {
+  document.querySelectorAll(".social")[1].style.transform = "translateY(0px)";
+  document.querySelectorAll(".social-name")[1].style.filter = "blur(5px)";
+  document.querySelectorAll(".social-name")[1].style.opacity = "0";
+});
+document.querySelectorAll(".social")[2].addEventListener("mouseout", () => {
+  document.querySelectorAll(".social")[2].style.transform = "translateY(0px)";
+  document.querySelectorAll(".social-name")[2].style.filter = "blur(5px)";
+  document.querySelectorAll(".social-name")[2].style.opacity = "0";
+});
+document.querySelectorAll(".social")[3].addEventListener("mouseout", () => {
+  document.querySelectorAll(".social")[3].style.transform = "translateY(0px)";
+  document.querySelectorAll(".social-name")[3].style.filter = "blur(5px)";
+  document.querySelectorAll(".social-name")[3].style.opacity = "0";
+});
+document.querySelectorAll(".social")[4].addEventListener("mouseout", () => {
+  document.querySelectorAll(".social")[4].style.transform = "translateY(0px)";
+  document.querySelectorAll(".social-name")[4].style.filter = "blur(5px)";
+  document.querySelectorAll(".social-name")[4].style.opacity = "0";
+});
 
 /* JSS Framwork by otman kharbouch, GitHub : Othman4dev. */

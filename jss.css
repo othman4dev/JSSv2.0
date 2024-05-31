@@ -457,7 +457,7 @@ ul {
   align-items: center;
   flex-direction: column;
   display: flex;
-  height: 400px;
+  height: 500px;
   width: 50%;
 }
 .choice-doc-desc {
@@ -469,7 +469,12 @@ ul {
   color: #333;
   font-size: 20px;
 }
+choice-doc-title2 {
+  color: #333;
+  font-size: 20px;
+}
 .choice-btn {
+  position: relative;
   cursor: pointer;
   transition: 0.2s;
   justify-content: center;
@@ -495,4 +500,65 @@ ul {
 }
 .chapter-desc {
   text-indent: 15px;
+}
+footer {
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+  color: #fff;
+  background-color: #000;
+  padding: 50px;
+}
+.footer-col {
+  width: 100%;
+}
+.footer-social {
+  margin-top: 25px;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+}
+.social {
+  width: 40px;
+  height: 40px;
+  transition: 0.2s;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  border-radius: 50%;
+  color: #000;
+  background-color: #fff;
+}
+.social-name {
+  font-size: 11px;
+  transition: 0.2s;
+  opacity: 0;
+  color: #fff;
+}
+.social-wrapper {
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.pdf-file {
+  margin-bottom: -40px;
+  width: 150px;
+}
+.documents {
+  height: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+}
+.doc-type {
+  gap: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
 }

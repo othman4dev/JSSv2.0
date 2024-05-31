@@ -3333,13 +3333,6 @@
             value: { type: 'color', value: { type: 'color', value: '#eee' } }
           },
           {
-            property: 'boxShadow',
-            value: {
-              type: 'escaped',
-              value: { type: 'escaped', value: '0 0 5px 1px #00000010' }
-            }
-          },
-          {
             property: 'display',
             value: { type: 'word', value: { type: 'word', value: 'flex' } }
           },
@@ -3385,6 +3378,13 @@
                 number: { type: 'number', value: '7' },
                 unit: { type: 'string', value: 'px' }
               }
+            }
+          },
+          {
+            property: 'boxShadow',
+            value: {
+              type: 'escaped',
+              value: { type: 'escaped', value: '0 0 5px 1px #00000010' }
             }
           }
         ]
@@ -3563,6 +3563,17 @@
                 unit: { type: 'string', value: 'px' }
               }
             }
+          },
+          {
+            property: 'marginTop',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '25' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
           }
         ]
       }
@@ -3586,6 +3597,32 @@
               value: {
                 type: 'number_unit',
                 number: { type: 'number', value: '15' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '.' ],
+          name: [ 'top-space ' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: []
+        },
+        propreties: [
+          {
+            property: 'marginTop',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '50' },
                 unit: { type: 'string', value: 'px' }
               }
             }
@@ -4782,36 +4819,271 @@
       }
     },
     {
-      type: 'media',
+      type: 'selector_block',
       stat: {
-        type: 'media',
-        condition: 'screen and (max-width: 768px) ',
-        value: [
+        type: 'selector_block',
+        selector: {
+          type: [],
+          name: [ 'footer ' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: []
+        },
+        propreties: [
           {
-            type: 'selector_block',
-            selector: {
-              type: [ '#' ],
-              name: [ 'modalStart ' ],
-              indices: null,
-              attributes: [],
-              pseudoClasses: []
-            },
-            propreties: [
-              {
-                property: 'width',
-                value: {
-                  type: 'number_unit',
-                  value: {
-                    type: 'number_unit',
-                    number: { type: 'number', value: '90' },
-                    unit: { type: 'string', value: '%' }
-                  }
-                }
+            property: 'padding',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '50' },
+                unit: { type: 'string', value: 'px' }
               }
-            ]
+            }
+          },
+          {
+            property: 'backgroundColor',
+            value: { type: 'color', value: { type: 'color', value: '#000' } }
+          },
+          {
+            property: 'color',
+            value: { type: 'color', value: { type: 'color', value: '#fff' } }
+          },
+          {
+            property: 'display',
+            value: { type: 'word', value: { type: 'word', value: 'flex' } }
+          },
+          {
+            property: 'alignItems',
+            value: { type: 'word', value: { type: 'word', value: 'center' } }
+          },
+          {
+            property: 'justifyContent',
+            value: {
+              type: 'word',
+              value: { type: 'word', value: 'space-evenly' }
+            }
           }
         ]
       }
-    }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '.' ],
+          name: [ 'footer-col ' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: []
+        },
+        propreties: [
+          {
+            property: 'width',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '100' },
+                unit: { type: 'string', value: '%' }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '.' ],
+          name: [ 'footer-social ' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: []
+        },
+        propreties: [
+          {
+            property: 'display',
+            value: { type: 'word', value: { type: 'word', value: 'flex' } }
+          },
+          {
+            property: 'alignItems',
+            value: { type: 'word', value: { type: 'word', value: 'center' } }
+          },
+          {
+            property: 'justifyContent',
+            value: {
+              type: 'word',
+              value: { type: 'word', value: 'space-evenly' }
+            }
+          },
+          {
+            property: 'width',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '100' },
+                unit: { type: 'string', value: '%' }
+              }
+            }
+          },
+          {
+            property: 'marginTop',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '25' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '.' ],
+          name: [ 'social ' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: []
+        },
+        propreties: [
+          {
+            property: 'backgroundColor',
+            value: { type: 'color', value: { type: 'color', value: '#fff' } }
+          },
+          {
+            property: 'color',
+            value: { type: 'color', value: { type: 'color', value: '#000' } }
+          },
+          {
+            property: 'borderRadius',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '50' },
+                unit: { type: 'string', value: '%' }
+              }
+            }
+          },
+          {
+            property: 'padding',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '10' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          },
+          {
+            property: 'display',
+            value: { type: 'word', value: { type: 'word', value: 'flex' } }
+          },
+          {
+            property: 'alignItems',
+            value: { type: 'word', value: { type: 'word', value: 'center' } }
+          },
+          {
+            property: 'justifyContent',
+            value: { type: 'word', value: { type: 'word', value: 'center' } }
+          },
+          {
+            property: 'cursor',
+            value: { type: 'word', value: { type: 'word', value: 'pointer' } }
+          },
+          {
+            property: 'transition',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '0.2' },
+                unit: { type: 'string', value: 's' }
+              }
+            }
+          },
+          {
+            property: 'height',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '40' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          },
+          {
+            property: 'width',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '40' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      type: 'selector_block',
+      stat: {
+        type: 'selector_block',
+        selector: {
+          type: [ '.' ],
+          name: [ 'social-name ' ],
+          indices: null,
+          attributes: [],
+          pseudoClasses: []
+        },
+        propreties: [
+          {
+            property: 'color',
+            value: { type: 'color', value: { type: 'color', value: '#fff' } }
+          },
+          {
+            property: 'opacity',
+            value: { type: 'number', value: { type: 'number', value: '0' } }
+          },
+          {
+            property: 'transition',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '0.2' },
+                unit: { type: 'string', value: 's' }
+              }
+            }
+          },
+          {
+            property: 'fontSize',
+            value: {
+              type: 'number_unit',
+              value: {
+                type: 'number_unit',
+                number: { type: 'number', value: '11' },
+                unit: { type: 'string', value: 'px' }
+              }
+            }
+          }
+        ]
+      }
+    },
+    ... 6 more items
   ]
 }

@@ -1,4 +1,3 @@
-
 html {
     backgroundColor = #eee;
     fontFamily = Montserrat;
@@ -546,7 +545,7 @@ function delay(1s) {
 }
 .choice-doc {
     width = 50%;
-    height = 400px;
+    height = 500px;
     display = flex;
     flexDirection = column;
     alignItems = center;
@@ -563,6 +562,10 @@ function delay(1s) {
     paddingInline = 40px;
     marginBottom = 20px;
 }
+choice-doc-title2 {
+    fontSize = 20px;
+    color = #333;
+}
 .choice-btn {
     backgroundColor = #000;
     color = #fff;
@@ -577,6 +580,7 @@ function delay(1s) {
     justifyContent = center;
     transition = 0.2s;
     cursor = pointer;
+    position = relative;
 }
 .choice-btn:mouseover {
     boxShadow = '0 2.5px 0px 2px #333';
@@ -597,4 +601,155 @@ function delay(1s) {
 }
 .chapter-desc {
     textIndent = 15px;
+}
+footer {
+    padding = 50px;
+    backgroundColor = #000;
+    color = #fff;
+    display = flex;
+    alignItems = center;
+    justifyContent = space-evenly;
+}
+.footer-col {
+    width = 100%;
+}
+.footer-social {
+    display = flex;
+    alignItems = center;
+    justifyContent = space-evenly;
+    width = 100%;
+    marginTop = 25px;
+}
+.social {
+    backgroundColor = #fff;
+    color = #000;
+    borderRadius = 50%;
+    padding = 10px;
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    cursor = pointer;
+    transition = 0.2s;
+    height = 40px;
+    width = 40px;
+}
+.social-name {
+    color = #fff;
+    opacity = 0;
+    transition = 0.2s;
+    fontSize = 11px;
+}
+.social-wrapper {
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    flexDirection = column;
+    gap = 10px; 
+}
+function event((.social[0]):mouseover) {
+    .social[0] {
+        transform = translateY(-5px);
+    }
+    .social-name[0] {
+        filter = blur(0px);
+        opacity = 1;
+    }
+}
+function event((.social[1]):mouseover) {
+    .social[1] {
+        transform = translateY(-5px);
+    }
+    .social-name[1] {
+        filter = blur(0px);
+        opacity = 1;
+    }
+}
+function event((.social[2]):mouseover) {
+    .social[2] {
+        transform = translateY(-5px);
+    }
+    .social-name[2] {
+        filter = blur(0px);
+        opacity = 1;
+    }
+}
+function event((.social[3]):mouseover) {
+    .social[3] {
+        transform = translateY(-5px);
+    }
+    .social-name[3] {
+        filter = blur(0px);
+        opacity = 1;
+    }
+}
+function event((.social[4]):mouseover) {
+    .social[4] {
+        transform = translateY(-5px);
+    }
+    .social-name[4] {
+        filter = blur(0px);
+        opacity = 1;
+    }
+}
+function event((.social[0]):mouseout) {
+    .social[0] {
+        transform = translateY(0px);
+    }
+    .social-name[0] {
+        filter = blur(5px);
+        opacity = 0;
+    }
+}
+function event((.social[1]):mouseout) {
+    .social[1] {
+        transform = translateY(0px);
+    }
+    .social-name[1] {
+        filter = blur(5px);
+        opacity = 0;
+    }
+}
+function event((.social[2]):mouseout) {
+    .social[2] {
+        transform = translateY(0px);
+    }
+    .social-name[2] {
+        filter = blur(5px);
+        opacity = 0;
+    }
+}
+function event((.social[3]):mouseout) {
+    .social[3] {
+        transform = translateY(0px);
+    }
+    .social-name[3] {
+        filter = blur(5px);
+        opacity = 0;
+    }
+}
+function event((.social[4]):mouseout) {
+    .social[4] {
+        transform = translateY(0px);
+    }
+    .social-name[4] {
+        filter = blur(5px);
+        opacity = 0;
+    }
+}
+.pdf-file {
+    width = 150px;
+    marginBottom = -40px;
+}
+.documents {
+    display = flex;
+    alignItems = center;
+    justifyContent = space-evenly;
+    height = 100%;
+}
+.doc-type {
+    display = flex;
+    alignItems = center;
+    justifyContent = space-between;
+    flexDirection = column;
+    gap = 10px;
 }

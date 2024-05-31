@@ -32,26 +32,33 @@ function handleFunction(func) {
 function handleLoopFunction(func) {
     js = '';
     if (func.stat.statements[0].type == 'conditional') {
-        js += `${handleSelectorSimple(func.stat.function_param.selector)}.forEach((element) => {\n`;
+        js += `${handleDefaultSelector(func.stat.function_param.selector)}.forEach((element) => {\n`;
         js += `element.addEventListener('${func.stat.function_param.eventType.value}', () => {\n`;
         func.stat.statements.forEach(element => {
             js += handleConditional(element);
         });
         js += `});\n`;
         js += `});\n`;
-    } else if (func.stat.function == 'event') {
-        js += `document.querySelectorAll('${func.stat.selector.type}${removeWhiteSpace(func.stat.selector.name.value)}').forEach((element) => {\n`;
-        js += `element.addEventListener('${func.stat.eventType.value}', () => {\n`;
-        func.stat.statements.forEach(element => {
-            if (element.type == 'selector_block') {
-                js += handleSelectorBlockFunction(element);
-            }
-        });
-        js += `});\n`;
-        js += `});\n`;
+    } else if (func.stat.function.value == 'event') {
+        if (func.stat.function_param.selector.indices[0] !== null) {
+            js += `${handleDefaultSelector(func.stat.function_param.selector)}.addEventListener('${func.stat.function_param.eventType.value}', () => {\n`;
+            func.stat.statements.forEach(element => {
+                js += handleSelectorBlockFunction(element.stat);
+            });
+            js += `});\n`;
+        } else {
+            js += `document.querySelectorAll('${func.stat.selector.type}${removeWhiteSpace(func.stat.selector.name.value)}').forEach((element) => {\n`;
+            js += `element.addEventListener('${func.stat.eventType.value}', () => {\n`;
+            func.stat.statements.forEach(element => {
+                if (element.type == 'selector_block') {
+                    js += handleSelectorBlockFunction(element);
+                }
+            });
+            js += `});\n`;
+            js += `});\n`;
+        }
     }
     return js;
-
 }
 
 function handleDefaultSelector(selector) {
