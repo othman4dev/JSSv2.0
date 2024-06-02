@@ -1,6 +1,7 @@
 html {
     backgroundColor = #eee;
     fontFamily = Montserrat;
+    position = relative;
 }
 header {
     backgroundColor = #000;
@@ -11,6 +12,10 @@ header {
     height = 60px;
     paddingInline = 15px;
     boxShadow = '0 0 6px 1px black';
+    position = sticky;
+    top = 0;
+    zIndex = 10;
+    left = 0;
 }
 .first-half,
 .second-half {
