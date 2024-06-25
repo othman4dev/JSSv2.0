@@ -578,52 +578,14 @@ choice-doc-title2 {
     borderRadius = 500px;
     height = 45px;
     width = 230px;
-    fontSize = 15px;
-    paddingInline = 10px;
-    display = flex;
-    alignItems = center;
-    justifyContent = center;
-    transition = 0.2s;
-    cursor = pointer;
-    position = relative;
-}
-.choice-btn:mouseover {
-    boxShadow = '0 2.5px 0px 2px #333';
-    transform = translateY(-2.5px);
-}
-.choice-btn:mouseout {
-    transform = translateY(0px);
-    boxShadow = '0 0 0 3px #fff, 0 0 0 5px #ff0';
-}
-.soon {
-    padding = 50px;
-}
-.soon-feature {
-    padding = 15px;
-}
-.code-jss {
-    maxHeight = 400px;
-}
-.chapter-desc {
-    textIndent = 15px;
-}
-footer {
-    padding = 50px;
-    backgroundColor = #000;
-    color = #fff;
-    display = flex;
-    alignItems = center;
-    justifyContent = space-evenly;
-}
-.footer-col {
-    width = 100%;
+    fontSize = 15;
 }
 .footer-social {
     display = flex;
     alignItems = center;
     justifyContent = space-evenly;
     width = 100%;
-    marginTop = 25px;
+    marginTop = 0px;
 }
 .social {
     backgroundColor = #fff;
@@ -649,7 +611,8 @@ footer {
     alignItems = center;
     justifyContent = center;
     flexDirection = column;
-    gap = 10px; 
+    gap = 10px;
+    marginTop = 20px;
 }
 function event((.social[0]):mouseover) {
     .social[0] {
@@ -757,4 +720,21 @@ function event((.social[4]):mouseout) {
     justifyContent = space-between;
     flexDirection = column;
     gap = 10px;
+}
+.footer-desc {
+    fontSize = 15px;
+    width = 100%;
+}
+.by-me {
+    fontSize = 12px;
+    color = #ddd;
+    textIndent = 15px;
+}
+.version {
+    fontSize = 20px;
+    marginBottom = 10px;
+}
+.contact-title {
+    fontSize = 20px;
+    marginTop = 20px;
 }
