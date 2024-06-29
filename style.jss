@@ -584,6 +584,9 @@ choice-doc-title2 {
     fontSize = 20px;
     color = #333;
 }
+a {
+    textDecoration = none;
+}
 .choice-btn {
     backgroundColor = #000;
     color = #fff;
