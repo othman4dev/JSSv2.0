@@ -496,7 +496,14 @@ a {
   text-decoration: none;
 }
 .choice-btn {
-  font-size: 15;
+  position: relative;
+  cursor: pointer;
+  transition: 0.2s;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-inline: 10px;
+  font-size: 15px;
   width: 230px;
   height: 45px;
   border-radius: 500px;

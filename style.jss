@@ -594,7 +594,14 @@ a {
     borderRadius = 500px;
     height = 45px;
     width = 230px;
-    fontSize = 15;
+    fontSize = 15px;
+    paddingInline = 10px;
+    display = flex;
+    alignItems = center;
+    justifyContent = center;
+    transition = 0.2s;
+    cursor = pointer;
+    position = relative;
 }
 .footer-social {
     display = flex;
@@ -627,6 +634,14 @@ a {
     opacity = 0;
     transition = 0.2s;
     fontSize = 11px;
+}
+.choice-btn:mouseover {
+    boxShadow = '0 2.5px 0px 2px #333';
+    transform = translateY(-2.5px);
+}
+.choice-btn:mouseout {
+    transform = translateY(0px);
+    boxShadow = '0 0 0 3px #fff, 0 0 0 5px #ff0';
 }
 .social-wrapper {
     display = flex;
