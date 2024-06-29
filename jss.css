@@ -296,8 +296,7 @@ i {
 }
 .code-img {
   border-radius: 5px;
-  height: 240px;
-  min-width: 350px;
+  width: 100%;
 }
 .part2-header {
   text-indent: 15px;
@@ -306,10 +305,17 @@ i {
   font-size: 20px;
 }
 .step {
+  width: 50%;
   align-items: center;
   flex-direction: column;
   display: flex;
+  flex-grow: 0.5;
+}
+iframe {
   flex-grow: 1;
+  height: 300px;
+  min-width: 100%;
+  max-width: 100%;
 }
 .undertitle {
   margin-bottom: 15px;
@@ -321,7 +327,8 @@ i {
   margin-bottom: 50px;
 }
 .img-title {
-  max-width: 70%;
+  min-height: 50px;
+  width: 90%;
   margin-top: 5px;
   text-align: center;
   color: #333;
@@ -370,6 +377,7 @@ i {
 }
 .top-space {
   margin-top: 50px;
+  margin-top: 50px;
 }
 .installation-title {
   margin-bottom: 20px;
@@ -382,6 +390,12 @@ i {
   padding-inline: 40px;
   color: #333;
   font-size: 30px;
+}
+.chapter-desc {
+  text-indent: 15px;
+}
+.soon-feature {
+  padding: 15px;
 }
 .code {
   position: relative;
@@ -479,14 +493,7 @@ choice-doc-title2 {
   font-size: 20px;
 }
 .choice-btn {
-  position: relative;
-  cursor: pointer;
-  transition: 0.2s;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  padding-inline: 10px;
-  font-size: 15px;
+  font-size: 15;
   width: 230px;
   height: 45px;
   border-radius: 500px;
@@ -494,36 +501,15 @@ choice-doc-title2 {
   color: #fff;
   background-color: #000;
 }
-.soon {
-  padding: 50px;
-}
-.soon-feature {
-  padding: 15px;
-}
-.code-jss {
-  max-height: 400px;
-}
-.chapter-desc {
-  text-indent: 15px;
-}
-footer {
-  justify-content: space-evenly;
-  align-items: center;
-  display: flex;
-  color: #fff;
-  background-color: #000;
-  padding: 50px;
-}
-.footer-col {
-  height: 200px;
-  width: 100%;
-}
 .footer-social {
   margin-top: 0px;
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
   display: flex;
+}
+.soon {
+  padding: 50px;
 }
 .social {
   width: 40px;
@@ -551,6 +537,19 @@ footer {
   justify-content: center;
   align-items: center;
   display: flex;
+}
+footer {
+  padding: 50px;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.footer-col {
+  width: 100%;
+  height: fit-content;
+  min-height: 200px;
 }
 .pdf-file {
   margin-bottom: -40px;
@@ -585,4 +584,7 @@ footer {
 .contact-title {
   margin-top: 20px;
   font-size: 20px;
+}
+.mobile {
+  display: none;
 }

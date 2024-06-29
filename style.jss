@@ -381,8 +381,7 @@ function event((#closeModal):click) {
     padding = 25px;
 }
 .code-img {
-    minWidth = 350px;
-    height = 240px;
+    width =100%;
     borderRadius = 5px;
 }
 .part2-header {
@@ -393,10 +392,17 @@ function event((#closeModal):click) {
 }
 
 .step {
-    flexGrow = 1;
+    flexGrow = 0.5;
     display = flex;
     flexDirection = column;
     alignItems = center;
+    width = 50%;
+}
+iframe {
+    maxWidth = 100%;
+    minWidth = 100%;
+    height = 300px;
+    flexGrow = 1;
 }
 .undertitle {
     fontSize = 12px;
@@ -412,7 +418,8 @@ function event((#closeModal):click) {
     color = #333;
     textAlign = center;
     marginTop = 5px;
-    maxWidth = 70%;
+    width = 90%;
+    min-height = 50px;
 }
 .line {
     width = 90%;
@@ -469,6 +476,12 @@ function event((#closeModal):click) {
     color = #333;
     paddingInline = 40px;
     marginBottom = 20px;
+}
+.chapter-desc {
+    textIndent = 15px;
+}
+.soon-feature {
+    padding= 15px;
 }
 .code {
     backgroundColor = #1e1e1e;
@@ -587,6 +600,12 @@ choice-doc-title2 {
     width = 100%;
     marginTop = 0px;
 }
+.soon {
+    padding= 50px;
+}
+.top-space {
+    marginTop= 50px;
+}
 .social {
     backgroundColor = #fff;
     color = #000;
@@ -613,6 +632,19 @@ choice-doc-title2 {
     flexDirection = column;
     gap = 10px;
     marginTop = 20px;
+}
+footer {
+    justifyContent = space-evenly;
+    alignItems = center;
+    display = flex;
+    color = #fff;
+    backgroundColor = #000;
+    padding = 50px;
+}
+.footer-col {
+    minHeight = 200px;
+    height= fit-content;
+    width= 100%;
 }
 function event((.social[0]):mouseover) {
     .social[0] {
@@ -737,4 +769,7 @@ function event((.social[4]):mouseout) {
 .contact-title {
     fontSize = 20px;
     marginTop = 20px;
+}
+.mobile {
+    display = none;
 }

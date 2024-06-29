@@ -128,30 +128,6 @@ setTimeout(() => {
   document.querySelector("#jssLogo").style.width = "200px";
   document.querySelector("#jssLogo").style.transition = "0.5s";
 }, 1000);
-document.querySelectorAll(".choice-btn").forEach((element) => {
-  element.addEventListener("mouseover", () => {
-    element.style.boxShadow = "0 2.5px 0px 2px #333";
-    element.style.transform = "translateY(-2.5px)";
-  });
-});
-document.querySelectorAll(".choice-btn").forEach((element) => {
-  element.addEventListener("mouseover", () => {
-    element.style.boxShadow = "0 2.5px 0px 2px #333";
-    element.style.transform = "translateY(-2.5px)";
-  });
-});
-document.querySelectorAll(".choice-btn").forEach((element) => {
-  element.addEventListener("mouseout", () => {
-    element.style.transform = "translateY(0px)";
-    element.style.boxShadow = "0 0 0 3px #fff, 0 0 0 5px #ff0";
-  });
-});
-document.querySelectorAll(".choice-btn").forEach((element) => {
-  element.addEventListener("mouseout", () => {
-    element.style.transform = "translateY(0px)";
-    element.style.boxShadow = "0 0 0 3px #fff, 0 0 0 5px #ff0";
-  });
-});
 document.querySelectorAll(".social")[0].addEventListener("mouseover", () => {
   document.querySelectorAll(".social")[0].style.transform = "translateY(-5px)";
   document.querySelectorAll(".social-name")[0].style.filter = "blur(0px)";
