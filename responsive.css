@@ -86,6 +86,9 @@
     .header-item-text {
         display: none;
     }
+    .footer-socials {
+        flex-wrap: wrap;
+    }
 }
 @media screen and (max-width: 525px) {
     .installation {
