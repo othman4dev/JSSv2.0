@@ -21,7 +21,7 @@ Clone the framework repository using:
 
 Navigate to the framework directory, where you will find a file called style.jss. This is your JSS file where you can write code following our syntax.
 <br>
-<i>You can learn JSS at [our Website for documentation](https://jssdev.tech)</i>
+<i>You can learn JSS at [our Website for documentation](https://othman4dev.github.io/JSSv2.0/)</i>
 
 After writing your JSS code, it’s time to transpile it to JavaScript and/or CSS.
 
