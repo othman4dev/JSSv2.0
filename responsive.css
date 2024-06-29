@@ -80,6 +80,12 @@
         border-radius: 50%;
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     }
+    .hidden-word {
+        display: none;
+    }
+    .header-item-text {
+        display: none;
+    }
 }
 @media screen and (max-width: 525px) {
     .installation {
@@ -125,4 +131,5 @@
     .mobile {
         display: block;
     }
+    
 }
